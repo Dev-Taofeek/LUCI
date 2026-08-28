@@ -192,7 +192,7 @@ export default function GetInvolvedPage() {
           own page, /donate, rather than being buried in a Get Involved tab. */}
       <section className="bg-warm-white border-t border-border-light section-padding flex justify-center px-4 sm:px-6">
         <div className="max-w-xl sm:max-w-2xl w-full bg-maroon-deep rounded-card p-6 sm:p-8 md:p-12 flex flex-col items-center text-center gap-4 sm:gap-6">
-          <span className="bg-gold/10 border border-gold/20 text-gold text-xs sm:text-sm font-semibold btn-tracking rounded-full px-3 sm:px-4 py-1.5 sm:py-2 w-fit flex items-center gap-2">
+          <span className="bg-gold/10 border border-gold/20 text-white text-xs sm:text-sm font-semibold btn-tracking rounded-full px-3 sm:px-4 py-1.5 sm:py-2 w-fit flex items-center gap-2">
             <DollarSign size={16} className="shrink-0" /> Financial Support
           </span>
           <h2 className="text-white text-2xl sm:text-3xl md:text-4xl leading-tight">

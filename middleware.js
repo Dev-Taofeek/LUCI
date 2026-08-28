@@ -16,6 +16,7 @@ export default auth((req) => {
 
   const role = token.user?.role;
 
+  // Safeguarding reports are restricted beyond general admin access.
   if (pathname.startsWith("/admin/safeguarding")) {
     if (role !== "SAFEGUARDING_OFFICER" && role !== "SUPER_ADMIN") {
       return NextResponse.redirect(new URL("/admin", req.url));
@@ -26,5 +27,7 @@ export default auth((req) => {
 });
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  // Exclude /admin/login itself — otherwise an unauthenticated visit to the
+  // login page gets redirected back to itself, causing an infinite redirect loop.
+  matcher: ["/admin/((?!login).*)"],
 };

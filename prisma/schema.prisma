@@ -1,19 +1,17 @@
 // LUCI database schema
-// Covers: admin auth, programmes, events + registration, resources, news/CMS,
-// volunteer/membership/partnership pipelines, donations (Paystack), contact,
-// safeguarding reports, and audit logging for the admin dashboard (Phase 16).
+// Testing version — Prisma 7 + SQLite
+// Production database can be migrated to PostgreSQL later.
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
 }
 
 // ─────────────────────────────────────────────────────────────
-// Auth (NextAuth credentials + Prisma adapter)
+// AUTH
 // ─────────────────────────────────────────────────────────────
 
 enum Role {
@@ -24,34 +22,35 @@ enum Role {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String
-  email         String    @unique
-  passwordHash  String
-  role          Role      @default(EDITOR)
-  image         String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(EDITOR)
+  image        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
-  accounts      Account[]
-  sessions      Session[]
-  articles      Article[]
-  auditLogs     AuditLog[]
+  accounts  Account[]
+  sessions  Session[]
+  articles  Article[]
+  auditLogs AuditLog[]
 }
 
 model Account {
-  id                String  @id @default(cuid())
+  id                String @id @default(cuid())
   userId            String
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String? @db.Text
-  session_state     String?
+
+  refresh_token String?
+  access_token  String?
+  expires_at    Int?
+  token_type    String?
+  scope         String?
+  id_token      String?
+  session_state String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -63,11 +62,12 @@ model Session {
   sessionToken String   @unique
   userId       String
   expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 // ─────────────────────────────────────────────────────────────
-// Programmes
+// PROGRAMMES
 // ─────────────────────────────────────────────────────────────
 
 enum ProgrammeStatus {
@@ -83,37 +83,44 @@ model Programme {
   category    String
   status      ProgrammeStatus @default(UPCOMING)
   summary     String
-  description String          @db.Text
+  description String
   location    String
   startDate   DateTime
   endDate     DateTime?
-  impactStat  String?         // e.g. "500+ Families Reached"
+  impactStat  String?
   heroImage   String?
-  galleryImages String[]
-  objectives  String[]
-  createdAt   DateTime        @default(now())
-  updatedAt   DateTime        @updatedAt
+
+  // Stored as JSON for SQLite testing
+  galleryImages Json?
+  objectives    Json?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 // ─────────────────────────────────────────────────────────────
-// Events
+// EVENTS
 // ─────────────────────────────────────────────────────────────
 
 model Event {
-  id          String   @id @default(cuid())
-  slug        String   @unique
+  id          String    @id @default(cuid())
+  slug        String    @unique
   title       String
   summary     String
-  description String   @db.Text
+  description String
   location    String
   startDate   DateTime
   endDate     DateTime?
   heroImage   String?
-  speakers    Json?    // [{ name, role, photo }]
-  organisers  Json?
-  capacity    Int?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+
+  // Example:
+  // [{ "name": "John Doe", "role": "Speaker", "photo": "/images/john.jpg" }]
+  speakers   Json?
+  organisers Json?
+
+  capacity  Int?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   registrations EventRegistration[]
 }
@@ -131,24 +138,24 @@ model EventRegistration {
 }
 
 // ─────────────────────────────────────────────────────────────
-// Resources (Knowledge Library)
+// RESOURCES
 // ─────────────────────────────────────────────────────────────
 
 model Resource {
-  id          String   @id @default(cuid())
-  slug        String   @unique
-  title       String
-  category    String
-  summary     String
-  fileUrl     String
-  thumbnail   String?
-  downloads   Int      @default(0)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  title     String
+  category  String
+  summary   String
+  fileUrl   String
+  thumbnail String?
+  downloads Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 // ─────────────────────────────────────────────────────────────
-// News / Insights (CMS)
+// NEWS / INSIGHTS
 // ─────────────────────────────────────────────────────────────
 
 enum ArticleStatus {
@@ -161,56 +168,68 @@ model Article {
   slug        String        @unique
   title       String
   excerpt     String
-  content     String        @db.Text
+  content     String
   coverImage  String?
   status      ArticleStatus @default(DRAFT)
   publishedAt DateTime?
-  authorId    String
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
 
-  author User @relation(fields: [authorId], references: [id])
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 // ─────────────────────────────────────────────────────────────
-// Get Involved: Volunteer / Membership / Partnership pipelines
+// VOLUNTEER APPLICATIONS
 // ─────────────────────────────────────────────────────────────
 
 model VolunteerApplication {
-  id        String   @id @default(cuid())
-  fullName  String
-  email     String
-  phone     String
-  location  String
-  skills    String[]
-  message   String   @db.Text
-  status    String   @default("NEW") // NEW, REVIEWED, CONTACTED, ONBOARDED
+  id       String @id @default(cuid())
+  fullName String
+  email    String
+  phone    String
+  location String
+
+  // Stored as JSON for SQLite testing
+  skills Json?
+
+  message   String
+  status    String   @default("NEW")
   createdAt DateTime @default(now())
 }
+
+// ─────────────────────────────────────────────────────────────
+// MEMBERSHIP
+// ─────────────────────────────────────────────────────────────
 
 model MembershipApplication {
   id        String   @id @default(cuid())
   fullName  String
   email     String
   phone     String
-  reason    String   @db.Text
+  reason    String
   status    String   @default("NEW")
   createdAt DateTime @default(now())
 }
 
+// ─────────────────────────────────────────────────────────────
+// PARTNERSHIP
+// ─────────────────────────────────────────────────────────────
+
 model PartnershipInquiry {
-  id             String   @id @default(cuid())
-  organisation   String
-  contactName    String
-  email          String
-  phone          String?
-  proposalSummary String  @db.Text
-  status         String   @default("NEW")
-  createdAt      DateTime @default(now())
+  id              String   @id @default(cuid())
+  organisation    String
+  contactName     String
+  email           String
+  phone           String?
+  proposalSummary String
+  status          String   @default("NEW")
+  createdAt       DateTime @default(now())
 }
 
 // ─────────────────────────────────────────────────────────────
-// Donations (Paystack) — Phase 13
+// DONATIONS
 // ─────────────────────────────────────────────────────────────
 
 enum DonationStatus {
@@ -225,22 +244,22 @@ enum DonationFrequency {
 }
 
 model Donation {
-  id                String            @id @default(cuid())
-  reference         String            @unique // Paystack transaction reference
-  donorName         String?
-  donorEmail        String
-  amount            Int               // in kobo/cents
-  currency          String            @default("NGN")
-  frequency         DonationFrequency @default(ONE_TIME)
-  designation       String?           // e.g. a specific Programme
-  status            DonationStatus    @default(PENDING)
-  paystackChannel   String?
-  createdAt         DateTime          @default(now())
-  updatedAt         DateTime          @updatedAt
+  id              String            @id @default(cuid())
+  reference       String            @unique
+  donorName       String?
+  donorEmail      String
+  amount          Int
+  currency        String            @default("NGN")
+  frequency       DonationFrequency @default(ONE_TIME)
+  designation     String?
+  status          DonationStatus    @default(PENDING)
+  paystackChannel String?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
 }
 
 // ─────────────────────────────────────────────────────────────
-// Contact + Newsletter
+// CONTACT
 // ─────────────────────────────────────────────────────────────
 
 model ContactSubmission {
@@ -248,10 +267,14 @@ model ContactSubmission {
   fullName  String
   email     String
   subject   String
-  message   String   @db.Text
+  message   String
   status    String   @default("NEW")
   createdAt DateTime @default(now())
 }
+
+// ─────────────────────────────────────────────────────────────
+// NEWSLETTER
+// ─────────────────────────────────────────────────────────────
 
 model NewsletterSubscriber {
   id        String   @id @default(cuid())
@@ -260,24 +283,24 @@ model NewsletterSubscriber {
 }
 
 // ─────────────────────────────────────────────────────────────
-// Safeguarding (restricted access — SAFEGUARDING_OFFICER / SUPER_ADMIN only)
+// SAFEGUARDING
 // ─────────────────────────────────────────────────────────────
 
 model SafeguardingReport {
-  id          String   @id @default(cuid())
-  reference   String   @unique
-  reporterName String?
+  id              String   @id @default(cuid())
+  reference       String   @unique
+  reporterName    String?
   reporterContact String?
-  isAnonymous  Boolean @default(false)
-  category    String
-  details     String   @db.Text
-  status      String   @default("OPEN") // OPEN, INVESTIGATING, RESOLVED
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  isAnonymous     Boolean  @default(false)
+  category        String
+  details         String
+  status          String   @default("OPEN")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
 
 // ─────────────────────────────────────────────────────────────
-// Admin audit log (Phase 16)
+// AUDIT LOG
 // ─────────────────────────────────────────────────────────────
 
 model AuditLog {
