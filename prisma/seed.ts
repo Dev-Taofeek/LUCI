@@ -1,6 +1,6 @@
-const { PrismaClient } = require("@prisma/client");
-const { PrismaBetterSqlite3 } = require("@prisma/adapter-better-sqlite3");
-const bcrypt = require("bcryptjs");
+import { PrismaClient } from "../src/generated/prisma/client";
+import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
+import bcrypt from "bcryptjs";
 
 const adapter = new PrismaBetterSqlite3({
   url: "./dev.db",
@@ -17,7 +17,10 @@ async function main() {
     where: {
       email: "admin@luci.org",
     },
-    update: {},
+    update: {
+      passwordHash,
+      role: "SUPER_ADMIN",
+    },
     create: {
       name: "LUCI Super Admin",
       email: "admin@luci.org",
@@ -27,13 +30,13 @@ async function main() {
   });
 
   console.log(
-    "Seeded super admin: admin@luci.org / ChangeMe123! (change on first login)"
+    "Seeded super admin: admin@luci.org / ChangeMe123!"
   );
 }
 
 main()
-  .catch((e) => {
-    console.error("Seed failed:", e);
+  .catch((error) => {
+    console.error("Seed failed:", error);
     process.exit(1);
   })
   .finally(async () => {

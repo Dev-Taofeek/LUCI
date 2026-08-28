@@ -1,15 +1,11 @@
-// LUCI database schema
-// Testing version — Prisma 7 + SQLite
-// Production database can be migrated to PostgreSQL later.
-
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
   provider = "sqlite"
 }
-
 // ─────────────────────────────────────────────────────────────
 // AUTH
 // ─────────────────────────────────────────────────────────────
