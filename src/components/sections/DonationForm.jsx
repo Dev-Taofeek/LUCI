@@ -135,7 +135,7 @@ export default function DonationForm() {
         <Button
           as="button"
           type="submit"
-          variant="accent"
+          variant="secondary"
           className="w-full justify-center"
           disabled={status === "submitting" || !finalAmount}
         >

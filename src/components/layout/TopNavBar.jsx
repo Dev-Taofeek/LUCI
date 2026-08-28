@@ -65,7 +65,7 @@ export default function TopNavBar() {
           <Button variant="secondary" href="/programmes" className="px-4 xl:px-6 py-2.5 xl:py-3 text-sm whitespace-nowrap">
             Explore Our Work
           </Button>
-          <Button variant="primary" href="/get-involved#donate" className="px-4 xl:px-6 py-2.5 xl:py-3 text-sm whitespace-nowrap">
+          <Button variant="primary" href="/donate" className="px-4 xl:px-6 py-2.5 xl:py-3 text-sm whitespace-nowrap">
             Support LUCI
           </Button>
         </div>

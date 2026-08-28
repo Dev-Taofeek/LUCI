@@ -138,7 +138,7 @@ export default async function ProgrammeDetailPage({ params }) {
             training more leaders and fostering stronger communities.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 pt-2 w-full sm:w-auto">
-            <Button variant="accent" href="/get-involved#donate" className="w-full sm:w-auto">
+            <Button variant="accent" href="/donate" className="w-full sm:w-auto">
               Donate Now
             </Button>
             <Button variant="outlineOnDark" href="/get-involved" className="w-full sm:w-auto">

@@ -1,0 +1,293 @@
+// LUCI database schema
+// Covers: admin auth, programmes, events + registration, resources, news/CMS,
+// volunteer/membership/partnership pipelines, donations (Paystack), contact,
+// safeguarding reports, and audit logging for the admin dashboard (Phase 16).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─────────────────────────────────────────────────────────────
+// Auth (NextAuth credentials + Prisma adapter)
+// ─────────────────────────────────────────────────────────────
+
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  EDITOR
+  SAFEGUARDING_OFFICER
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  passwordHash  String
+  role          Role      @default(EDITOR)
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts      Account[]
+  sessions      Session[]
+  articles      Article[]
+  auditLogs     AuditLog[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ─────────────────────────────────────────────────────────────
+// Programmes
+// ─────────────────────────────────────────────────────────────
+
+enum ProgrammeStatus {
+  ACTIVE
+  UPCOMING
+  COMPLETED
+}
+
+model Programme {
+  id          String          @id @default(cuid())
+  slug        String          @unique
+  title       String
+  category    String
+  status      ProgrammeStatus @default(UPCOMING)
+  summary     String
+  description String          @db.Text
+  location    String
+  startDate   DateTime
+  endDate     DateTime?
+  impactStat  String?         // e.g. "500+ Families Reached"
+  heroImage   String?
+  galleryImages String[]
+  objectives  String[]
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+}
+
+// ─────────────────────────────────────────────────────────────
+// Events
+// ─────────────────────────────────────────────────────────────
+
+model Event {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  summary     String
+  description String   @db.Text
+  location    String
+  startDate   DateTime
+  endDate     DateTime?
+  heroImage   String?
+  speakers    Json?    // [{ name, role, photo }]
+  organisers  Json?
+  capacity    Int?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  registrations EventRegistration[]
+}
+
+model EventRegistration {
+  id        String   @id @default(cuid())
+  eventId   String
+  fullName  String
+  email     String
+  phone     String?
+  notes     String?
+  createdAt DateTime @default(now())
+
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+}
+
+// ─────────────────────────────────────────────────────────────
+// Resources (Knowledge Library)
+// ─────────────────────────────────────────────────────────────
+
+model Resource {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  category    String
+  summary     String
+  fileUrl     String
+  thumbnail   String?
+  downloads   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ─────────────────────────────────────────────────────────────
+// News / Insights (CMS)
+// ─────────────────────────────────────────────────────────────
+
+enum ArticleStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model Article {
+  id          String        @id @default(cuid())
+  slug        String        @unique
+  title       String
+  excerpt     String
+  content     String        @db.Text
+  coverImage  String?
+  status      ArticleStatus @default(DRAFT)
+  publishedAt DateTime?
+  authorId    String
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  author User @relation(fields: [authorId], references: [id])
+}
+
+// ─────────────────────────────────────────────────────────────
+// Get Involved: Volunteer / Membership / Partnership pipelines
+// ─────────────────────────────────────────────────────────────
+
+model VolunteerApplication {
+  id        String   @id @default(cuid())
+  fullName  String
+  email     String
+  phone     String
+  location  String
+  skills    String[]
+  message   String   @db.Text
+  status    String   @default("NEW") // NEW, REVIEWED, CONTACTED, ONBOARDED
+  createdAt DateTime @default(now())
+}
+
+model MembershipApplication {
+  id        String   @id @default(cuid())
+  fullName  String
+  email     String
+  phone     String
+  reason    String   @db.Text
+  status    String   @default("NEW")
+  createdAt DateTime @default(now())
+}
+
+model PartnershipInquiry {
+  id             String   @id @default(cuid())
+  organisation   String
+  contactName    String
+  email          String
+  phone          String?
+  proposalSummary String  @db.Text
+  status         String   @default("NEW")
+  createdAt      DateTime @default(now())
+}
+
+// ─────────────────────────────────────────────────────────────
+// Donations (Paystack) — Phase 13
+// ─────────────────────────────────────────────────────────────
+
+enum DonationStatus {
+  PENDING
+  SUCCESS
+  FAILED
+}
+
+enum DonationFrequency {
+  ONE_TIME
+  MONTHLY
+}
+
+model Donation {
+  id                String            @id @default(cuid())
+  reference         String            @unique // Paystack transaction reference
+  donorName         String?
+  donorEmail        String
+  amount            Int               // in kobo/cents
+  currency          String            @default("NGN")
+  frequency         DonationFrequency @default(ONE_TIME)
+  designation       String?           // e.g. a specific Programme
+  status            DonationStatus    @default(PENDING)
+  paystackChannel   String?
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+}
+
+// ─────────────────────────────────────────────────────────────
+// Contact + Newsletter
+// ─────────────────────────────────────────────────────────────
+
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  fullName  String
+  email     String
+  subject   String
+  message   String   @db.Text
+  status    String   @default("NEW")
+  createdAt DateTime @default(now())
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+// ─────────────────────────────────────────────────────────────
+// Safeguarding (restricted access — SAFEGUARDING_OFFICER / SUPER_ADMIN only)
+// ─────────────────────────────────────────────────────────────
+
+model SafeguardingReport {
+  id          String   @id @default(cuid())
+  reference   String   @unique
+  reporterName String?
+  reporterContact String?
+  isAnonymous  Boolean @default(false)
+  category    String
+  details     String   @db.Text
+  status      String   @default("OPEN") // OPEN, INVESTIGATING, RESOLVED
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ─────────────────────────────────────────────────────────────
+// Admin audit log (Phase 16)
+// ─────────────────────────────────────────────────────────────
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String
+  action    String
+  entity    String
+  entityId  String?
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+}

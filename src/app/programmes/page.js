@@ -126,7 +126,7 @@ export default function ProgrammesIndexPage() {
         subtitle="Your support helps us expand these vital programmes to reach more communities in need. Partner with LUCI today."
         actions={
           <>
-            <Button variant="accent" href="/get-involved#donate" className="w-full sm:w-auto">
+            <Button variant="accent" href="/donate" className="w-full sm:w-auto">
               Donate Now
             </Button>
             <Button variant="outlineOnDark" href="/get-involved" className="w-full sm:w-auto">

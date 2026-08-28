@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { HeartHandshake, Users, Handshake } from "lucide-react";
+import { HeartHandshake, Users, Handshake, DollarSign } from "lucide-react";
 import Button from "@/components/ui/Button";
 import ParticipationSection from "@/components/sections/ParticipationSection";
 import ParticipationForm from "@/components/sections/ParticipationForm";
@@ -34,7 +34,7 @@ export default function GetInvolvedPage() {
         >
           <motion.h1
             variants={fadeInUp}
-            className="text-white text-3xl sm:text-4xl md:text-5xl leading-tight"
+            className="text-gold text-3xl sm:text-4xl md:text-5xl leading-tight"
           >
             Join the Movement of Care
           </motion.h1>
@@ -186,6 +186,27 @@ export default function GetInvolvedPage() {
             </motion.div>
           )}
         </AnimatePresence>
+      </section>
+
+      {/* Donate CTA — the actual donation form + payment flow now lives at its
+          own page, /donate, rather than being buried in a Get Involved tab. */}
+      <section className="bg-warm-white border-t border-border-light section-padding flex justify-center px-4 sm:px-6">
+        <div className="max-w-xl sm:max-w-2xl w-full bg-maroon-deep rounded-card p-6 sm:p-8 md:p-12 flex flex-col items-center text-center gap-4 sm:gap-6">
+          <span className="bg-gold/10 border border-gold/20 text-gold text-xs sm:text-sm font-semibold btn-tracking rounded-full px-3 sm:px-4 py-1.5 sm:py-2 w-fit flex items-center gap-2">
+            <DollarSign size={16} className="shrink-0" /> Financial Support
+          </span>
+          <h2 className="text-white text-2xl sm:text-3xl md:text-4xl leading-tight">
+            Prefer to Give Financially?
+          </h2>
+          <p className="text-warm-white/80 text-base sm:text-lg">
+            Every contribution, big or small, directly funds our family
+            development, community, and youth programmes. Make a one-time
+            gift or become a monthly supporter.
+          </p>
+          <Button variant="accent" href="/donate" className="w-full sm:w-auto">
+            Make a Donation
+          </Button>
+        </div>
       </section>
     </>
   );

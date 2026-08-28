@@ -30,7 +30,7 @@ export default function HomePage() {
             </Button>
             <Button
               variant="accent"
-              href="/get-involved#donate"
+              href="/donate"
               className="w-full sm:w-auto"
             >
               Support LUCI
@@ -107,7 +107,7 @@ export default function HomePage() {
             </Button>
             <Button
               variant="accent"
-              href="/get-involved#donate"
+              href="/donate"
               className="w-full sm:w-auto"
             >
               Donate

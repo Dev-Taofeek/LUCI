@@ -1,35 +1,42 @@
 import Link from "next/link";
 
+const BOTTOM_ROW_LINKS = [
+  { label: "What we do", href: "/what-we-do" },
+  { label: "Events", href: "/events" },
+  { label: "News", href: "/news" },
+];
+
 const LINK_COLUMNS = [
   [
-    { label: "Newsletter Signup", href: "/#newsletter" },
+    { label: "Donation Policy", href: "/donation-policy" },
     { label: "Privacy Policy", href: "/privacy-policy" },
+    { label: "Terms of Use", href: "/terms-of-use" },
   ],
   [
     { label: "Contact Us", href: "/contact" },
     { label: "Partner With Us", href: "/get-involved#partnership" },
+    { label: "Safeguarding", href: "/safeguarding" },
   ],
-  [{ label: "Careers", href: "/careers" }],
 ];
 
 export default function Footer() {
   return (
     <footer className="bg-maroon-deep">
       <div className="container-luci px-4 sm:px-6 py-12 sm:py-16 lg:py-20">
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8 sm:gap-8">
-          <div className="col-span-2 flex flex-col gap-3 sm:gap-4">
-            <span className="font-display text-xl sm:text-[22px] font-semibold text-white">
-              LUCI
-            </span>
-            <p className="text-sm text-warm-white/80 max-w-[28rem]">
-              Love, Unity, and Care Initiative. Building stronger, more
-              cohesive communities through compassion and action.
-            </p>
-          </div>
+        <div className="flex flex-col md:flex-row gap-10 sm:gap-12 md:justify-between">
+          {/* Left: LUCI blurb + row of 3 links below it */}
+          <div className="flex flex-col gap-5 sm:gap-6 max-w-md">
+            <div className="flex flex-col gap-3 sm:gap-4">
+              <span className="font-display text-xl sm:text-[22px] font-semibold text-white">
+                LUCI
+              </span>
+              <p className="text-sm text-warm-white/80">
+                Living Unity Core Initiative. Building bridges, One Family at a time.
+              </p>
+            </div>
 
-          {LINK_COLUMNS.map((col, i) => (
-            <div key={i} className="flex flex-col gap-3 sm:gap-4">
-              {col.map((link) => (
+            <div className="flex flex-wrap gap-x-6 gap-y-2">
+              {BOTTOM_ROW_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
@@ -39,7 +46,24 @@ export default function Footer() {
                 </Link>
               ))}
             </div>
-          ))}
+          </div>
+
+          {/* Right: two columns of 3, flex-col each */}
+          <div className="flex wrap gap-10 sm:gap-16 md:gap-20">
+            {LINK_COLUMNS.map((col, i) => (
+              <div key={i} className="flex flex-col gap-3 sm:gap-4">
+                {col.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm text-warm-white/80 hover:text-warm-white whitespace-nowrap"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="border-t border-warm-white/20 mt-8 sm:mt-10 lg:mt-12 pt-5 sm:pt-6">
