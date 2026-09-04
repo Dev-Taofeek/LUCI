@@ -10,9 +10,10 @@ module.exports = {
     extend: {
       colors: {
         "warm-white": "#FDFBF7",
-        charcoal: "#252525",
-        "maroon-deep": "#5A1828",
+        charcoal: "#000000",
+        "maroon-deep": "#841818",
         muted: "#6B6B6B",
+        white: "#FAFAFA",
       },
 
       fontFamily: {
