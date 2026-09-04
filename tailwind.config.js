@@ -16,8 +16,8 @@ module.exports = {
       },
 
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        display: ["Playfair Display", "serif"],
+        sans: ["var(--font-manrope)", "sans-serif"],
+        display: ["var(--font-cormorant)", "serif"],
       },
 
       maxWidth: {
