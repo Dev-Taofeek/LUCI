@@ -64,7 +64,7 @@ export default function HeroSection({
         {subtitle && (
           <motion.p
             variants={fadeInUp}
-            className="text-warm-white/90 text-base sm:text-lg max-w-md sm:max-w-xl lg:max-w-2xl"
+            className="text-warm-white/90 text-sm sm:text-md max-w-md sm:max-w-xl lg:max-w-2xl font-thin"
           >
             {subtitle}
           </motion.p>

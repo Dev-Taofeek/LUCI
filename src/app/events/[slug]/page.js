@@ -45,7 +45,7 @@ export default async function EventDetailPage({ params }) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
           {/* Main content */}
           <div className="md:col-span-2 flex flex-col gap-8 sm:gap-10 md:gap-12">
-            <div className="flex flex-col gap-4 text-base sm:text-lg">
+            <div className="flex flex-col gap-4 text-sm sm:text-md font-thin">
               {event.description.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
@@ -66,7 +66,7 @@ export default async function EventDetailPage({ params }) {
                 {event.organisers.map((org) => (
                   <span
                     key={org}
-                    className="bg-warm-white rounded-control px-4 sm:px-6 py-3 sm:py-4 text-sm font-semibold text-charcoal btn-tracking"
+                    className="bg-white rounded-control px-4 sm:px-6 py-3 sm:py-4 text-sm font-light text-charcoal btn-tracking border border-charcoal/50 rounded-md"
                   >
                     {org}
                   </span>
@@ -110,7 +110,7 @@ export default async function EventDetailPage({ params }) {
                   <div className="p-4 sm:p-6 flex flex-col gap-2">
                     <span className="text-sm text-gold">{related.date}</span>
                     <h3 className="text-lg sm:text-xl md:!text-[22px]">{related.title}</h3>
-                    <p className="text-sm">{related.summary}</p>
+                    <p className="text-sm font-thin">{related.summary}</p>
                   </div>
                 </Link>
               ))}

@@ -5,14 +5,14 @@ export default function LegalSection({ id, title, paragraphs = [], list = [], co
         {title}
       </h2>
       {paragraphs.map((p, i) => (
-        <p key={i} className="text-sm sm:text-base !text-muted leading-relaxed">
+        <p key={i} className="text-sm sm:text-md font-thin !text-muted leading-relaxed">
           {p}
         </p>
       ))}
       {list.length > 0 && (
         <ul className="flex flex-col gap-2.5 sm:gap-3 pl-5 sm:pl-6 list-disc">
           {list.map((item, i) => (
-            <li key={i} className="text-sm sm:text-base !text-muted leading-relaxed">
+            <li key={i} className="text-sm sm:text-md font-thin !text-muted leading-relaxed">
               {typeof item === "object" && item !== null && "bold" in item ? (
                 <>
                   <strong className="text-charcoal">{item.bold}</strong> {item.rest}
@@ -27,7 +27,7 @@ export default function LegalSection({ id, title, paragraphs = [], list = [], co
       {contactBox && (
         <div className="bg-border-light/50 border border-border-light rounded p-4 sm:p-5 md:p-6 flex flex-col gap-1">
           {contactBox.map((line, i) => (
-            <p key={i} className="text-sm sm:text-base !text-muted mb-0 break-words">
+            <p key={i} className="text-sm sm:text-md font-thin !text-muted mb-0 break-words">
               {line.label && <span>{line.label}: </span>}
               <span className={line.label ? "text-maroon-deep" : ""}>{line.value}</span>
             </p>

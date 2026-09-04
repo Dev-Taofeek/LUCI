@@ -5,7 +5,7 @@ export default function StrategyStep({ icon, title, description }) {
         {icon}
       </div>
       <h4 className="text-charcoal text-lg sm:text-xl md:text-[22px]">{title}</h4>
-      <p className="text-sm">{description}</p>
+      <p className="text-sm font-thin">{description}</p>
     </div>
   );
 }

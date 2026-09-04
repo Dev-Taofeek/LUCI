@@ -14,7 +14,7 @@ export default function NeededSkillsSection() {
     <div className="flex flex-col gap-6 sm:gap-8">
       <div className="text-center max-w-xl sm:max-w-2xl mx-auto flex flex-col gap-3 sm:gap-4">
         <h2 className="text-2xl sm:text-3xl md:text-4xl leading-tight">Where We Need You Most</h2>
-        <p className="text-base sm:text-lg">
+        <p className="text-sm sm:text-md font-thin">
           These are the skill areas our current programmes need most.
           Register as a volunteer and tell us which of these fit you.
         </p>
@@ -23,13 +23,13 @@ export default function NeededSkillsSection() {
         {SKILLS.map(({ icon: Icon, label, description }) => (
           <div
             key={label}
-            className="bg-white border border-border-light rounded-[12px] p-5 sm:p-6 flex flex-col gap-3"
+            className="bg-white border border-border-light rounded-md p-5 sm:p-6 flex flex-col gap-3"
           >
-            <div className="bg-gold/10 rounded-full p-3 w-fit shrink-0">
+            <div className="bg-gold/10 rounded-md p-3 w-fit shrink-0">
               <Icon size={20} className="text-gold" />
             </div>
             <h3 className="text-lg sm:!text-[20px]">{label}</h3>
-            <p className="text-sm">{description}</p>
+            <p className="text-sm font-thin">{description}</p>
           </div>
         ))}
       </div>

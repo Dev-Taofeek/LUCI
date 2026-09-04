@@ -7,7 +7,7 @@ const MAP_IMAGE =
 
 export default function GeoFootprintMap() {
   return (
-    <div className="relative h-[280px] sm:h-[360px] md:h-[440px] lg:h-[500px] w-full bg-white border border-border-light rounded-[12px] overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+    <div className="relative h-[280px] sm:h-[360px] md:h-[440px] lg:h-[500px] w-full bg-white border border-border-light rounded-md overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
       <Image
         src={MAP_IMAGE}
         alt="Map of LUCI's operating regions"
@@ -23,11 +23,11 @@ export default function GeoFootprintMap() {
           title={pin.name}
         >
           {pin.highlighted && (
-            <span className="absolute rounded-full border-2 border-maroon-deep size-5 sm:size-6" />
+            <span className="absolute rounded-md border-2 border-maroon-deep size-5 sm:size-6" />
           )}
           <span
             className={cn(
-              "rounded-full shadow-[0_1px_2px_rgba(0,0,0,0.05)]",
+              "rounded-md shadow-[0_1px_2px_rgba(0,0,0,0.05)]",
               pin.type === "hub" ? "bg-gold size-3 sm:size-4" : "bg-maroon-deep size-2.5 sm:size-3"
             )}
           />

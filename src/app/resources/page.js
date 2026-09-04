@@ -29,18 +29,18 @@ export default function ResourcesIndexPage() {
         <motion.h1 variants={fadeInUp} className="text-3xl sm:text-4xl md:text-5xl leading-tight">
           Knowledge for Change
         </motion.h1>
-        <motion.p variants={fadeInUp} className="text-base sm:text-lg">
+        <motion.p variants={fadeInUp} className="text-sm sm:text-md font-thin">
           Explore our collection of research, reports, and practical guides
           designed to share insights and empower communities across the
           continent.
         </motion.p>
         <motion.div variants={fadeInUp} className="relative w-full max-w-2xl mt-1 sm:mt-2">
-          <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted" />
+          <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted rounded" />
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search resources, topics, or authors..."
-            className="w-full bg-white border border-border-mid rounded-control pl-11 pr-4 py-3 sm:py-4 text-base text-charcoal placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep shadow-[0_1px_2px_rgba(0,0,0,0.05)]"
+            className="w-full bg-white border border-border-mid rounded-md pl-11 pr-4 py-3 sm:py-4 text-base text-charcoal placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep shadow-[0_1px_2px_rgba(0,0,0,0.05)]"
           />
         </motion.div>
       </motion.div>
@@ -56,8 +56,8 @@ export default function ResourcesIndexPage() {
               onClick={() => setActiveFilter(filter)}
               className={
                 activeFilter === filter
-                  ? "bg-maroon-deep text-white rounded-full px-4 py-2 text-sm whitespace-nowrap shrink-0"
-                  : "bg-border-light/40 text-muted border border-border-mid/30 rounded-full px-4 py-2 text-sm hover:border-maroon-deep/40 whitespace-nowrap shrink-0"
+                  ? "bg-maroon-deep text-white rounded-md px-4 py-2 text-sm whitespace-nowrap shrink-0"
+                  : "bg-border-light/40 text-muted border border-border-mid/30 rounded-md px-4 py-2 text-sm hover:border-maroon-deep/40 whitespace-nowrap shrink-0"
               }
             >
               {filter}

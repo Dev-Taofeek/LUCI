@@ -31,7 +31,7 @@ export default function TopNavBar() {
   }, [open]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-warm-white/90 backdrop-blur-md shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
       <div className="container-luci h-16 sm:h-18 lg:h-20 flex items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
@@ -49,7 +49,7 @@ export default function TopNavBar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "text-sm xl:text-base px-2 py-1 rounded transition-colors whitespace-nowrap",
+                  "text-sm xl:text-base px-2 py-1 transition-colors whitespace-nowrap",
                   active
                     ? "text-maroon-deep font-bold border-b-2 border-maroon-deep"
                     : "text-muted hover:text-maroon-deep"
@@ -62,10 +62,10 @@ export default function TopNavBar() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3 xl:gap-4">
-          <Button variant="secondary" href="/programmes" className="px-4 xl:px-6 py-2.5 xl:py-3 text-sm whitespace-nowrap">
+          <Button variant="secondary" href="/programmes" className="px-4 xl:px-6 py-2.5 xl:py-3 text-sm whitespace-nowrap rounded-md">
             Explore Our Work
           </Button>
-          <Button variant="primary" href="/donate" className="px-4 xl:px-6 py-2.5 xl:py-3 text-sm whitespace-nowrap">
+          <Button variant="primary" href="/donate" className="px-4 xl:px-6 py-2.5 xl:py-3 text-sm whitespace-nowrap rounded-md">
             Support LUCI
           </Button>
         </div>
@@ -113,7 +113,7 @@ export default function TopNavBar() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "text-base px-3 py-3 rounded-control transition-colors",
+                    "text-base px-3 py-3 transition-colors",
                     active
                       ? "text-maroon-deep font-bold bg-maroon-deep/5"
                       : "text-muted hover:text-maroon-deep hover:bg-maroon-deep/5"
@@ -125,10 +125,10 @@ export default function TopNavBar() {
             })}
           </nav>
           <div className="flex flex-col sm:flex-row gap-3 pb-6 pt-2 sm:pt-0">
-            <Button variant="secondary" href="/programmes" className="w-full sm:w-auto sm:flex-1 justify-center py-3 text-sm">
+            <Button variant="secondary" href="/programmes" className="w-full sm:w-auto sm:flex-1 justify-center py-3 text-sm rounded-md">
               Explore Our Work
             </Button>
-            <Button variant="primary" href="/get-involved#donate" className="w-full sm:w-auto sm:flex-1 justify-center py-3 text-sm">
+            <Button variant="primary" href="/donate" className="w-full sm:w-auto sm:flex-1 justify-center py-3 text-sm rounded-md">
               Support LUCI
             </Button>
           </div>

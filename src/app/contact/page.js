@@ -21,7 +21,7 @@ export default function ContactPage() {
           <motion.h1 variants={fadeInUp} className="text-3xl sm:text-4xl md:text-5xl leading-tight">
             Get in Touch
           </motion.h1>
-          <motion.p variants={fadeInUp} className="text-base sm:text-lg">
+          <motion.p variants={fadeInUp} className="text-sm sm:text-md font-thin">
             We&apos;re here to listen, collaborate, and support our
             community. Reach out to us through any of our channels.
           </motion.p>

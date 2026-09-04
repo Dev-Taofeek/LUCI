@@ -28,7 +28,7 @@ export default function RegistrationForm({ slug }) {
 
   if (status === "success") {
     return (
-      <div className="bg-warm-white border border-border-light rounded-[12px] p-8 text-center">
+      <div className="bg-white border border-border-light rounded-md p-8 text-center">
         <h3 className="text-maroon-deep mb-2">You&apos;re registered!</h3>
         <p className="text-sm text-muted">
           We&apos;ve sent a confirmation to {form.email}. See you there.
@@ -38,12 +38,13 @@ export default function RegistrationForm({ slug }) {
   }
 
   return (
-    <div className="bg-white border border-border-mid/50 shadow-[0_4px_10px_rgba(110,15,26,0.04)] rounded-[12px] p-8 flex flex-col gap-6">
+    <div className="bg-white border border-border-mid/50 shadow-[0_4px_10px_rgba(110,15,26,0.04)] rounded-md p-8 flex flex-col gap-6">
       <h3 className="!text-[22px]">Register Now</h3>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 rounded-md">
         <Input
           placeholder="Full Name"
           required
+          className="w-full bg-white border border-border-mid rounded-md px-3 sm:px-4 py-3 sm:py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
           value={form.fullName}
           onChange={(e) => setForm({ ...form, fullName: e.target.value })}
         />
@@ -51,13 +52,14 @@ export default function RegistrationForm({ slug }) {
           type="email"
           placeholder="Email Address"
           required
+          className="w-full bg-white border border-border-mid rounded-md px-3 sm:px-4 py-3 sm:py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
           value={form.email}
           onChange={(e) => setForm({ ...form, email: e.target.value })}
         />
         <select
           value={form.attendance}
           onChange={(e) => setForm({ ...form, attendance: e.target.value })}
-          className="w-full bg-warm-white border border-border-mid rounded-control px-4 py-3 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
+          className="w-full bg-white border border-border-mid rounded-md px-4 py-3 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
         >
           {ATTENDANCE_OPTIONS.map((opt) => (
             <option key={opt} value={opt}>

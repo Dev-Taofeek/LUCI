@@ -55,17 +55,17 @@ export default function AboutPage() {
               <br className="hidden sm:block" />
               {" "}Building Communities.
             </h1>
-            <p className="text-base sm:text-lg">
+            <p className="text-sm sm:text-md font-thin">
               The Love, Unity, and Care Initiative (LUCI) is an NGO dedicated
               to fostering social cohesion through family and community
               building. We believe that strong, united families are the
               bedrock of a thriving, inclusive society.
             </p>
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
-              <span className="bg-gold-light text-maroon-deep text-xs font-semibold btn-tracking rounded-full px-3 py-1">
+              <span className="bg-gold-light text-maroon-deep text-xs font-semibold btn-tracking rounded-md px-3 py-1">
                 Est. 2010
               </span>
-              <span className="bg-maroon-deep text-white text-xs font-semibold btn-tracking rounded-full px-3 py-1">
+              <span className="bg-maroon-deep text-white text-xs font-semibold btn-tracking rounded-md px-3 py-1">
                 Global Impact
               </span>
             </div>
@@ -73,7 +73,7 @@ export default function AboutPage() {
 
           <motion.div
             variants={fadeInUp}
-            className="relative h-[260px] sm:h-[360px] md:h-[420px] lg:h-[500px] w-full rounded-card overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.05)] order-1 md:order-2"
+            className="relative h-[260px] sm:h-[360px] md:h-[420px] lg:h-[500px] w-full rounded-md overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.05)] order-1 md:order-2"
           >
             <Image
               src={ABOUT_IMAGE}
@@ -88,7 +88,7 @@ export default function AboutPage() {
       </section>
 
       {/* Vision & Mission */}
-      <section className="bg-warm-white section-padding flex justify-center relative overflow-hidden px-4 sm:px-6">
+      <section className="bg-white section-padding flex justify-center relative overflow-hidden px-4 sm:px-6">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -125,7 +125,7 @@ export default function AboutPage() {
         <motion.h2 variants={fadeInUp} className="text-center text-2xl sm:text-3xl lg:text-4xl">
           The Ripple Effect of Care
         </motion.h2>
-        <motion.p variants={fadeInUp} className="text-base sm:text-lg text-center max-w-2xl">
+        <motion.p variants={fadeInUp} className="text-sm sm:text-md font-thin text-center max-w-2xl">
           We believe that societal transformation begins at home. By
           nurturing the smallest unit, we impact the whole.
         </motion.p>
@@ -141,7 +141,7 @@ export default function AboutPage() {
       </motion.section>
 
       {/* Leadership Team */}
-      <section className="bg-warm-white section-padding flex justify-center px-4 sm:px-6">
+      <section className="bg-white section-padding flex justify-center px-4 sm:px-6">
         <motion.div
           variants={staggerContainer}
           initial="hidden"

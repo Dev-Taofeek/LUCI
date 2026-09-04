@@ -35,7 +35,7 @@ export default async function ResourceDetailPage({ params }) {
         <article className="md:col-span-8 flex flex-col gap-6 sm:gap-7 md:gap-8">
           <header className="flex flex-col gap-3 sm:gap-4">
             <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-              <span className="bg-maroon-deep/10 text-maroon-deep text-xs tracking-[0.05em] rounded-full px-3 py-1">
+              <span className="bg-maroon-deep/10 text-maroon-deep text-xs tracking-[0.05em] rounded-md px-3 py-1">
                 {r.category}
               </span>
               <span className="flex items-center gap-1.5 text-sm text-muted">
@@ -46,7 +46,7 @@ export default async function ResourceDetailPage({ params }) {
               {r.title}
             </h1>
             <div className="border-t border-border-mid/30 pt-4 sm:pt-5 flex items-center gap-3 sm:gap-4">
-              <div className="relative size-10 sm:size-12 rounded-full overflow-hidden border border-border-mid shrink-0">
+              <div className="relative size-10 sm:size-12 rounded-md overflow-hidden border border-border-mid shrink-0">
                 <Image src={r.author.image} alt={r.author.name} fill className="object-cover" />
               </div>
               <div className="min-w-0">
@@ -58,7 +58,7 @@ export default async function ResourceDetailPage({ params }) {
             </div>
           </header>
 
-          <figure className="border border-border-mid/50 rounded-[12px] overflow-hidden shadow-[0_4px_20px_rgba(110,15,26,0.04)]">
+          <figure className="border border-border-mid/50 rounded-md overflow-hidden shadow-[0_4px_20px_rgba(110,15,26,0.04)]">
             <div className="relative h-[220px] sm:h-[300px] md:h-[360px] lg:h-[400px] w-full">
               <Image
                 src={r.figureImage}
@@ -68,7 +68,7 @@ export default async function ResourceDetailPage({ params }) {
                 className="object-cover"
               />
             </div>
-            <figcaption className="bg-warm-white border-t border-border-mid/50 px-4 py-3 sm:py-4 text-sm text-muted">
+            <figcaption className="bg-white border-t border-border-mid/50 px-4 py-3 sm:py-4 text-sm text-muted font-thin">
               {r.figureCaption}
             </figcaption>
           </figure>
@@ -76,7 +76,7 @@ export default async function ResourceDetailPage({ params }) {
           <div className="flex flex-col gap-4 sm:gap-5 md:gap-6">
             <h2 className="text-2xl sm:!text-[28px]">Abstract</h2>
             {r.abstract.map((p, i) => (
-              <p key={i} className="text-base sm:text-lg !text-charcoal">
+              <p key={i} className="text-sm sm:text-md font-thin !text-charcoal">
                 {p}
               </p>
             ))}
@@ -88,7 +88,7 @@ export default async function ResourceDetailPage({ params }) {
               {r.keyFindings.map((f) => (
                 <li key={f.bold} className="flex gap-3">
                   <span className="text-gold text-lg leading-none mt-1 shrink-0">•</span>
-                  <p className="text-base sm:text-lg !text-charcoal">
+                  <p className="text-sm sm:text-md font-thin !text-charcoal">
                     <strong>{f.bold}</strong> {f.rest}
                   </p>
                 </li>

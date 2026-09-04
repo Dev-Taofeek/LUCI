@@ -27,7 +27,7 @@ export default function ProgrammesIndexPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-warm-white border-b border-border-light px-4 sm:px-6 md:px-10 py-12 sm:py-16 md:py-20 flex justify-center">
+      <section className="bg-white border-b border-border-light px-4 sm:px-6 md:px-10 py-12 sm:py-16 md:py-20 flex justify-center">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -40,7 +40,7 @@ export default function ProgrammesIndexPage() {
           >
             Where Our Mission Becomes Action.
           </motion.h1>
-          <motion.p variants={fadeInUp} className="text-base sm:text-lg">
+          <motion.p variants={fadeInUp} className="text-sm sm:text-md font-thin">
             Explore the tangible ways we are driving positive change in
             communities, families, and youth through dedicated projects and
             unified efforts.
@@ -61,7 +61,7 @@ export default function ProgrammesIndexPage() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search programmes..."
-              className="w-full bg-warm-white border border-border-mid rounded-control pl-11 pr-4 py-3 text-base text-charcoal placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
+              className="w-full bg-white border border-border-mid rounded-md pl-11 pr-4 py-3 text-base text-charcoal placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep font-thin"
             />
           </div>
 
@@ -72,8 +72,8 @@ export default function ProgrammesIndexPage() {
                 onClick={() => setActiveFilter(filter)}
                 className={
                   activeFilter === filter
-                    ? "bg-maroon-deep text-white rounded-full px-4 sm:px-6 py-2 text-sm whitespace-nowrap shrink-0"
-                    : "bg-white text-muted border border-border-mid rounded-full px-4 sm:px-6 py-2 text-sm hover:border-maroon-deep/40 whitespace-nowrap shrink-0"
+                    ? "bg-maroon-deep text-white rounded-md px-4 sm:px-6 py-2 text-sm whitespace-nowrap shrink-0 font-thin"
+                    : "bg-white text-muted border border-border-mid rounded-md px-4 sm:px-6 py-2 text-sm hover:border-maroon-deep/40 whitespace-nowrap shrink-0 font-thin"
                 }
               >
                 {filter}
@@ -126,7 +126,7 @@ export default function ProgrammesIndexPage() {
         subtitle="Your support helps us expand these vital programmes to reach more communities in need. Partner with LUCI today."
         actions={
           <>
-            <Button variant="accent" href="/donate" className="w-full sm:w-auto">
+            <Button variant="accentWhite" href="/donate" className="w-full sm:w-auto">
               Donate Now
             </Button>
             <Button variant="outlineOnDark" href="/get-involved" className="w-full sm:w-auto">

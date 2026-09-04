@@ -55,6 +55,7 @@ export default function ParticipationForm({ endpoint, fields, skillOptions, subm
                   id={field.name}
                   placeholder={field.placeholder}
                   required={field.required}
+                  className="w-full bg-white border border-border-mid rounded-md px-3 sm:px-4 py-3 sm:py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
                   value={form[field.name]}
                   onChange={(e) => setForm({ ...form, [field.name]: e.target.value })}
                 />
@@ -64,6 +65,7 @@ export default function ParticipationForm({ endpoint, fields, skillOptions, subm
                   type={field.type || "text"}
                   placeholder={field.placeholder}
                   required={field.required}
+                  className="w-full bg-white border border-border-mid rounded-md px-3 sm:px-4 py-3 sm:py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
                   value={form[field.name]}
                   onChange={(e) => setForm({ ...form, [field.name]: e.target.value })}
                 />

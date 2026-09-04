@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function TeamMemberCard({ image, name, role, bio }) {
   return (
-    <div className="bg-white border border-border-light rounded-[12px] overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.05)] flex flex-col h-full">
+    <div className="bg-white border border-border-light rounded-md overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.05)] flex flex-col h-full">
       <div className="relative h-48 sm:h-56 md:h-64 w-full bg-border-light">
         {image && (
           <Image
@@ -20,11 +20,11 @@ export default function TeamMemberCard({ image, name, role, bio }) {
           {name}
         </h3>
 
-        <span className="text-sm font-semibold text-gold btn-tracking">
+        <span className="text-sm font-light text-gold btn-tracking">
           {role}
         </span>
 
-        <p className="text-sm text-muted pt-4">{bio}</p>
+        <p className="text-sm text-muted font-thin pt-4">{bio}</p>
 
         <div className="flex items-center gap-4 pt-6">
           <a

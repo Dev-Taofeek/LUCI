@@ -11,21 +11,21 @@ export function EventInfoCard({ dateRange, time, venue, seatsRemaining }) {
           <Calendar size={20} className="text-maroon-deep shrink-0 mt-0.5" />
           <div>
             <p className="font-semibold text-charcoal mb-0">Date</p>
-            <p className="mb-0">{dateRange}</p>
+            <p className="mb-0 font-thin">{dateRange}</p>
           </div>
         </div>
         <div className="flex gap-4">
           <Clock size={20} className="text-maroon-deep shrink-0 mt-0.5" />
           <div>
             <p className="font-semibold text-charcoal mb-0">Time</p>
-            <p className="mb-0">{time}</p>
+            <p className="mb-0 font-thin">{time}</p>
           </div>
         </div>
         <div className="flex gap-4">
           <MapPin size={20} className="text-maroon-deep shrink-0 mt-0.5" />
           <div>
             <p className="font-semibold text-charcoal mb-0">Venue</p>
-            <p className="mb-0">{venue}</p>
+            <p className="mb-0 font-thin">{venue}</p>
           </div>
         </div>
       </div>
@@ -54,7 +54,7 @@ export function SpeakerCard({ name, role, image }) {
       </div>
       <div>
         <h3 className="!text-[22px]">{name}</h3>
-        <p className="text-sm mb-0">{role}</p>
+        <p className="text-sm mb-0 font-thin">{role}</p>
       </div>
     </div>
   );

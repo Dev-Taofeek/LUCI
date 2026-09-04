@@ -51,7 +51,7 @@ export default function SafeguardingReportForm() {
 
   if (status === "success") {
     return (
-      <div className="bg-border-light/40 border border-border-mid rounded-[12px] p-6 sm:p-8 md:p-10 text-center flex flex-col items-center gap-3">
+      <div className="bg-border-light/40 border border-border-mid rounded-md p-6 sm:p-8 md:p-10 text-center flex flex-col items-center gap-3">
         <ShieldAlert className="text-maroon-deep" size={32} />
         <h3 className="text-lg sm:!text-[22px]">Report submitted securely</h3>
         <p className="text-sm sm:text-base">
@@ -64,19 +64,19 @@ export default function SafeguardingReportForm() {
   }
 
   return (
-    <div className="relative bg-border-light/40 border border-border-mid rounded-[12px] p-5 sm:p-6 md:p-8 lg:p-10 overflow-hidden">
-      <div className="absolute -right-16 -top-16 size-48 sm:size-64 rounded-full bg-gold/10 blur-3xl pointer-events-none" />
+    <div className="relative bg-border-light/40 border border-border-mid rounded-md p-5 sm:p-6 md:p-8 lg:p-10 overflow-hidden">
+      <div className="absolute -right-16 -top-16 size-48 sm:size-64 rounded-md bg-gold/10 blur-3xl pointer-events-none" />
 
       <div className="relative z-10 flex flex-col gap-5 sm:gap-6">
         <div className="flex items-center gap-3 sm:gap-4">
-          <span className="bg-maroon-deep/10 rounded-full size-10 sm:size-12 flex items-center justify-center shrink-0">
+          <span className="bg-maroon-deep/10 rounded-md size-10 sm:size-12 flex items-center justify-center shrink-0">
             <ShieldAlert className="text-maroon-deep" size={20} />
           </span>
           <h2 className="text-xl sm:text-2xl md:!text-[28px] leading-snug">Report a Concern</h2>
         </div>
 
-        <div className="bg-white border-l-4 border-gold rounded-r p-3 sm:p-4">
-          <p className="text-sm !text-charcoal mb-0">
+        <div className="bg-white border-l-4 border-gold rounded-r-md p-3 sm:p-4">
+          <p className="text-sm !text-charcoal mb-0 font-thin">
             <strong>Secure &amp; Confidential:</strong> Submissions are stored
             securely and are strictly accessible only to authorized LUCI
             Safeguarding Administrators. Anonymous reports are fully
@@ -99,6 +99,7 @@ export default function SafeguardingReportForm() {
                   id="reporterName"
                   placeholder="Your name"
                   value={form.reporterName}
+                  className="w-full bg-white border border-border-mid rounded-md px-3 sm:px-4 py-3 sm:py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
                   onChange={(e) => setForm({ ...form, reporterName: e.target.value })}
                 />
               </div>
@@ -107,6 +108,7 @@ export default function SafeguardingReportForm() {
                 <Input
                   id="reporterContact"
                   placeholder="How can we reach you?"
+                  className="w-full bg-white border border-border-mid rounded-md px-3 sm:px-4 py-3 sm:py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
                   value={form.reporterContact}
                   onChange={(e) => setForm({ ...form, reporterContact: e.target.value })}
                 />
@@ -121,7 +123,7 @@ export default function SafeguardingReportForm() {
               required
               value={form.category}
               onChange={(e) => setForm({ ...form, category: e.target.value })}
-              className="w-full bg-white border border-border-mid rounded-control px-3 sm:px-4 py-3 sm:py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
+              className="w-full bg-white border border-border-mid rounded-md px-3 sm:px-4 py-3 sm:py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
             >
               <option value="">Select category...</option>
               {CATEGORIES.map((c) => (
@@ -136,6 +138,7 @@ export default function SafeguardingReportForm() {
               id="dateLocation"
               required
               placeholder="When and where did this occur?"
+              className="w-full bg-white border border-border-mid rounded-md px-3 sm:px-4 py-3 sm:py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
               value={form.dateLocation}
               onChange={(e) => setForm({ ...form, dateLocation: e.target.value })}
             />
@@ -146,6 +149,7 @@ export default function SafeguardingReportForm() {
             <Input
               id="peopleInvolved"
               required
+              className="w-full bg-white border border-border-mid rounded-md px-3 sm:px-4 py-3 sm:py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
               placeholder="Names or descriptions of those involved"
               value={form.peopleInvolved}
               onChange={(e) => setForm({ ...form, peopleInvolved: e.target.value })}
@@ -157,6 +161,7 @@ export default function SafeguardingReportForm() {
             <Textarea
               id="details"
               required
+              className="w-full bg-white border border-border-mid rounded-md px-3 sm:px-4 py-3 sm:py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
               rows={5}
               placeholder="Please provide as much detail as possible..."
               value={form.details}
@@ -164,7 +169,7 @@ export default function SafeguardingReportForm() {
             />
           </div>
 
-          <div className="bg-white border-2 border-dashed border-border-mid rounded-control p-5 sm:p-6 md:p-8 flex flex-col items-center gap-2 text-center">
+          <div className="bg-white border-2 border-dashed border-border-mid rounded-md p-5 sm:p-6 md:p-8 flex flex-col items-center gap-2 text-center">
             <Upload size={18} className="text-muted shrink-0" />
             <span className="text-sm font-semibold text-charcoal btn-tracking">
               Upload supporting information

@@ -10,7 +10,7 @@ export const metadata = {
 export default function SiteLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-white">
         <TopNavBar />
 
         <main className="pt-20">{children}</main>

@@ -30,15 +30,15 @@ export default function GetInvolvedPage() {
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="relative z-10 max-w-xl sm:max-w-2xl flex flex-col items-center text-center gap-4 sm:gap-6"
+          className="relative z-10 max-w-2xl sm:max-w-2xl flex flex-col items-center text-center gap-4 sm:gap-6"
         >
           <motion.h1
             variants={fadeInUp}
-            className="text-gold text-3xl sm:text-4xl md:text-5xl leading-tight"
+            className="text-white text-3xl sm:text-4xl md:text-5xl leading-tight"
           >
             Join the Movement of Care
           </motion.h1>
-          <motion.p variants={fadeInUp} className="text-warm-white text-base sm:text-lg">
+          <motion.p variants={fadeInUp} className="text-white text-sm sm:text-md font-thin">
             Whether you are an individual looking to volunteer your time, a
             professional seeking to join our membership, or an organization
             wanting to partner for greater impact, there is a place for you
@@ -67,7 +67,7 @@ export default function GetInvolvedPage() {
       </section>
 
       {/* Tab nav */}
-      <nav className="bg-warm-white border-b border-border-light sticky top-16 sm:top-18 lg:top-20 z-40 shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
+      <nav className="bg-white border-b border-border-light sticky top-16 sm:top-18 lg:top-20 z-40 shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
         <div className="max-w-container mx-auto px-4 sm:px-6 flex gap-4 sm:gap-6 md:gap-8 justify-start sm:justify-center overflow-x-auto">
           {TABS.map((tab) => (
             <button
@@ -190,20 +190,20 @@ export default function GetInvolvedPage() {
 
       {/* Donate CTA — the actual donation form + payment flow now lives at its
           own page, /donate, rather than being buried in a Get Involved tab. */}
-      <section className="bg-warm-white border-t border-border-light section-padding flex justify-center px-4 sm:px-6">
-        <div className="max-w-xl sm:max-w-2xl w-full bg-maroon-deep rounded-card p-6 sm:p-8 md:p-12 flex flex-col items-center text-center gap-4 sm:gap-6">
-          <span className="bg-gold/10 border border-gold/20 text-white text-xs sm:text-sm font-semibold btn-tracking rounded-full px-3 sm:px-4 py-1.5 sm:py-2 w-fit flex items-center gap-2">
+      <section className="bg-white border-t border-border-light section-padding flex justify-center px-4 sm:px-6 rounded-md shadow-[0_4px_10px_rgba(110,15,26,0.04)]">
+        <div className="max-w-xl sm:max-w-2xl w-full bg-maroon-deep rounded-md p-6 sm:p-8 md:p-12 flex flex-col items-center text-center gap-4 sm:gap-6">
+          <span className="bg-gold/10 border border-gold/20 text-white text-xs sm:text-sm font-semibold btn-tracking rounded-md px-3 sm:px-4 py-1.5 sm:py-2 w-fit flex items-center gap-2">
             <DollarSign size={16} className="shrink-0" /> Financial Support
           </span>
           <h2 className="text-white text-2xl sm:text-3xl md:text-4xl leading-tight">
             Prefer to Give Financially?
           </h2>
-          <p className="text-warm-white/80 text-base sm:text-lg">
+          <p className="text-white/80 text-sm sm:text-md font-thin">
             Every contribution, big or small, directly funds our family
             development, community, and youth programmes. Make a one-time
             gift or become a monthly supporter.
           </p>
-          <Button variant="accent" href="/donate" className="w-full sm:w-auto">
+          <Button variant="accentWhite" href="/donate" className="w-full sm:w-auto">
             Make a Donation
           </Button>
         </div>

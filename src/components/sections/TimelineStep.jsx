@@ -9,10 +9,10 @@ export default function TimelineStep({ number, title, description, isLast }) {
         {!isLast && <div className="w-px flex-1 bg-border-mid my-2" />}
       </div>
       <div className="pb-6 sm:pb-7 md:pb-8 min-w-0">
-        <h4 className="text-sm font-semibold text-charcoal btn-tracking mb-1.5 sm:mb-2">
+        <h4 className="text-md font-semibold text-charcoal btn-tracking mb-1.5 sm:mb-2">
           {title}
         </h4>
-        <p className="text-sm break-words">{description}</p>
+        <p className="text-sm break-words font-thin">{description}</p>
       </div>
     </div>
   );

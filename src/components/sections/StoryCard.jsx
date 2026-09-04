@@ -4,7 +4,7 @@ import { MapPin, ArrowRight } from "lucide-react";
 
 export default function StoryCard({ location, title, quote, image }) {
   return (
-    <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-card overflow-hidden flex flex-col">
+    <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-md overflow-hidden flex flex-col">
       <div className="relative h-40 sm:h-44 md:h-48 w-full">
         <Image
           src={image}
@@ -19,12 +19,12 @@ export default function StoryCard({ location, title, quote, image }) {
       </div>
       <div className="p-5 sm:p-6 md:p-8 flex flex-col gap-3 sm:gap-4">
         <h3 className="text-white text-lg sm:text-xl md:!text-[22px]">{title}</h3>
-        <blockquote className="border-l-2 border-gold pl-4 italic text-warm-white/80 text-sm sm:text-base">
+        <blockquote className="border-l-2 border-gold pl-4 italic text-warm-white/80 text-sm sm:text-md font-thin">
           &ldquo;{quote}&rdquo;
         </blockquote>
         <Link
           href="#"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-gold w-fit hover:text-gold-light"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-gold w-fit hover:text-white"
         >
           Read Full Story <ArrowRight size={14} />
         </Link>

@@ -27,7 +27,7 @@ export default function EventsIndexPage() {
         <motion.h1 variants={fadeInUp} className="text-3xl sm:text-4xl md:text-5xl leading-tight">
           Come Together. Connect. Build.
         </motion.h1>
-        <motion.p variants={fadeInUp} className="text-base sm:text-lg">
+        <motion.p variants={fadeInUp} className="text-sm sm:text-md font-thin">
           Join the Love, Unity, and Care Initiative at our upcoming
           gatherings. Whether it&apos;s a community workshop, a large-scale
           conference, or a volunteer day, your presence helps us build
@@ -41,7 +41,7 @@ export default function EventsIndexPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="bg-white border border-border-mid/30 rounded-card overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.05)] grid grid-cols-1 md:grid-cols-2 w-full"
+          className="bg-white border border-border-mid/30 border-charcoal/20 rounded-md overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.05)] grid grid-cols-1 md:grid-cols-2 w-full"
         >
           <div className="relative h-56 sm:h-64 md:h-auto">
             <Image
@@ -55,7 +55,7 @@ export default function EventsIndexPage() {
               Featured
             </span>
           </div>
-          <div className="bg-warm-white p-6 sm:p-8 md:p-12 flex flex-col gap-3 sm:gap-4">
+          <div className="bg-white p-6 sm:p-8 md:p-12 flex flex-col gap-3 sm:gap-4 border border-charcoal/20">
             <span className="flex items-center gap-2 sm:gap-4 text-sm font-semibold text-gold btn-tracking">
               <Calendar size={15} className="shrink-0" /> {featured.date}
             </span>

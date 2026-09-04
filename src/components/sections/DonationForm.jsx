@@ -48,16 +48,16 @@ export default function DonationForm() {
   }
 
   return (
-    <div className="bg-white border border-border-light rounded-card p-8 shadow-[0_4px_10px_rgba(110,15,26,0.04)] flex flex-col gap-6">
+    <div className="bg-white border border-border-light rounded-md p-8 shadow-[0_4px_10px_rgba(110,15,26,0.04)] flex flex-col gap-6">
       <form onSubmit={handleSubmit} className="flex flex-col gap-6">
         {/* Frequency toggle */}
-        <div className="flex bg-warm-white border border-border-mid rounded-control p-1">
+        <div className="flex bg-warm-white border border-border-mid rounded-md p-1">
           {["ONE_TIME", "MONTHLY"].map((freq) => (
             <button
               key={freq}
               type="button"
               onClick={() => setFrequency(freq)}
-              className={`flex-1 rounded-[6px] py-3 text-sm font-semibold btn-tracking transition-colors ${
+              className={`flex-1 rounded-md py-3 text-sm font-semibold btn-tracking transition-colors ${
                 frequency === freq ? "bg-maroon-deep text-white" : "text-muted"
               }`}
             >
@@ -78,7 +78,7 @@ export default function DonationForm() {
                   setAmount(preset);
                   setCustomAmount("");
                 }}
-                className={`rounded-control py-3 text-sm font-semibold border transition-colors ${
+                className={`rounded-md py-3 text-sm font-semibold border transition-colors ${
                   !customAmount && amount === preset
                     ? "bg-maroon-deep text-white border-maroon-deep"
                     : "bg-warm-white text-charcoal border-border-mid hover:border-maroon-deep/40"
@@ -105,7 +105,7 @@ export default function DonationForm() {
             id="designation"
             value={designation}
             onChange={(e) => setDesignation(e.target.value)}
-            className="w-full bg-warm-white border border-border-mid rounded-control px-4 py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
+            className="w-full bg-warm-white border border-border-mid rounded-md px-4 py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
           >
             <option>General Fund</option>
             {PROGRAMMES.map((p) => (

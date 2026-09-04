@@ -45,18 +45,18 @@ export default function HomePage() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.4 }}
-        className="bg-warm-white section-padding flex justify-center px-4 sm:px-6"
+        className="bg-white section-padding flex justify-center px-4 sm:px-6"
       >
         <div className="max-w-xl sm:max-w-2xl lg:max-w-3xl flex flex-col items-center gap-4 sm:gap-6 text-center">
           <motion.h2
             variants={fadeInUp}
-            className="text-2xl sm:text-3xl lg:text-4xl leading-snug"
+            className="text-2xl sm:text-4xl lg:text-6xl leading-snug"
           >
             A stronger society begins with the relationships we build.
           </motion.h2>
           <motion.p
             variants={fadeInUp}
-            className="text-base sm:text-lg"
+            className="text-sm sm:text-md font-thin"
           >
             At LUCI, we believe that the foundation of any thriving nation
             lies in the strength of its families and communities. We are
@@ -68,22 +68,22 @@ export default function HomePage() {
       </motion.section>
 
       {/* Vision & Mission */}
-      <section className="bg-warm-white section-padding flex justify-center px-4 sm:px-6">
+      <section className="bg-white section-padding flex justify-center px-4 sm:px-6">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="max-w-container grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 w-full"
+          className="max-w-container grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 w-full items-stretch"
         >
-          <motion.div variants={fadeInUp}>
+          <motion.div variants={fadeInUp} className="h-full">
             <IconCard
               icon={<Eye className="text-maroon-deep" size={20} />}
               title="Our Vision"
               description="To become a world-inspiring beacon of unity, demonstrating the power of strong families and cohesive communities in building a resilient nation."
             />
           </motion.div>
-          <motion.div variants={fadeInUp}>
+          <motion.div variants={fadeInUp} className="h-full">
             <IconCard
               icon={<HeartHandshake className="text-gold" size={20} />}
               title="Our Mission"
@@ -106,7 +106,7 @@ export default function HomePage() {
               Get Involved
             </Button>
             <Button
-              variant="accent"
+              variant="accentWhite"
               href="/donate"
               className="w-full sm:w-auto"
             >

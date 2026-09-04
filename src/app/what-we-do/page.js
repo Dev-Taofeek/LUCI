@@ -63,7 +63,7 @@ export default function WhatWeDoPage() {
         <motion.h1 variants={fadeInUp} className="text-3xl sm:text-4xl md:text-5xl leading-tight">
           Our Focus Areas
         </motion.h1>
-        <motion.p variants={fadeInUp} className="text-base sm:text-lg max-w-xl sm:max-w-2xl">
+        <motion.p variants={fadeInUp} className="text-sm sm:text-md font-thin max-w-xl sm:max-w-3xl">
           Driving social change through relational bridge building. We
           believe that by strengthening families and fostering unity within
           communities, we can create a sustainable foundation for holistic
@@ -87,7 +87,7 @@ export default function WhatWeDoPage() {
       </div>
 
       {/* Our Strategic Approach */}
-      <section className="bg-warm-white section-padding flex justify-center px-4 sm:px-6">
+      <section className="bg-white section-padding flex justify-center px-4 sm:px-6">
         <motion.div
           variants={staggerContainer}
           initial="hidden"

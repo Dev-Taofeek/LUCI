@@ -36,7 +36,7 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="bg-white/85 backdrop-blur-md border border-border-light rounded-[12px] p-6 sm:p-8 text-center">
+      <div className="bg-white/85 backdrop-blur-md border border-border-light rounded-md p-6 sm:p-8 text-center">
         <h2 className="text-2xl sm:!text-[28px] mb-2">Message sent!</h2>
         <p className="text-sm sm:text-base">Our team will get back to you shortly.</p>
       </div>
@@ -44,9 +44,9 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="bg-white/85 backdrop-blur-md border border-border-light rounded-[12px] p-5 sm:p-6 md:p-8 flex flex-col gap-2">
+    <div className="bg-white/85 backdrop-blur-md border border-border-light rounded-md p-5 sm:p-6 md:p-8 flex flex-col gap-2">
       <h2 className="text-2xl sm:!text-[28px]">Send a Message</h2>
-      <p className="text-sm">Fill out the form below and our team will get back to you shortly.</p>
+      <p className="text-sm font-thin">Fill out the form below and our team will get back to you shortly.</p>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-5 sm:gap-6 pt-4 sm:pt-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
@@ -56,6 +56,7 @@ export default function ContactForm() {
               id="fullName"
               placeholder="Jane Doe"
               required
+              className="w-full bg-white border border-border-mid rounded-md px-3 sm:px-4 py-3 sm:py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
               value={form.fullName}
               onChange={(e) => setForm({ ...form, fullName: e.target.value })}
             />
@@ -67,6 +68,7 @@ export default function ContactForm() {
               type="email"
               placeholder="jane@example.com"
               required
+              className="w-full bg-white border border-border-mid rounded-md px-3 sm:px-4 py-3 sm:py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
             />
@@ -80,6 +82,7 @@ export default function ContactForm() {
               id="phone"
               placeholder="+234 XXX XXXX"
               value={form.phone}
+              className="w-full bg-white border border-border-mid rounded-md px-3 sm:px-4 py-3 sm:py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
               onChange={(e) => setForm({ ...form, phone: e.target.value })}
             />
           </div>
@@ -88,8 +91,8 @@ export default function ContactForm() {
             <select
               id="enquiryType"
               value={form.enquiryType}
+              className="w-full bg-white border border-border-mid rounded-md px-3 sm:px-4 py-3 sm:py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
               onChange={(e) => setForm({ ...form, enquiryType: e.target.value })}
-              className="w-full bg-warm-white border border-border-mid rounded-control px-3 sm:px-4 py-3 sm:py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
             >
               {ENQUIRY_TYPES.map((type) => (
                 <option key={type}>{type}</option>
@@ -105,6 +108,7 @@ export default function ContactForm() {
             placeholder="How can we help you?"
             required
             value={form.subject}
+            className="w-full bg-white border border-border-mid rounded-md px-3 sm:px-4 py-3 sm:py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
             onChange={(e) => setForm({ ...form, subject: e.target.value })}
           />
         </div>
@@ -116,6 +120,7 @@ export default function ContactForm() {
             placeholder="Please provide details..."
             rows={5}
             required
+            className="w-full bg-white border border-border-mid rounded-md px-3 sm:px-4 py-3 sm:py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
             value={form.message}
             onChange={(e) => setForm({ ...form, message: e.target.value })}
           />
@@ -125,7 +130,7 @@ export default function ContactForm() {
           as="button"
           type="submit"
           variant="primary"
-          className="w-full justify-center gap-2"
+          className="w-full justify-center gap-2 rounded-md"
           disabled={status === "submitting"}
         >
           {status === "submitting" ? "Sending..." : "Send Message"} <Send size={14} />

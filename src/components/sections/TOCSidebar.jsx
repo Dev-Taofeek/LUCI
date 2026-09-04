@@ -38,7 +38,7 @@ export default function TOCSidebar({ sections }) {
           key={s.id}
           href={`#${s.id}`}
           className={cn(
-            "text-sm py-2 px-3 rounded transition-colors whitespace-nowrap shrink-0 md:whitespace-normal md:shrink",
+            "text-sm py-2 px-3 rounded transition-colors whitespace-nowrap shrink-0 md:whitespace-normal md:shrink font-thin",
             activeId === s.id
               ? "text-maroon-deep font-semibold bg-maroon-deep/5"
               : "text-muted hover:text-maroon-deep"

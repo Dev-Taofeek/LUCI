@@ -23,10 +23,10 @@ export default function FocusArea({
           <h2 className="text-2xl sm:text-3xl lg:text-4xl leading-snug">
             {title}
           </h2>
-          <p className="text-base">{description}</p>
+          <p className="text-sm font-thin">{description}</p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-2">
-            <div className="flex-1 bg-warm-white border border-border-light rounded-control p-4 flex flex-col gap-2">
+            <div className="flex-1 bg-white border border-border-light rounded-md p-4 flex flex-col gap-2">
               <h3 className="text-sm font-semibold text-maroon-deep btn-tracking">
                 {objectivesLabel}
               </h3>
@@ -36,7 +36,7 @@ export default function FocusArea({
                 ))}
               </ul>
             </div>
-            <div className="flex-1 bg-warm-white border border-border-light rounded-control p-4 flex flex-col gap-2">
+            <div className="flex-1 bg-white border border-border-light rounded-md p-4 flex flex-col gap-2">
               <h3 className="text-sm font-semibold text-maroon-deep btn-tracking">
                 Impact
               </h3>
@@ -50,7 +50,7 @@ export default function FocusArea({
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="bg-gold-light/40 text-maroon-deep text-sm rounded-full px-3 py-1"
+                className="bg-gold-light/40 text-maroon-deep text-sm rounded-md px-3 py-1"
               >
                 {tag}
               </span>
@@ -60,7 +60,7 @@ export default function FocusArea({
           <ArrowLink href={href}>View Related Programmes</ArrowLink>
         </div>
 
-        <div className="flex-1 relative h-[240px] sm:h-[320px] md:h-[400px] w-full rounded-card overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+        <div className="flex-1 relative h-[240px] sm:h-[320px] md:h-[400px] w-full rounded-md overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
           {image && (
             <Image
               src={image}

@@ -5,7 +5,7 @@ import { ALLOCATION } from "@/lib/data/impact";
 
 export function AllocationList() {
   return (
-    <div className="bg-white border border-border-light rounded-[12px] p-5 sm:p-6 md:p-8 w-full max-w-sm shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
+    <div className="bg-white border border-border-light rounded-md p-5 sm:p-6 md:p-8 w-full max-w-sm shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
       <ul className="flex flex-col gap-3 sm:gap-4">
         {ALLOCATION.map((item, i) => (
           <li
@@ -15,7 +15,7 @@ export function AllocationList() {
             }`}
           >
             <span className="flex items-center gap-3 min-w-0">
-              <span className="size-3 rounded-sm shrink-0" style={{ backgroundColor: item.color }} />
+              <span className="size-3 rounded-md shrink-0" style={{ backgroundColor: item.color }} />
               <span className="text-sm sm:text-base text-charcoal truncate">{item.label}</span>
             </span>
             <span className="text-sm sm:text-base text-muted shrink-0">{item.value}%</span>

@@ -12,7 +12,7 @@ export default function LegalPageHeader({ title, subtitle, lastUpdated }) {
         </div>
         <button
           onClick={() => window.print()}
-          className="flex items-center justify-center gap-2 border border-border-mid rounded px-5 sm:px-6 py-2 text-sm font-semibold text-muted btn-tracking hover:border-maroon-deep/40 hover:text-maroon-deep w-full sm:w-auto shrink-0"
+          className="flex items-center justify-center gap-2 border border-border-mid rounded-md px-5 sm:px-6 py-2 text-sm font-semibold text-muted btn-tracking hover:border-maroon-deep/40 hover:text-maroon-deep w-full sm:w-auto shrink-0 transition-all ease-in-out duration-500"
         >
           <Printer size={16} className="shrink-0" /> Print Document
         </button>

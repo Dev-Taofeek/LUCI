@@ -30,14 +30,14 @@ const SOCIAL_ICONS = [
 
 export function ShareWidget() {
   return (
-    <div className="bg-white border border-border-mid rounded-control p-5 sm:p-6 flex flex-col gap-3 sm:gap-4">
+    <div className="bg-white border border-border-mid rounded-md p-5 sm:p-6 flex flex-col gap-3 sm:gap-4">
       <h3 className="text-lg sm:!text-[22px]">Share this Article</h3>
       <div className="flex gap-3 sm:gap-4">
         {SOCIAL_ICONS.map(({ label, svg }) => (
           <button
             key={label}
             aria-label={`Share on ${label}`}
-            className="bg-border-light rounded-full size-9 sm:size-10 flex items-center justify-center hover:bg-border-mid shrink-0 text-muted transition-colors"
+            className="bg-border-light rounded-md size-9 sm:size-10 flex items-center justify-center hover:bg-border-mid shrink-0 text-muted transition-colors"
           >
             {svg}
           </button>
@@ -49,14 +49,14 @@ export function ShareWidget() {
 
 export function RelatedArticlesWidget({ articles }) {
   return (
-    <div className="bg-white border border-border-mid rounded-control p-5 sm:p-6 flex flex-col gap-4 sm:gap-6">
+    <div className="bg-white border border-border-mid rounded-md p-5 sm:p-6 flex flex-col gap-4 sm:gap-6">
       <h3 className="text-lg sm:!text-[22px] border-b border-border-mid pb-3 sm:pb-4">
         Related Articles
       </h3>
       <div className="flex flex-col gap-4 sm:gap-6">
         {articles.map((a) => (
           <Link key={a.title} href="#" className="flex gap-3 sm:gap-4">
-            <div className="relative size-16 sm:size-20 rounded shrink-0 overflow-hidden">
+            <div className="relative size-16 sm:size-20 rounded-md shrink-0 overflow-hidden">
               <Image src={a.image} alt={a.title} fill className="object-cover" />
             </div>
             <div className="flex flex-col gap-1 justify-center min-w-0">

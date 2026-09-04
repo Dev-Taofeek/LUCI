@@ -9,7 +9,7 @@ export function ArticleCard({ slug, size = "small", category, date, title, summa
     return (
       <Link
         href={href}
-        className="col-span-1 sm:col-span-2 md:col-span-8 bg-white border border-border-mid/30 rounded-card overflow-hidden grid grid-cols-1 md:grid-cols-2 hover:shadow-[0_1px_2px_rgba(0,0,0,0.05)]"
+        className="col-span-1 sm:col-span-2 md:col-span-8 bg-white border border-border-mid/30 rounded-md overflow-hidden grid grid-cols-1 md:grid-cols-2 hover:shadow-[0_1px_2px_rgba(0,0,0,0.05)]"
       >
         <div className="relative h-48 sm:h-56 md:h-full">
           <Image
@@ -27,7 +27,7 @@ export function ArticleCard({ slug, size = "small", category, date, title, summa
             <span className="text-muted">{date}</span>
           </span>
           <h3 className="text-xl sm:text-2xl md:!text-[28px] leading-tight">{title}</h3>
-          {summary && <p className="text-sm sm:text-base text-muted">{summary}</p>}
+          {summary && <p className="text-sm sm:text-md text-muted font-thin">{summary}</p>}
           <span className="flex items-center gap-2 text-sm text-muted pt-1 sm:pt-2">
             <User size={14} className="shrink-0" /> By {author}
           </span>
@@ -39,7 +39,7 @@ export function ArticleCard({ slug, size = "small", category, date, title, summa
   return (
     <Link
       href={href}
-      className="md:col-span-4 bg-white border border-border-mid/30 rounded-card overflow-hidden flex flex-col h-full hover:shadow-[0_1px_2px_rgba(0,0,0,0.05)]"
+      className="md:col-span-4 bg-white border border-border-mid/30 rounded-md overflow-hidden flex flex-col h-full hover:shadow-[0_1px_2px_rgba(0,0,0,0.05)]"
     >
       <div className="relative h-40 sm:h-44 md:h-48 w-full">
         <Image
@@ -57,7 +57,7 @@ export function ArticleCard({ slug, size = "small", category, date, title, summa
             <span className="text-muted hidden sm:inline">•</span>
             <span className="text-muted">{date}</span>
           </span>
-          <h3 className="text-lg sm:text-xl md:!text-[22px] leading-snug">{title}</h3>
+          <h3 className="text-xs sm:text-sm md:!text-md leading-snug font-thin">{title}</h3>
         </div>
         <span className="text-sm text-muted">By {author}</span>
       </div>

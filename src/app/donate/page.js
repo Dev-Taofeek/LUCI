@@ -24,7 +24,7 @@ export default function DonatePage() {
         >
           <motion.span
             variants={fadeInUp}
-            className="bg-gold/10 border border-gold/20 text-white text-xs sm:text-sm font-semibold btn-tracking rounded-full px-4 sm:px-6 py-1.5 sm:py-2 flex items-center gap-2"
+            className="bg-gold/10 border border-gold/20 text-white text-xs sm:text-sm font-semibold btn-tracking rounded-md px-4 sm:px-6 py-1.5 sm:py-2 flex items-center gap-2"
           >
             <HeartHandshake size={16} className="shrink-0" /> Support LUCI
           </motion.span>
@@ -34,7 +34,7 @@ export default function DonatePage() {
           >
             Your Gift Builds Bridges
           </motion.h1>
-          <motion.p variants={fadeInUp} className="text-white/90 text-base sm:text-lg">
+          <motion.p variants={fadeInUp} className="text-white/90 text-sm sm:text-md font-thin">
             Every donation directly funds our family development, community,
             and youth programmes. Choose a one-time gift or become a monthly
             supporter of our mission.
@@ -49,7 +49,7 @@ export default function DonatePage() {
             <h2 className="text-2xl sm:text-3xl md:text-4xl leading-tight">
               Where Your Money Goes
             </h2>
-            <p className="text-base sm:text-lg">
+            <p className="text-sm sm:text-md font-thin">
               We believe in full transparency. Here&apos;s a sense of what
               your contribution makes possible.
             </p>
@@ -58,17 +58,17 @@ export default function DonatePage() {
             {IMPACT_STATS.map((stat) => (
               <div
                 key={stat.value}
-                className="bg-white border border-border-light rounded-[12px] p-4 sm:p-5 md:p-6 flex items-center gap-4 sm:gap-6"
+                className="bg-white border border-border-light rounded-md p-4 sm:p-5 md:p-6 flex items-center gap-4 sm:gap-6"
               >
                 <span className="font-display font-semibold text-2xl sm:text-3xl text-maroon-deep shrink-0">
                   {stat.value}
                 </span>
-                <span className="text-sm sm:text-base text-muted">{stat.label}</span>
+                <span className="text-sm sm:text-md font-thin text-muted">{stat.label}</span>
               </div>
             ))}
           </div>
           <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-sm text-muted pt-2">
-            <ShieldCheck size={18} className="text-gold shrink-0" />
+            <ShieldCheck size={18} className="text-gold shrink-0 font-thin" />
             <span>
               Read our{" "}
               <Link
