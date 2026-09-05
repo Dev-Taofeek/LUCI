@@ -1,23 +1,27 @@
-import { Download, FileText } from "lucide-react";
+import Link from "next/link";
+import { FileText } from "lucide-react";
+import Button from "@/components/ui/Button";
+import NewsletterForm from "@/components/sections/NewsletterForm";
 
-// was bg #f3f3f3 border #bfc9c4 ->-white / border-mid
 export function ResourceActionCard({ description, fileFormat }) {
   return (
-    <div className="bg-white border border-border-mid rounded-md p-5 sm:p-6 md:p-8 flex flex-col gap-3 shadow-[0_4px_10px_rgba(110,15,26,0.04)]">
-      <h3 className="text-lg sm:text-xl md:!text-[22px]">Access Resource</h3>
-      <p className="text-sm text-muted font-thin">{description}</p>
-      <button className="bg-maroon-deep text-white rounded-md px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-center gap-2 text-sm font-semibold btn-tracking hover:bg-maroon-dark">
+    <div className="bg-white border border-border-mid rounded-card p-5 sm:p-6 md:p-8 flex flex-col gap-3">
+      <h3 className="text-lg sm:text-xl">Access Resource</h3>
+      <p className="text-sm text-muted">{description}</p>
+      <Button
+        className="w-full justify-center"
+        onClick={() => window.print()}
+      >
         <FileText size={16} className="shrink-0" /> Download Full Report
-      </button>
+      </Button>
       <span className="text-sm text-muted text-center">{fileFormat}</span>
     </div>
   );
 }
 
-// was bg #f9f9f9 -> white
 export function ResourceMetadataCard({ metadata, tags }) {
   return (
-    <div className="bg-white border border-border-mid/50 rounded-md p-5 sm:p-6 flex flex-col gap-4">
+    <div className="bg-white border border-border-mid rounded-card p-5 sm:p-6 flex flex-col gap-4">
       <h4 className="text-sm font-semibold text-charcoal btn-tracking border-b border-border-light pb-3">
         Resource Details
       </h4>
@@ -43,42 +47,28 @@ export function ResourceMetadataCard({ metadata, tags }) {
   );
 }
 
-// was bg #004d40 -> maroon-deep, subscribe button bg #735c00 -> gold
 export function NewsletterCTACard() {
   return (
-    <div className="relative bg-maroon-deep rounded-md p-5 sm:p-6 md:p-8 overflow-hidden flex flex-col gap-4">
-      <div className="absolute -bottom-8 -right-8 size-20 sm:size-24 rounded-md bg-maroon-dark opacity-60" />
+    <div className="relative bg-maroon-deep rounded-card p-5 sm:p-6 md:p-8 overflow-hidden flex flex-col gap-4">
+      <div className="absolute -bottom-8 -right-8 size-20 sm:size-24 rounded-full bg-maroon-dark/60" />
       <div className="relative z-10 flex flex-col gap-2">
-        <h3 className="text-white text-lg sm:text-xl md:!text-[22px]">Stay Informed</h3>
-        <p className="text-white/80 text-xs font-thin">
+        <h3 className="text-white text-lg sm:text-xl">Stay Informed</h3>
+        <p className="text-white/80 text-xs sm:text-sm">
           Sign up to receive the latest research and impact reports from LUCI
           directly in your inbox.
         </p>
       </div>
-      <form className="relative z-10 flex flex-col gap-3 pt-2">
-        <input
-          type="email"
-          placeholder="Email address"
-          className="bg-white rounded-md px-4 sm:px-6 py-3 sm:py-4 text-base text-charcoal placeholder:text-muted focus:outline-none"
-        />
-        <button
-          type="submit"
-          className="bg-gold text-white rounded-md px-4 sm:px-6 py-3 sm:py-4 text-sm font-semibold btn-tracking hover:bg-white hover:text-maroon-deep transition-all ease-in-out duration-300"
-        >
-          Subscribe
-        </button>
-      </form>
+      <NewsletterForm className="relative z-10 pt-2" inputId="newsletter-sidebar-email" />
     </div>
   );
 }
 
 export function RelatedResourceLink({ title, meta, href }) {
-  return (
-    <a
-      href={href}
-      className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-md hover:bg-border-light/40"
-    >
-      <span className="size-12 sm:size-14 md:size-16 rounded-md bg-border-light flex items-center justify-center shrink-0">
+  const isLink = href && href !== "#";
+  const className = "flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-card hover:bg-border-light/40";
+  const content = (
+    <>
+      <span className="size-12 sm:size-14 md:size-16 rounded-card bg-border-light flex items-center justify-center shrink-0">
         <FileText size={20} className="text-muted" />
       </span>
       <span className="flex flex-col gap-1 min-w-0">
@@ -87,6 +77,13 @@ export function RelatedResourceLink({ title, meta, href }) {
         </span>
         <span className="text-sm text-muted truncate">{meta}</span>
       </span>
-    </a>
+    </>
+  );
+  return isLink ? (
+    <Link href={href} className={className}>
+      {content}
+    </Link>
+  ) : (
+    <div className={className}>{content}</div>
   );
 }

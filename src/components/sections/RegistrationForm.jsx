@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Input } from "@/components/ui/Input";
+import { Label, Input, Select } from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 
 const ATTENDANCE_OPTIONS = ["In-Person", "Virtual"];
@@ -28,8 +28,8 @@ export default function RegistrationForm({ slug }) {
 
   if (status === "success") {
     return (
-      <div className="bg-white border border-border-light rounded-md p-8 text-center">
-        <h3 className="text-maroon-deep mb-2">You&apos;re registered!</h3>
+      <div className="bg-white border border-border-mid rounded-card p-8 text-center flex flex-col gap-2">
+        <h3 className="text-maroon-deep">You&apos;re registered!</h3>
         <p className="text-sm text-muted">
           We&apos;ve sent a confirmation to {form.email}. See you there.
         </p>
@@ -38,35 +38,46 @@ export default function RegistrationForm({ slug }) {
   }
 
   return (
-    <div className="bg-white border border-border-mid/50 shadow-[0_4px_10px_rgba(110,15,26,0.04)] rounded-md p-8 flex flex-col gap-6">
-      <h3 className="!text-[22px]">Register Now</h3>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 rounded-md">
-        <Input
-          placeholder="Full Name"
-          required
-          className="w-full bg-white border border-border-mid rounded-md px-3 sm:px-4 py-3 sm:py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
-          value={form.fullName}
-          onChange={(e) => setForm({ ...form, fullName: e.target.value })}
-        />
-        <Input
-          type="email"
-          placeholder="Email Address"
-          required
-          className="w-full bg-white border border-border-mid rounded-md px-3 sm:px-4 py-3 sm:py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
-        />
-        <select
-          value={form.attendance}
-          onChange={(e) => setForm({ ...form, attendance: e.target.value })}
-          className="w-full bg-white border border-border-mid rounded-md px-4 py-3 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
-        >
-          {ATTENDANCE_OPTIONS.map((opt) => (
-            <option key={opt} value={opt}>
-              {opt} Attendance
-            </option>
-          ))}
-        </select>
+    <div className="bg-white border border-border-mid shadow-card rounded-card p-6 sm:p-8 flex flex-col gap-5">
+      <h3>Register Now</h3>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <div>
+          <Label htmlFor="fullName">Full Name</Label>
+          <Input
+            id="fullName"
+            placeholder="Jane Doe"
+            required
+            autoComplete="name"
+            value={form.fullName}
+            onChange={(e) => setForm({ ...form, fullName: e.target.value })}
+          />
+        </div>
+        <div>
+          <Label htmlFor="email">Email Address</Label>
+          <Input
+            id="email"
+            type="email"
+            placeholder="jane@example.com"
+            required
+            autoComplete="email"
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+          />
+        </div>
+        <div>
+          <Label htmlFor="attendance">Attendance Mode</Label>
+          <Select
+            id="attendance"
+            value={form.attendance}
+            onChange={(e) => setForm({ ...form, attendance: e.target.value })}
+          >
+            {ATTENDANCE_OPTIONS.map((opt) => (
+              <option key={opt} value={opt}>
+                {opt} Attendance
+              </option>
+            ))}
+          </Select>
+        </div>
         <Button
           as="button"
           type="submit"
@@ -77,9 +88,7 @@ export default function RegistrationForm({ slug }) {
           {status === "submitting" ? "Registering..." : "Register for Event"}
         </Button>
         {status === "error" && (
-          <p className="text-sm text-maroon-deep">
-            Something went wrong — please try again.
-          </p>
+          <p role="alert" className="text-sm text-danger">Something went wrong — please try again.</p>
         )}
       </form>
     </div>

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
 export async function POST(req, { params }) {
+  const { slug } = await params;
   const body = await req.json();
   const { fullName, email, phone, notes } = body;
 
@@ -13,7 +14,7 @@ export async function POST(req, { params }) {
   }
 
   try {
-    const event = await prisma.event.findUnique({ where: { slug: params.slug } });
+    const event = await prisma.event.findUnique({ where: { slug } });
     if (!event) {
       return NextResponse.json({ error: "Event not found." }, { status: 404 });
     }

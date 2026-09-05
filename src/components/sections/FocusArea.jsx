@@ -13,20 +13,18 @@ export default function FocusArea({
   href,
 }) {
   return (
-    <article className="px-4 sm:px-6 md:px-10">
+    <article>
       <div
-        className={`max-w-container mx-auto px-0 sm:px-6 flex flex-col md:flex-row gap-8 sm:gap-10 md:gap-12 items-center ${
+        className={`container-luci flex flex-col md:flex-row gap-8 sm:gap-10 md:gap-12 items-center ${
           reverse ? "md:flex-row-reverse" : ""
         }`}
       >
         <div className="flex-1 flex flex-col gap-3 sm:gap-4 w-full">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl leading-snug">
-            {title}
-          </h2>
-          <p className="text-sm font-thin">{description}</p>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl leading-snug">{title}</h2>
+          <p className="text-sm sm:text-base">{description}</p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-2">
-            <div className="flex-1 bg-white border border-border-light rounded-md p-4 flex flex-col gap-2">
+            <div className="flex-1 bg-white border border-border-mid rounded-card p-4 sm:p-5 flex flex-col gap-2">
               <h3 className="text-sm font-semibold text-maroon-deep btn-tracking">
                 {objectivesLabel}
               </h3>
@@ -36,11 +34,11 @@ export default function FocusArea({
                 ))}
               </ul>
             </div>
-            <div className="flex-1 bg-white border border-border-light rounded-md p-4 flex flex-col gap-2">
+            <div className="flex-1 bg-white border border-border-mid rounded-card p-4 sm:p-5 flex flex-col gap-2">
               <h3 className="text-sm font-semibold text-maroon-deep btn-tracking">
                 Impact
               </h3>
-              <span className="text-sm font-semibold text-gold">
+              <span className="text-lg font-display font-semibold text-maroon-deep">
                 {impactStat}
               </span>
             </div>
@@ -50,7 +48,7 @@ export default function FocusArea({
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="bg-gold-light/40 text-maroon-deep text-sm rounded-md px-3 py-1"
+                className="bg-gold-light/40 text-maroon-deep text-sm font-medium rounded-control px-3 py-1"
               >
                 {tag}
               </span>
@@ -60,13 +58,12 @@ export default function FocusArea({
           <ArrowLink href={href}>View Related Programmes</ArrowLink>
         </div>
 
-        <div className="flex-1 relative h-[240px] sm:h-[320px] md:h-[400px] w-full rounded-md overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+        <div className="flex-1 relative h-[240px] sm:h-[320px] md:h-[400px] w-full rounded-card overflow-hidden">
           {image && (
             <Image
               src={image}
               alt={title}
-              width={1200}
-              height={1000}
+              fill
               loading="lazy"
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"

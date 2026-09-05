@@ -75,17 +75,25 @@ export const metadata = {
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#B94E2E",
+  themeColor: "#841818",
 };
 
 export default function SiteLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${cormorant.variable} ${manrope.variable} bg-white font-sans antialiased`}
+        className={`${cormorant.variable} ${manrope.variable} bg-warm-white font-sans antialiased`}
       >
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:bg-white focus:text-maroon-deep focus:px-4 focus:py-2.5 focus:rounded-control focus:shadow-md focus:font-semibold"
+        >
+          Skip to main content
+        </a>
         <TopNavBar />
-        <main className="pt-20 min-h-screen">{children}</main>
+        <main id="main" className="pt-16 lg:pt-20 min-h-screen">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

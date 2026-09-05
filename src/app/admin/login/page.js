@@ -42,13 +42,13 @@ export default function AdminLoginPage() {
           <span className="bg-maroon-deep/10 rounded-full size-10 sm:size-12 flex items-center justify-center">
             <Lock size={18} className="text-maroon-deep" />
           </span>
-          <h1 className="text-2xl sm:!text-[28px]">LUCI Admin</h1>
+          <h1 className="text-2xl sm:text-3xl">LUCI Admin</h1>
           <p className="text-sm">Sign in to manage the site.</p>
         </div>
 
         <form
           onSubmit={handleSubmit}
-          className="bg-white border border-border-light rounded-card p-6 sm:p-8 flex flex-col gap-4 sm:gap-5 shadow-[0_4px_10px_rgba(110,15,26,0.04)]"
+          className="bg-white border border-border-light rounded-card p-6 sm:p-8 flex flex-col gap-4 sm:gap-5 shadow-card"
         >
           <div>
             <Label htmlFor="email">Email</Label>
@@ -73,7 +73,6 @@ export default function AdminLoginPage() {
             />
           </div>
           <Button
-            as="button"
             type="submit"
             variant="primary"
             className="w-full justify-center"
@@ -81,7 +80,11 @@ export default function AdminLoginPage() {
           >
             {status === "submitting" ? "Signing in..." : "Sign In"}
           </Button>
-          {error && <p className="text-sm text-maroon-deep text-center">{error}</p>}
+          {error && (
+            <p role="alert" className="text-sm text-danger text-center">
+              {error}
+            </p>
+          )}
         </form>
       </div>
     </div>

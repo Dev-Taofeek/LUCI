@@ -22,19 +22,19 @@ export default function HeroSection({
       {variant === "image" && image && (
         <>
           {/* Background image */}
-          <div className="absolute inset-0 scale-105">
+          <div className="absolute inset-0">
             <Image
               src={image}
               alt=""
               fill
               priority
               sizes="100vw"
-              className="object-cover blur-[2px]"
+              className="object-cover"
             />
           </div>
 
           {/* Light maroon overlay */}
-          <div className="absolute inset-0 bg-maroon-deep/45" />
+          <div className="absolute inset-0 bg-maroon-deep/50" />
         </>
       )}
 
@@ -43,7 +43,7 @@ export default function HeroSection({
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
-        className="relative z-10 container-luci flex flex-col items-center text-center gap-4 sm:gap-5 lg:gap-6 max-w-xl sm:max-w-2xl lg:max-w-3xl px-4 sm:px-6"
+        className="relative z-10 container-luci flex flex-col items-center text-center gap-4 sm:gap-5 lg:gap-6 max-w-xl sm:max-w-2xl lg:max-w-3xl"
       >
         {eyebrow && (
           <motion.span
@@ -64,7 +64,7 @@ export default function HeroSection({
         {subtitle && (
           <motion.p
             variants={fadeInUp}
-            className="text-warm-white/90 text-sm sm:text-md max-w-md sm:max-w-xl lg:max-w-2xl font-thin"
+            className="text-warm-white/90 text-sm sm:text-base max-w-md sm:max-w-xl lg:max-w-2xl"
           >
             {subtitle}
           </motion.p>

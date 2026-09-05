@@ -3,52 +3,99 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    color-scheme: light;
+  }
+
   body {
-    @apply bg-white text-charcoal font-sans antialiased;
+    @apply bg-warm-white text-charcoal font-sans antialiased;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-display text-maroon-deep;
+    @apply font-display text-charcoal;
   }
 
-  /* H1 */
   h1 {
-    @apply text-[48px] leading-[1.2] font-semibold tracking-[-0.02em];
+    font-size: 2.25rem;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-weight: 600;
   }
 
-  /* H2 */
   h2 {
-    @apply text-[36px] leading-[1.3] font-semibold;
+    font-size: 1.75rem;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    font-weight: 600;
   }
 
-  /* H3 */
   h3 {
-    @apply text-[22px] leading-[1.4] font-semibold;
+    font-size: 1.125rem;
+    line-height: 1.4;
+    font-weight: 600;
   }
 
-  /* H4 */
   h4 {
-    @apply text-[18px] leading-[1.4] font-semibold;
+    font-size: 1rem;
+    line-height: 1.45;
+    font-weight: 600;
   }
 
   p {
-    @apply text-muted leading-[1.6];
+    @apply text-muted leading-[1.7];
+  }
+
+  :focus-visible {
+    outline: 2px solid #841818;
+    outline-offset: 2px;
   }
 }
 
 @layer utilities {
   .container-luci {
-    @apply max-w-container mx-auto px-6;
+    @apply mx-auto w-full max-w-container px-4 sm:px-6 lg:px-8;
   }
 
   .section-padding {
-    @apply px-10 py-20;
+    @apply py-16 sm:py-20 lg:py-24;
   }
 
   .btn-tracking {
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
+  }
+}
+
+@media (min-width: 640px) {
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 3.75rem;
+  }
+  h2 {
+    font-size: 2.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

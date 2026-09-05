@@ -39,26 +39,10 @@ const NAV_ITEMS = [
 
 export default function AdminSidebar({ role, userName }) {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
-
-  // Close the drawer on route change
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
-  // Lock background scroll while the mobile drawer is open
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
-
-  const visibleItems = NAV_ITEMS.filter((item) => !item.roles || item.roles.includes(role));
 
   const navLinks = (
     <nav className="flex-1 px-3 py-4 sm:py-6 flex flex-col gap-1 overflow-y-auto">
-      {visibleItems.map((item) => {
+      {NAV_ITEMS.filter((item) => !item.roles || item.roles.includes(role)).map((item) => {
         const active = item.exact ? pathname === item.href : pathname.startsWith(item.href);
         const Icon = item.icon;
         return (
@@ -95,6 +79,35 @@ export default function AdminSidebar({ role, userName }) {
 
   return (
     <>
+      {/* Mobile/tablet nav — keyed by pathname so navigation closes the drawer */}
+      <MobileSidebar pathname={pathname} navLinks={navLinks} footer={footer} />
+
+      {/* Desktop fixed sidebar */}
+      <aside className="hidden md:flex w-56 lg:w-64 shrink-0 bg-maroon-deep min-h-screen flex-col">
+        <div className="px-6 py-6 border-b border-white/10">
+          <span className="font-display text-[22px] font-semibold text-white">LUCI</span>
+          <span className="block text-xs text-gold btn-tracking uppercase">Admin</span>
+        </div>
+        {navLinks}
+        {footer}
+      </aside>
+    </>
+  );
+}
+
+function MobileSidebar({ navLinks, footer }) {
+  const [open, setOpen] = useState(false);
+
+  // Lock background scroll while the mobile drawer is open
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  return (
+    <>
       {/* Mobile top bar with menu toggle */}
       <div className="md:hidden sticky top-0 z-40 bg-maroon-deep flex items-center justify-between px-4 py-3 border-b border-white/10">
         <div>
@@ -108,6 +121,7 @@ export default function AdminSidebar({ role, userName }) {
           className="text-white p-2 -mr-2"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
+          aria-controls="admin-mobile-menu"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -122,6 +136,7 @@ export default function AdminSidebar({ role, userName }) {
         />
       )}
       <aside
+        id="admin-mobile-menu"
         className={cn(
           "md:hidden fixed top-0 left-0 bottom-0 z-50 w-72 max-w-[80vw] bg-maroon-deep flex flex-col transition-transform duration-300 ease-in-out",
           open ? "translate-x-0" : "-translate-x-full"
@@ -139,16 +154,6 @@ export default function AdminSidebar({ role, userName }) {
           >
             <X size={20} />
           </button>
-        </div>
-        {navLinks}
-        {footer}
-      </aside>
-
-      {/* Desktop fixed sidebar */}
-      <aside className="hidden md:flex w-56 lg:w-64 shrink-0 bg-maroon-deep min-h-screen flex-col">
-        <div className="px-6 py-6 border-b border-white/10">
-          <span className="font-display text-[22px] font-semibold text-white">LUCI</span>
-          <span className="block text-xs text-gold btn-tracking uppercase">Admin</span>
         </div>
         {navLinks}
         {footer}

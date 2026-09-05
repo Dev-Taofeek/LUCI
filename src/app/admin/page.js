@@ -1,5 +1,10 @@
 export const dynamic = "force-dynamic";
 
+export const metadata = {
+  title: "Admin Dashboard",
+  robots: { index: false, follow: false },
+};
+
 import {
   FolderKanban,
   CalendarDays,
@@ -42,7 +47,7 @@ export default async function AdminDashboardPage() {
   return (
     <div className="flex flex-col gap-6 sm:gap-8 p-4 sm:p-6 md:p-8">
       <div>
-        <h1 className="text-2xl sm:!text-[28px]">Dashboard</h1>
+        <h1 className="text-2xl sm:text-3xl">Dashboard</h1>
         <p className="text-sm sm:text-base">
           Overview of LUCI&apos;s programmes, engagement, and giving.
         </p>
@@ -64,8 +69,8 @@ export default async function AdminDashboardPage() {
         )}
       </div>
 
-      <div className="bg-white border border-border-light rounded-[12px] p-4 sm:p-5 md:p-6">
-        <h2 className="text-lg sm:!text-[20px] mb-3 sm:mb-4">Recent Donations</h2>
+      <div className="bg-white border border-border-light rounded-card p-4 sm:p-5 md:p-6">
+        <h2 className="text-lg sm:text-xl mb-3 sm:mb-4">Recent Donations</h2>
         {recentDonations.length === 0 ? (
           <p className="text-muted text-sm sm:text-base">No donations recorded yet.</p>
         ) : (

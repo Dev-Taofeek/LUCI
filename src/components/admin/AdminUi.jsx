@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 
 export function StatTile({ label, value, icon: Icon }) {
   return (
-    <div className="bg-white border border-border-light rounded-[12px] p-4 sm:p-5 md:p-6 flex items-center gap-3 sm:gap-4">
+    <div className="bg-white border border-border-light rounded-card p-4 sm:p-5 md:p-6 flex items-center gap-3 sm:gap-4">
       {Icon && (
         <span className="bg-maroon-deep/10 rounded-full size-9 sm:size-10 md:size-11 flex items-center justify-center shrink-0">
           <Icon size={16} className="text-maroon-deep" />

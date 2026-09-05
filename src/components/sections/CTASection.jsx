@@ -5,13 +5,13 @@ import { fadeInUp, staggerContainer } from "@/lib/motion";
 
 export default function CTASection({ title, subtitle, actions }) {
   return (
-    <section className="bg-maroon-deep py-14 sm:py-28 flex justify-center px-4 sm:px-6">
+    <section className="bg-maroon-deep py-14 sm:py-20 lg:py-24">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.15 }}
-        className="max-w-xl sm:max-w-2xl lg:max-w-3xl flex flex-col items-center text-center gap-3 sm:gap-4"
+        className="container-luci max-w-2xl sm:max-w-3xl flex flex-col items-center text-center gap-3 sm:gap-4"
       >
         <motion.h2
           variants={fadeInUp}
@@ -22,7 +22,7 @@ export default function CTASection({ title, subtitle, actions }) {
         {subtitle && (
           <motion.p
             variants={fadeInUp}
-            className="text-warm-white/80 text-sm sm:text-md font-thin"
+            className="text-warm-white/80 text-sm sm:text-base"
           >
             {subtitle}
           </motion.p>

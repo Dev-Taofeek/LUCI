@@ -1,18 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { Search, MapPin, Calendar, Users } from "lucide-react";
+import { MapPin, Calendar, Users } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { ContentCard } from "@/components/ui/Card";
+import { SearchInput } from "@/components/ui/Input";
+import FilterPills from "@/components/ui/FilterPills";
 import CTASection from "@/components/sections/CTASection";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import { PROGRAMMES } from "@/lib/data/programmes";
 
 const FILTERS = ["All", "Active", "Upcoming", "Completed", "Family", "Community", "Youth"];
 
-export default function ProgrammesIndexPage() {
-  const [activeFilter, setActiveFilter] = useState("All");
+function ProgrammesContent() {
+  const searchParams = useSearchParams();
+  const requestedFilter = searchParams.get("filter");
+  const [activeFilter, setActiveFilter] = useState(() =>
+    FILTERS.includes(requestedFilter) ? requestedFilter : "All"
+  );
   const [query, setQuery] = useState("");
 
   const filtered = PROGRAMMES.filter((p) => {
@@ -27,20 +34,17 @@ export default function ProgrammesIndexPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-white border-b border-border-light px-4 sm:px-6 md:px-10 py-12 sm:py-16 md:py-20 flex justify-center">
+      <section className="bg-white border-b border-border-light py-12 sm:py-16 md:py-20">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="max-w-xl sm:max-w-2xl lg:max-w-3xl flex flex-col items-center gap-4 sm:gap-6 text-center"
+          className="container-luci flex flex-col items-center gap-4 sm:gap-6 text-center max-w-2xl"
         >
-          <motion.h1
-            variants={fadeInUp}
-            className="text-3xl sm:text-4xl md:text-5xl leading-tight"
-          >
+          <motion.h1 variants={fadeInUp} className="text-3xl sm:text-4xl md:text-5xl leading-tight">
             Where Our Mission Becomes Action.
           </motion.h1>
-          <motion.p variants={fadeInUp} className="text-sm sm:text-md font-thin">
+          <motion.p variants={fadeInUp} className="text-sm sm:text-base">
             Explore the tangible ways we are driving positive change in
             communities, families, and youth through dedicated projects and
             unified efforts.
@@ -49,37 +53,20 @@ export default function ProgrammesIndexPage() {
       </section>
 
       {/* Filter & Search */}
-     {/* Filter & Search */}
-      <section className="max-w-container mx-auto px-4 sm:px-6 py-8 sm:py-10 md:py-12 flex flex-col gap-6 sm:gap-8">
+      <section className="container-luci py-8 sm:py-10 md:py-12 flex flex-col gap-6 sm:gap-8">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 sm:gap-6 lg:gap-8">
-          <div className="relative w-full lg:max-w-sm">
-            <Search
-              size={18}
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-muted"
-            />
-            <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search programmes..."
-              className="w-full bg-white border border-border-mid rounded-md pl-11 pr-4 py-3 text-base text-charcoal placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep font-thin"
-            />
-          </div>
+          <SearchInput
+            placeholder="Search programmes..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className="w-full lg:max-w-sm"
+          />
 
-          <div className="flex flex-nowrap sm:flex-wrap gap-2 sm:gap-3 -mx-4 px-4 sm:mx-0 sm:px-0 overflow-x-auto sm:overflow-visible">
-            {FILTERS.map((filter) => (
-              <button
-                key={filter}
-                onClick={() => setActiveFilter(filter)}
-                className={
-                  activeFilter === filter
-                    ? "bg-maroon-deep text-white rounded-md px-4 sm:px-6 py-2 text-sm whitespace-nowrap shrink-0 font-thin"
-                    : "bg-white text-muted border border-border-mid rounded-md px-4 sm:px-6 py-2 text-sm hover:border-maroon-deep/40 whitespace-nowrap shrink-0 font-thin"
-                }
-              >
-                {filter}
-              </button>
-            ))}
-          </div>
+          <FilterPills
+            filters={FILTERS}
+            active={activeFilter}
+            onChange={setActiveFilter}
+          />
         </div>
 
         {/* Programme Grid */}
@@ -114,7 +101,7 @@ export default function ProgrammesIndexPage() {
           ))}
 
           {filtered.length === 0 && (
-            <p className="col-span-1 sm:col-span-2 lg:col-span-3 text-center text-muted py-10 sm:py-12 px-4">
+            <p className="col-span-1 sm:col-span-2 lg:col-span-3 text-center text-muted py-10 sm:py-12">
               No programmes match your search.
             </p>
           )}
@@ -136,5 +123,13 @@ export default function ProgrammesIndexPage() {
         }
       />
     </>
+  );
+}
+
+export default function ProgrammesIndexPage() {
+  return (
+    <Suspense>
+      <ProgrammesContent />
+    </Suspense>
   );
 }

@@ -77,5 +77,5 @@ export const RESOURCE_DETAIL = {
   fileFormat: "PDF Format • 4.2 MB",
   metadata: { Language: "English", Publisher: "LUCI Research Dept.", Pages: "48" },
   tags: ["Sustainability", "Rural Development", "Impact Assessment"],
-  related: { title: "Annual Impact Summary 2022", meta: "Report • 2.1 MB", href: "#" },
+  related: { title: "Annual Impact Summary 2022", meta: "Report • 2.1 MB" },
 };

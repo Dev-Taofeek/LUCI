@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HeartHandshake, Users, Handshake, DollarSign } from "lucide-react";
 import Button from "@/components/ui/Button";
@@ -20,17 +20,31 @@ const PARTNERSHIP_IMAGE =
 
 export default function GetInvolvedPage() {
   const [activeTab, setActiveTab] = useState("Volunteer");
+  const tabRefs = useRef({});
+
+  const handleTabKeyDown = (e) => {
+    const keys = ["ArrowLeft", "ArrowRight", "Home", "End"];
+    if (!keys.includes(e.key)) return;
+    const idx = TABS.indexOf(activeTab);
+    let next;
+    if (e.key === "ArrowRight") next = (idx + 1) % TABS.length;
+    else if (e.key === "ArrowLeft") next = (idx - 1 + TABS.length) % TABS.length;
+    else if (e.key === "Home") next = 0;
+    else next = TABS.length - 1;
+    e.preventDefault();
+    setActiveTab(TABS[next]);
+    tabRefs.current[TABS[next]]?.focus();
+  };
 
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-maroon-deep min-h-[380px] sm:min-h-[440px] md:min-h-[480px] flex items-center justify-center px-4 sm:px-6 py-16 sm:py-20 md:py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-maroon-deep to-maroon-deep/60 mix-blend-overlay opacity-30" />
+      <section className="relative bg-maroon-deep min-h-[380px] sm:min-h-[440px] md:min-h-[480px] flex items-center justify-center py-16 sm:py-20 md:py-24">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="relative z-10 max-w-2xl sm:max-w-2xl flex flex-col items-center text-center gap-4 sm:gap-6"
+          className="container-luci max-w-2xl flex flex-col items-center text-center gap-4 sm:gap-6"
         >
           <motion.h1
             variants={fadeInUp}
@@ -38,7 +52,7 @@ export default function GetInvolvedPage() {
           >
             Join the Movement of Care
           </motion.h1>
-          <motion.p variants={fadeInUp} className="text-white text-sm sm:text-md font-thin">
+          <motion.p variants={fadeInUp} className="text-white text-sm sm:text-base">
             Whether you are an individual looking to volunteer your time, a
             professional seeking to join our membership, or an organization
             wanting to partner for greater impact, there is a place for you
@@ -67,28 +81,52 @@ export default function GetInvolvedPage() {
       </section>
 
       {/* Tab nav */}
-      <nav className="bg-white border-b border-border-light sticky top-16 sm:top-18 lg:top-20 z-40 shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
-        <div className="max-w-container mx-auto px-4 sm:px-6 flex gap-4 sm:gap-6 md:gap-8 justify-start sm:justify-center overflow-x-auto">
-          {TABS.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`py-3 sm:py-4 text-sm font-semibold btn-tracking border-b-2 transition-colors whitespace-nowrap shrink-0 ${
-                activeTab === tab
-                  ? "border-maroon-deep text-maroon-deep"
-                  : "border-transparent text-muted hover:text-maroon-deep"
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
+      <nav
+        className="bg-white border-b border-border-light sticky top-16 lg:top-20 z-40"
+        role="tablist"
+        aria-label="Ways to get involved"
+        onKeyDown={handleTabKeyDown}
+      >
+        <div className="container-luci flex gap-4 sm:gap-6 md:gap-8 justify-start sm:justify-center overflow-x-auto">
+          {TABS.map((tab) => {
+            const tabId = `tab-${tab.toLowerCase().replace(/\s+/g, "-")}`;
+            const panelId = `panel-${tab.toLowerCase().replace(/\s+/g, "-")}`;
+            const isActive = activeTab === tab;
+            return (
+              <button
+                key={tab}
+                id={tabId}
+                role="tab"
+                aria-selected={isActive}
+                aria-controls={panelId}
+                tabIndex={isActive ? 0 : -1}
+                ref={(el) => {
+                  tabRefs.current[tab] = el;
+                }}
+                onClick={() => setActiveTab(tab)}
+                className={`py-3 sm:py-4 text-sm font-semibold btn-tracking border-b-2 transition-colors whitespace-nowrap shrink-0 ${
+                  isActive
+                    ? "border-maroon-deep text-maroon-deep"
+                    : "border-transparent text-muted hover:text-maroon-deep"
+                }`}
+              >
+                {tab}
+              </button>
+            );
+          })}
         </div>
       </nav>
 
-      <section className="max-w-container mx-auto px-4 sm:px-6 py-10 sm:py-14 md:py-20">
+      <section className="container-luci py-10 sm:py-14 md:py-20">
         <AnimatePresence mode="wait">
           {activeTab === "Volunteer" && (
-            <motion.div key="volunteer" {...tabContentTransition}>
+            <motion.div
+              key="volunteer"
+              {...tabContentTransition}
+              id="panel-volunteer"
+              role="tabpanel"
+              aria-labelledby="tab-volunteer"
+            >
               <ParticipationSection
                 icon={<HeartHandshake className="text-gold" size={24} />}
                 title="Volunteer With Us"
@@ -120,7 +158,13 @@ export default function GetInvolvedPage() {
           )}
 
           {activeTab === "Membership" && (
-            <motion.div key="membership" {...tabContentTransition}>
+            <motion.div
+              key="membership"
+              {...tabContentTransition}
+              id="panel-membership"
+              role="tabpanel"
+              aria-labelledby="tab-membership"
+            >
               <ParticipationSection
                 icon={<Users className="text-gold" size={24} />}
                 title="Become a Member"
@@ -150,7 +194,13 @@ export default function GetInvolvedPage() {
           )}
 
           {activeTab === "Partnership" && (
-            <motion.div key="partnership" {...tabContentTransition}>
+            <motion.div
+              key="partnership"
+              {...tabContentTransition}
+              id="panel-partnership"
+              role="tabpanel"
+              aria-labelledby="tab-partnership"
+            >
               <ParticipationSection
                 icon={<Handshake className="text-gold" size={24} />}
                 title="Partner With LUCI"
@@ -181,7 +231,13 @@ export default function GetInvolvedPage() {
           )}
 
           {activeTab === "Needed Skills" && (
-            <motion.div key="skills" {...tabContentTransition}>
+            <motion.div
+              key="skills"
+              {...tabContentTransition}
+              id="panel-needed-skills"
+              role="tabpanel"
+              aria-labelledby="tab-needed-skills"
+            >
               <NeededSkillsSection />
             </motion.div>
           )}
@@ -190,22 +246,24 @@ export default function GetInvolvedPage() {
 
       {/* Donate CTA — the actual donation form + payment flow now lives at its
           own page, /donate, rather than being buried in a Get Involved tab. */}
-      <section className="bg-white border-t border-border-light section-padding flex justify-center px-4 sm:px-6 rounded-md shadow-[0_4px_10px_rgba(110,15,26,0.04)]">
-        <div className="max-w-xl sm:max-w-2xl w-full bg-maroon-deep rounded-md p-6 sm:p-8 md:p-12 flex flex-col items-center text-center gap-4 sm:gap-6">
-          <span className="bg-gold/10 border border-gold/20 text-white text-xs sm:text-sm font-semibold btn-tracking rounded-md px-3 sm:px-4 py-1.5 sm:py-2 w-fit flex items-center gap-2">
-            <DollarSign size={16} className="shrink-0" /> Financial Support
-          </span>
-          <h2 className="text-white text-2xl sm:text-3xl md:text-4xl leading-tight">
-            Prefer to Give Financially?
-          </h2>
-          <p className="text-white/80 text-sm sm:text-md font-thin">
-            Every contribution, big or small, directly funds our family
-            development, community, and youth programmes. Make a one-time
-            gift or become a monthly supporter.
-          </p>
-          <Button variant="accentWhite" href="/donate" className="w-full sm:w-auto">
-            Make a Donation
-          </Button>
+      <section className="bg-white border-t border-border-light section-padding">
+        <div className="container-luci flex justify-center">
+          <div className="w-full max-w-xl sm:max-w-2xl bg-maroon-deep rounded-card p-6 sm:p-8 md:p-12 flex flex-col items-center text-center gap-4 sm:gap-6">
+            <span className="bg-gold/10 border border-gold/20 text-white text-xs sm:text-sm font-semibold btn-tracking rounded-control px-3 sm:px-4 py-1.5 sm:py-2 w-fit flex items-center gap-2">
+              <DollarSign size={16} className="shrink-0" /> Financial Support
+            </span>
+            <h2 className="text-white text-2xl sm:text-3xl md:text-4xl leading-tight">
+              Prefer to Give Financially?
+            </h2>
+            <p className="text-white/80 text-sm sm:text-base">
+              Every contribution, big or small, directly funds our family
+              development, community, and youth programmes. Make a one-time
+              gift or become a monthly supporter.
+            </p>
+            <Button variant="accentWhite" href="/donate" className="w-full sm:w-auto">
+              Make a Donation
+            </Button>
+          </div>
         </div>
       </section>
     </>

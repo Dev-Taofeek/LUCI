@@ -10,6 +10,13 @@ import {
 } from "@/components/sections/ResourceSidebar";
 import { RESOURCE_DETAIL } from "@/lib/data/resources";
 
+export function generateMetadata() {
+  return {
+    title: RESOURCE_DETAIL.title,
+    description: RESOURCE_DETAIL.abstract?.[0],
+  };
+}
+
 export default async function ResourceDetailPage({ params }) {
   const { slug } = await params;
   // Only one full detail record exists in the mock data so far; once Resources
@@ -18,9 +25,9 @@ export default async function ResourceDetailPage({ params }) {
   const r = RESOURCE_DETAIL;
 
   return (
-    <div className="max-w-container mx-auto px-4 sm:px-6 py-8 sm:py-10 md:py-12 flex flex-col gap-6 sm:gap-8">
+    <div className="container-luci py-8 sm:py-10 md:py-12 flex flex-col gap-6 sm:gap-8">
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-sm text-muted overflow-x-auto whitespace-nowrap">
+      <nav className="flex items-center gap-2 text-sm text-muted overflow-x-auto whitespace-nowrap" aria-label="Breadcrumb">
         <Link href="/resources" className="hover:text-maroon-deep shrink-0">
           Resources
         </Link>
@@ -35,30 +42,30 @@ export default async function ResourceDetailPage({ params }) {
         <article className="md:col-span-8 flex flex-col gap-6 sm:gap-7 md:gap-8">
           <header className="flex flex-col gap-3 sm:gap-4">
             <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-              <span className="bg-maroon-deep/10 text-maroon-deep text-xs tracking-[0.05em] rounded-md px-3 py-1">
+              <span className="bg-maroon-deep/10 text-maroon-deep text-xs tracking-[0.05em] rounded-control px-3 py-1">
                 {r.category}
               </span>
               <span className="flex items-center gap-1.5 text-sm text-muted">
                 <Calendar size={14} className="shrink-0" /> {r.date}
               </span>
             </div>
-            <h1 className="!text-charcoal text-2xl sm:text-3xl md:text-4xl lg:!text-5xl leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
               {r.title}
             </h1>
-            <div className="border-t border-border-mid/30 pt-4 sm:pt-5 flex items-center gap-3 sm:gap-4">
-              <div className="relative size-10 sm:size-12 rounded-md overflow-hidden border border-border-mid shrink-0">
+            <div className="border-t border-border-mid pt-4 sm:pt-5 flex items-center gap-3 sm:gap-4">
+              <div className="relative size-10 sm:size-12 rounded-control overflow-hidden border border-border-mid shrink-0">
                 <Image src={r.author.image} alt={r.author.name} fill className="object-cover" />
               </div>
               <div className="min-w-0">
-                <p className="font-semibold text-charcoal btn-tracking mb-0 text-sm sm:text-base truncate">
+                <p className="font-semibold text-charcoal text-sm sm:text-base truncate">
                   {r.author.name}
                 </p>
-                <p className="mb-0 text-sm truncate">{r.author.role}</p>
+                <p className="text-sm text-muted truncate">{r.author.role}</p>
               </div>
             </div>
           </header>
 
-          <figure className="border border-border-mid/50 rounded-md overflow-hidden shadow-[0_4px_20px_rgba(110,15,26,0.04)]">
+          <figure className="border border-border-mid rounded-card overflow-hidden">
             <div className="relative h-[220px] sm:h-[300px] md:h-[360px] lg:h-[400px] w-full">
               <Image
                 src={r.figureImage}
@@ -68,27 +75,25 @@ export default async function ResourceDetailPage({ params }) {
                 className="object-cover"
               />
             </div>
-            <figcaption className="bg-white border-t border-border-mid/50 px-4 py-3 sm:py-4 text-sm text-muted font-thin">
+            <figcaption className="bg-white border-t border-border-mid px-4 py-3 sm:py-4 text-sm text-muted">
               {r.figureCaption}
             </figcaption>
           </figure>
 
           <div className="flex flex-col gap-4 sm:gap-5 md:gap-6">
-            <h2 className="text-2xl sm:!text-[28px]">Abstract</h2>
+            <h2 className="text-2xl sm:text-3xl">Abstract</h2>
             {r.abstract.map((p, i) => (
-              <p key={i} className="text-sm sm:text-md font-thin !text-charcoal">
+              <p key={i} className="text-sm sm:text-base">
                 {p}
               </p>
             ))}
 
-            <h3 className="text-lg sm:!text-[22px] border-b border-border-mid/30 pb-2">
-              Key Findings
-            </h3>
+            <h3 className="text-lg sm:text-xl border-b border-border-mid pb-2">Key Findings</h3>
             <ul className="flex flex-col gap-3 sm:gap-4">
               {r.keyFindings.map((f) => (
                 <li key={f.bold} className="flex gap-3">
-                  <span className="text-gold text-lg leading-none mt-1 shrink-0">•</span>
-                  <p className="text-sm sm:text-md font-thin !text-charcoal">
+                  <span className="text-gold text-lg leading-none mt-1 shrink-0" aria-hidden="true">•</span>
+                  <p className="text-sm sm:text-base">
                     <strong>{f.bold}</strong> {f.rest}
                   </p>
                 </li>
@@ -106,7 +111,7 @@ export default async function ResourceDetailPage({ params }) {
           <ResourceMetadataCard metadata={r.metadata} tags={r.tags} />
           <NewsletterCTACard />
           <div className="flex flex-col gap-3 sm:gap-4">
-            <h3 className="text-lg sm:!text-[22px]">Related Resources</h3>
+            <h3 className="text-lg sm:text-xl">Related Resources</h3>
             <RelatedResourceLink {...r.related} />
           </div>
         </aside>

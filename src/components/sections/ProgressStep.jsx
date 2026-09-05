@@ -2,9 +2,9 @@ import { cn } from "@/lib/utils";
 
 export default function ProgressStep({ icon, label, state = "active", isLast }) {
   const circleStyles = {
-    active: "bg-maroon-deep text-white shadow-[0_1px_1px_rgba(0,0,0,0.05)]",
+    active: "bg-maroon-deep text-white",
     inactive: "bg-white border border-border-mid text-muted",
-    highlight: "bg-gold text-charcoal shadow-[0_1px_1px_rgba(0,0,0,0.05)]",
+    highlight: "bg-gold text-charcoal",
   };
 
   return (

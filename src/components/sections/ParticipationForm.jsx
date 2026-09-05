@@ -36,15 +36,15 @@ export default function ParticipationForm({ endpoint, fields, skillOptions, subm
 
   if (status === "success") {
     return (
-      <div className="bg-white border border-border-light rounded-card p-6 sm:p-8 md:p-10 shadow-[0_4px_10px_rgba(110,15,26,0.04)] text-center">
-        <h3 className="text-maroon-deep text-lg sm:text-xl mb-2">Thank you!</h3>
+      <div className="bg-white border border-border-mid rounded-card p-6 sm:p-8 md:p-10 text-center flex flex-col gap-2">
+        <h3 className="text-maroon-deep text-lg sm:text-xl">Thank you!</h3>
         <p className="text-sm text-muted">{successMessage}</p>
       </div>
     );
   }
 
   return (
-    <div className="bg-white border border-border-light rounded-card p-5 sm:p-6 md:p-8 shadow-[0_4px_10px_rgba(110,15,26,0.04)]">
+    <div className="bg-white border border-border-mid rounded-card p-5 sm:p-6 md:p-8">
       <form onSubmit={handleSubmit} className="flex flex-col gap-5 sm:gap-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
           {fields.map((field) => (
@@ -55,7 +55,6 @@ export default function ParticipationForm({ endpoint, fields, skillOptions, subm
                   id={field.name}
                   placeholder={field.placeholder}
                   required={field.required}
-                  className="w-full bg-white border border-border-mid rounded-md px-3 sm:px-4 py-3 sm:py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
                   value={form[field.name]}
                   onChange={(e) => setForm({ ...form, [field.name]: e.target.value })}
                 />
@@ -65,7 +64,7 @@ export default function ParticipationForm({ endpoint, fields, skillOptions, subm
                   type={field.type || "text"}
                   placeholder={field.placeholder}
                   required={field.required}
-                  className="w-full bg-white border border-border-mid rounded-md px-3 sm:px-4 py-3 sm:py-3.5 text-base text-charcoal focus:outline-none focus:ring-2 focus:ring-maroon-deep/30 focus:border-maroon-deep"
+                  autoComplete={field.autoComplete}
                   value={form[field.name]}
                   onChange={(e) => setForm({ ...form, [field.name]: e.target.value })}
                 />
@@ -100,7 +99,7 @@ export default function ParticipationForm({ endpoint, fields, skillOptions, subm
           {status === "submitting" ? "Submitting..." : submitLabel}
         </Button>
         {status === "error" && (
-          <p className="text-sm text-maroon-deep text-center">
+          <p role="alert" className="text-sm text-danger text-center">
             Something went wrong — please try again.
           </p>
         )}

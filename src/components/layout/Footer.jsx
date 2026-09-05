@@ -22,7 +22,7 @@ const LINK_COLUMNS = [
 export default function Footer() {
   return (
     <footer className="bg-maroon-deep">
-      <div className="container-luci px-4 sm:px-6 py-10 sm:py-12 lg:py-16 border-t border-warm-white/20 pt-5 sm:pt-6">
+      <div className="container-luci py-12 sm:py-16">
         <div className="flex flex-col md:flex-row gap-10 sm:gap-12 md:justify-between">
           {/* Left: LUCI blurb + row of 3 links below it */}
           <div className="flex flex-col gap-5 sm:gap-6 max-w-md">
@@ -49,7 +49,7 @@ export default function Footer() {
           </div>
 
           {/* Right: two columns of 3, flex-col each */}
-          <div className="flex wrap gap-10 sm:gap-16 md:gap-20">
+          <div className="flex flex-wrap gap-10 sm:gap-16 md:gap-20">
             {LINK_COLUMNS.map((col, i) => (
               <div key={i} className="flex flex-col gap-3 sm:gap-4">
                 {col.map((link) => (
@@ -66,7 +66,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-4 sm:mt-6 lg:mt-8 pt-5 sm:pt-6">
+        <div className="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-warm-white/15">
           <p className="text-xs sm:text-sm text-warm-white/60">
             © {new Date().getFullYear()} Living Unity Core Initiative
             (LUCI). All rights reserved. Registered NGO.
