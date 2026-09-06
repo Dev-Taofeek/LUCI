@@ -6,6 +6,7 @@ import { Select } from "@/components/ui/Input";
 import { StatusPill } from "@/components/admin/AdminUI";
 import { cn } from "@/lib/utils";
 import { formatDate } from "@/lib/format";
+import { useConfirm } from "@/components/admin/ConfirmProvider";
 
 const TABS = [
   {
@@ -66,6 +67,7 @@ const TABS = [
 ];
 
 export default function AdminPeoplePage() {
+  const confirm = useConfirm();
   const [active, setActive] = useState("volunteers");
   const [data, setData] = useState({});
   const [counts, setCounts] = useState({});
@@ -157,7 +159,14 @@ export default function AdminPeoplePage() {
   }
 
   async function handleDelete(row) {
-    if (!confirm(`Delete this ${tab.deleteLabel}? Recipients are not notified.`)) return;
+    const ok = await confirm({
+      title: `Delete this ${tab.deleteLabel}?`,
+      message: "Recipients are not notified.",
+      confirmLabel: "Delete",
+      variant: "danger",
+    });
+    if (!ok) return;
+
     setSavingId(row.id);
     setError("");
     try {

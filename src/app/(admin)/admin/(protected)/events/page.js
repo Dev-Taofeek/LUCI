@@ -7,8 +7,10 @@ import DataTable from "@/components/admin/DataTable";
 import EventFormDrawer from "@/components/admin/EventFormDrawer";
 import { formatDate } from "@/lib/format";
 import useDataLoad from "@/hooks/useDataLoad";
+import { useConfirm } from "@/components/admin/ConfirmProvider";
 
 export default function AdminEventsPage() {
+  const confirm = useConfirm();
   const { data: events, loading, error, setError, reload } = useDataLoad(
     "/api/admin/events",
     (json) => json.events || [],
@@ -17,7 +19,14 @@ export default function AdminEventsPage() {
   const [editing, setEditing] = useState(null);
 
   async function handleDelete(id) {
-    if (!confirm("Delete this event? Registrations will also be removed.")) return;
+    const ok = await confirm({
+      title: "Delete this event?",
+      message: "Registrations will also be removed.",
+      confirmLabel: "Delete",
+      variant: "danger",
+    });
+    if (!ok) return;
+
     setError("");
     const res = await fetch(`/api/admin/events/${id}`, { method: "DELETE" });
     if (!res.ok) {

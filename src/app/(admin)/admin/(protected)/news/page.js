@@ -8,8 +8,10 @@ import { StatusPill } from "@/components/admin/AdminUI";
 import ArticleFormDrawer from "@/components/admin/ArticleFormDrawer";
 import { formatDate } from "@/lib/format";
 import useDataLoad from "@/hooks/useDataLoad";
+import { useConfirm } from "@/components/admin/ConfirmProvider";
 
 export default function AdminNewsPage() {
+  const confirm = useConfirm();
   const { data: articles, loading, error, setError, reload } = useDataLoad(
     "/api/admin/news",
     (json) => json.articles || [],
@@ -35,7 +37,14 @@ export default function AdminNewsPage() {
   }, []);
 
   async function handleDelete(id) {
-    if (!confirm("Delete this article? This cannot be undone.")) return;
+    const ok = await confirm({
+      title: "Delete this article?",
+      message: "This cannot be undone.",
+      confirmLabel: "Delete",
+      variant: "danger",
+    });
+    if (!ok) return;
+
     setError("");
     const res = await fetch(`/api/admin/news/${id}`, { method: "DELETE" });
     if (!res.ok) {

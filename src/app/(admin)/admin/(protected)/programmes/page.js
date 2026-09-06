@@ -7,8 +7,10 @@ import DataTable from "@/components/admin/DataTable";
 import { StatusPill } from "@/components/admin/AdminUI";
 import ProgrammeFormDrawer from "@/components/admin/ProgrammeFormDrawer";
 import useDataLoad from "@/hooks/useDataLoad";
+import { useConfirm } from "@/components/admin/ConfirmProvider";
 
 export default function AdminProgrammesPage() {
+  const confirm = useConfirm();
   const { data: programmes, loading, error, setError, reload } = useDataLoad(
     "/api/admin/programmes",
     (json) => json.programmes || [],
@@ -17,7 +19,14 @@ export default function AdminProgrammesPage() {
   const [editing, setEditing] = useState(null); // null = closed, {} = new, {...} = edit
 
   async function handleDelete(id) {
-    if (!confirm("Delete this programme? This cannot be undone.")) return;
+    const ok = await confirm({
+      title: "Delete this programme?",
+      message: "This cannot be undone.",
+      confirmLabel: "Delete",
+      variant: "danger",
+    });
+    if (!ok) return;
+
     setError("");
     const res = await fetch(`/api/admin/programmes/${id}`, { method: "DELETE" });
     if (!res.ok) {

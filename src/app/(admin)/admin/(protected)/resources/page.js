@@ -7,8 +7,10 @@ import DataTable from "@/components/admin/DataTable";
 import ResourceFormDrawer from "@/components/admin/ResourceFormDrawer";
 import { formatDate } from "@/lib/format";
 import useDataLoad from "@/hooks/useDataLoad";
+import { useConfirm } from "@/components/admin/ConfirmProvider";
 
 export default function AdminResourcesPage() {
+  const confirm = useConfirm();
   const { data: resources, loading, error, setError, reload } = useDataLoad(
     "/api/admin/resources",
     (json) => json.resources || [],
@@ -17,7 +19,14 @@ export default function AdminResourcesPage() {
   const [editing, setEditing] = useState(null);
 
   async function handleDelete(id) {
-    if (!confirm("Delete this resource? This cannot be undone.")) return;
+    const ok = await confirm({
+      title: "Delete this resource?",
+      message: "This cannot be undone.",
+      confirmLabel: "Delete",
+      variant: "danger",
+    });
+    if (!ok) return;
+
     setError("");
     const res = await fetch(`/api/admin/resources/${id}`, { method: "DELETE" });
     if (!res.ok) {

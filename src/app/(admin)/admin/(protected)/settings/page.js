@@ -9,8 +9,10 @@ import UserFormDrawer from "@/components/admin/UserFormDrawer";
 import { formatDate } from "@/lib/format";
 import { ROLE_LABELS } from "@/lib/constants";
 import useDataLoad from "@/hooks/useDataLoad";
+import { useConfirm } from "@/components/admin/ConfirmProvider";
 
 export default function AdminSettingsPage() {
+  const confirm = useConfirm();
   const { data: users, loading, error, setError, reload } = useDataLoad(
     "/api/admin/users",
     (json) => json.users || [],
@@ -34,10 +36,22 @@ export default function AdminSettingsPage() {
 
   async function handleDelete(user) {
     if (user.id === currentUserId) {
-      alert("You cannot delete your own account.");
+      await confirm({
+        title: "Cannot delete your own account",
+        message: "You can't remove the account you're currently signed in with.",
+        confirmLabel: "OK",
+        cancelLabel: "Close",
+      });
       return;
     }
-    if (!confirm(`Delete ${user.name || user.email}? They will immediately lose access.`)) return;
+    const ok = await confirm({
+      title: `Delete ${user.name || user.email}?`,
+      message: "They will immediately lose access.",
+      confirmLabel: "Delete",
+      variant: "danger",
+    });
+    if (!ok) return;
+
     setError("");
     const res = await fetch(`/api/admin/users/${user.id}`, { method: "DELETE" });
     if (!res.ok) {
