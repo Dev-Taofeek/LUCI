@@ -1,0 +1,97 @@
+﻿node.exe : $ next build
+At C:\Users\HP\AppData\Roaming\npm\pnpm.ps1:24 char:5
++     & "node$exe"  "$basedir/node_modules/pnpm/bin/pnpm.mjs" $args
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ($ next build:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Γû▓ Next.js 16.3.3 (Turbopack)
+- Environments: .env
+Γ£ô Running next.config.mjs took 85ms
+
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 13.1s
+  Running TypeScript ...
+  Finished TypeScript in 20ms ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/47) ...
+  Generating static pages using 7 workers (11/47) 
+  Generating static pages using 7 workers (23/47) 
+  Generating static pages using 7 workers (35/47) 
+Γ£ô Generating static pages using 7 workers (47/47) in 4.4s
+  Finalizing page optimization ...
+
+Route (app)
+Γöî Γùï /
+Γö£ Γùï /_not-found
+Γö£ Γùï /about
+Γö£ ╞Æ /admin
+Γö£ ╞Æ /admin/donations
+Γö£ ╞Æ /admin/events
+Γö£ Γùï /admin/login
+Γö£ ╞Æ /admin/news
+Γö£ ╞Æ /admin/people
+Γö£ ╞Æ /admin/programmes
+Γö£ ╞Æ /admin/resources
+Γö£ ╞Æ /admin/safeguarding
+Γö£ ╞Æ /admin/settings
+Γö£ ╞Æ /api/admin/authors
+Γö£ ╞Æ /api/admin/contacts
+Γö£ ╞Æ /api/admin/contacts/[id]
+Γö£ ╞Æ /api/admin/donations
+Γö£ ╞Æ /api/admin/events
+Γö£ ╞Æ /api/admin/events/[id]
+Γö£ ╞Æ /api/admin/memberships
+Γö£ ╞Æ /api/admin/memberships/[id]
+Γö£ ╞Æ /api/admin/news
+Γö£ ╞Æ /api/admin/news/[id]
+Γö£ ╞Æ /api/admin/partnerships
+Γö£ ╞Æ /api/admin/partnerships/[id]
+Γö£ ╞Æ /api/admin/programmes
+Γö£ ╞Æ /api/admin/programmes/[id]
+Γö£ ╞Æ /api/admin/resources
+Γö£ ╞Æ /api/admin/resources/[id]
+Γö£ ╞Æ /api/admin/safeguarding
+Γö£ ╞Æ /api/admin/safeguarding/[id]
+Γö£ ╞Æ /api/admin/subscribers
+Γö£ ╞Æ /api/admin/subscribers/[id]
+Γö£ ╞Æ /api/admin/users
+Γö£ ╞Æ /api/admin/users/[id]
+Γö£ ╞Æ /api/admin/volunteers
+Γö£ ╞Æ /api/admin/volunteers/[id]
+Γö£ ╞Æ /api/auth/[...nextauth]
+Γö£ ╞Æ /api/contact
+Γö£ ╞Æ /api/donations/initialize
+Γö£ ╞Æ /api/donations/verify
+Γö£ ╞Æ /api/donations/webhook
+Γö£ ╞Æ /api/events/[slug]/register
+Γö£ ╞Æ /api/get-involved/membership
+Γö£ ╞Æ /api/get-involved/partnership
+Γö£ ╞Æ /api/get-involved/volunteer
+Γö£ ╞Æ /api/public/programmes
+Γö£ ╞Æ /api/safeguarding/report
+Γö£ Γùï /contact
+Γö£ Γùï /donate
+Γö£ Γùï /donate/callback
+Γö£ Γùï /donation-policy
+Γö£ ╞Æ /events
+Γö£ ╞Æ /events/[slug]
+Γö£ Γùï /get-involved
+Γö£ Γùï /impact
+Γö£ ╞Æ /news
+Γö£ ╞Æ /news/[slug]
+Γö£ Γùï /privacy-policy
+Γö£ ╞Æ /programmes
+Γö£ ╞Æ /programmes/[slug]
+Γö£ ╞Æ /resources
+Γö£ ╞Æ /resources/[slug]
+Γö£ Γùï /safeguarding
+Γö£ Γùï /terms-of-use
+Γöö Γùï /what-we-do
+
+
+╞Æ Proxy (Middleware)
+
+Γùï  (Static)   prerendered as static content
+╞Æ  (Dynamic)  server-rendered on demand
+

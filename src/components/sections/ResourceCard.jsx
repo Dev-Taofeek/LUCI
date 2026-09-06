@@ -2,14 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, Download, PlayCircle } from "lucide-react";
 import Button from "@/components/ui/Button";
-import { RESOURCE_DETAIL } from "@/lib/data/resources";
 
 const DOWNLOADABLE_TYPES = ["GUIDE", "RESEARCH"];
-
-// Only one full detail page exists in this mock-data phase (matching the
-// single Figma detail frame) — every card routes there for now. Once each
-// resource has its own `detail` record, swap back to `/resources/${slug}`.
-const DETAIL_HREF = `/resources/${RESOURCE_DETAIL.slug}`;
 
 export function ResourceCard({ slug, type, title, summary, date, ctaLabel, image }) {
   const CtaIcon = DOWNLOADABLE_TYPES.includes(type) ? Download : PlayCircle;
@@ -49,7 +43,7 @@ export function ResourceCard({ slug, type, title, summary, date, ctaLabel, image
             <span className="truncate">{date}</span>
           </span>
           <Link
-            href={slug === RESOURCE_DETAIL.slug ? `/resources/${slug}` : DETAIL_HREF}
+            href={`/resources/${slug}`}
             className="flex items-center gap-1.5 text-sm font-semibold text-maroon-deep btn-tracking hover:text-maroon-dark shrink-0"
           >
             {ctaLabel} <CtaIcon size={13} className="shrink-0" />
@@ -75,7 +69,7 @@ export function FeaturedResourceBanner({ category, title, summary, author, date,
         </span>
         <Button
           variant="accent"
-          href={slug === RESOURCE_DETAIL.slug ? `/resources/${slug}` : DETAIL_HREF}
+          href={`/resources/${slug}`}
           className="w-full sm:w-fit justify-center"
         >
           View Full Report

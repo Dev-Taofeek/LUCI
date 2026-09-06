@@ -13,6 +13,13 @@ export default withAuth(
       }
     }
 
+    // Settings (user management) is SUPER_ADMIN only.
+    if (pathname.startsWith("/admin/settings")) {
+      if (token?.role !== "SUPER_ADMIN") {
+        return NextResponse.redirect(new URL("/admin", req.url));
+      }
+    }
+
     return NextResponse.next();
   },
   {

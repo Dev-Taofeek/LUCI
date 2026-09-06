@@ -5,6 +5,13 @@
 @layer base {
   :root {
     color-scheme: light;
+    --color-maroon: #841818;
+    --color-maroon-dark: #5b1010;
+    --color-gold: #c9a227;
+  }
+
+  * {
+    @apply border-border-mid;
   }
 
   body {
@@ -19,15 +26,15 @@
   }
 
   h1 {
-    font-size: 2.25rem;
-    line-height: 1.15;
+    font-size: clamp(2.25rem, 1.4rem + 3.4vw, 3.75rem);
+    line-height: 1.1;
     letter-spacing: -0.02em;
     font-weight: 600;
   }
 
   h2 {
-    font-size: 1.75rem;
-    line-height: 1.25;
+    font-size: clamp(1.75rem, 1.45rem + 1.6vw, 2.25rem);
+    line-height: 1.2;
     letter-spacing: -0.01em;
     font-weight: 600;
   }
@@ -45,12 +52,13 @@
   }
 
   p {
-    @apply text-muted leading-[1.7];
+    @apply text-muted leading-relaxed;
   }
 
   :focus-visible {
-    outline: 2px solid #841818;
+    outline: 2px solid var(--color-maroon);
     outline-offset: 2px;
+    border-radius: 2px;
   }
 }
 
@@ -65,27 +73,6 @@
 
   .btn-tracking {
     letter-spacing: 0.04em;
-  }
-}
-
-@media (min-width: 640px) {
-  h1 {
-    font-size: 3rem;
-  }
-  h2 {
-    font-size: 2rem;
-  }
-  h3 {
-    font-size: 1.25rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  h1 {
-    font-size: 3.75rem;
-  }
-  h2 {
-    font-size: 2.25rem;
   }
 }
 

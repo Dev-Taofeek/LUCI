@@ -19,14 +19,14 @@ export const MAP_PINS = [
   { name: "Nairobi", top: "36%", left: "78%", type: "hub" },
 ];
 
-// Distinct swatches drawn from the LUCI tokens to stand in for the original
+// Distinct swatches drawn from the 7 LUCI tokens to stand in for the original
 // green/gold/brown chart palette.
 export const ALLOCATION = [
-  { label: "Family Support", value: 35, color: "#841818" }, // maroon-deep
-  { label: "Community Dev", value: 25, color: "#5B1010" }, // maroon-dark
+  { label: "Family Support", value: 35, color: "#6E0F1A" }, // maroon-deep
+  { label: "Community Dev", value: 25, color: "#4A0810" }, // maroon-dark
   { label: "Youth Empowerment", value: 20, color: "#C9A227" }, // gold
   { label: "Unity Initiatives", value: 15, color: "#F0DFA8" }, // gold-light
-  { label: "Diversity Programs", value: 5, color: "#1B1917" }, // charcoal
+  { label: "Diversity Programs", value: 5, color: "#252525" }, // charcoal
 ];
 
 export const STORIES = [
@@ -57,6 +57,6 @@ export const STORIES = [
 ];
 
 export const REPORTS = [
-  { title: "2023 Annual Report", meta: "PDF • 4.2 MB" },
-  { title: "2022 Financial Audit", meta: "PDF • 1.8 MB" },
+  { title: "2023 Annual Report", meta: "PDF • 4.2 MB", href: "#" },
+  { title: "2022 Financial Audit", meta: "PDF • 1.8 MB", href: "#" },
 ];

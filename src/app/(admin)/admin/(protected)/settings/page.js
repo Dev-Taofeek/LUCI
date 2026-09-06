@@ -1,0 +1,126 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { Plus, Pencil, Trash2, ShieldCheck } from "lucide-react";
+import Button from "@/components/ui/Button";
+import DataTable from "@/components/admin/DataTable";
+import { StatusPill } from "@/components/admin/AdminUI";
+import UserFormDrawer from "@/components/admin/UserFormDrawer";
+import { formatDate } from "@/lib/format";
+import { ROLE_LABELS } from "@/lib/constants";
+import useDataLoad from "@/hooks/useDataLoad";
+
+export default function AdminSettingsPage() {
+  const { data: users, loading, error, setError, reload } = useDataLoad(
+    "/api/admin/users",
+    (json) => json.users || [],
+    "Could not load users. This section is for Super Admins only."
+  );
+  const [currentUserId, setCurrentUserId] = useState(null);
+  const [editing, setEditing] = useState(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/auth/session")
+      .then((r) => r.json())
+      .then((s) => {
+        if (!cancelled) setCurrentUserId(s?.user?.id ?? null);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  async function handleDelete(user) {
+    if (user.id === currentUserId) {
+      alert("You cannot delete your own account.");
+      return;
+    }
+    if (!confirm(`Delete ${user.name || user.email}? They will immediately lose access.`)) return;
+    setError("");
+    const res = await fetch(`/api/admin/users/${user.id}`, { method: "DELETE" });
+    if (!res.ok) {
+      setError("Could not delete this user.");
+      return;
+    }
+    reload();
+  }
+
+  const columns = [
+    { key: "name", label: "Name", render: (row) => row.name || <span className="text-muted">—</span> },
+    { key: "email", label: "Email", render: (row) => <span className="font-medium">{row.email}</span> },
+    {
+      key: "role",
+      label: "Role",
+      render: (row) => (
+        <span className="inline-flex items-center gap-2">
+          <StatusPill status={rolePillStatus(row.role)} />
+          <span className="text-xs text-muted">{ROLE_LABELS[row.role] || row.role}</span>
+        </span>
+      ),
+    },
+    { key: "createdAt", label: "Created", render: (row) => formatDate(row.createdAt) },
+    {
+      key: "actions",
+      label: "",
+      render: (row) => (
+        <div className="flex items-center gap-3 justify-end">
+          <button onClick={() => setEditing(row)} className="text-muted hover:text-maroon-deep">
+            <Pencil size={16} />
+          </button>
+          <button
+            onClick={() => handleDelete(row)}
+            disabled={row.id === currentUserId}
+            aria-label="Delete user"
+            className="text-muted hover:text-maroon-deep disabled:opacity-30 disabled:cursor-not-allowed"
+          >
+            <Trash2 size={16} />
+          </button>
+        </div>
+      ),
+    },
+  ];
+
+  return (
+    <div className="flex flex-col gap-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="!text-[28px] flex items-center gap-2">
+            <ShieldCheck size={22} className="text-maroon-deep" /> Settings
+          </h1>
+          <p>Manage admin accounts and roles (Super Admin only).</p>
+        </div>
+        <Button as="button" variant="primary" onClick={() => setEditing({})} className="flex items-center gap-2">
+          <Plus size={16} /> New User
+        </Button>
+      </div>
+
+      {error && <p className="text-sm text-maroon-deep">{error}</p>}
+
+      {loading ? (
+        <p className="text-muted">Loading...</p>
+      ) : (
+        <DataTable columns={columns} rows={users} emptyMessage="No users yet." />
+      )}
+
+      {editing !== null && (
+        <UserFormDrawer
+          user={editing.id ? editing : null}
+          onClose={() => setEditing(null)}
+          onSaved={() => {
+            setEditing(null);
+            reload();
+          }}
+        />
+      )}
+    </div>
+  );
+}
+
+function rolePillStatus(role) {
+  if (role === "SUPER_ADMIN") return "RESOLVED";
+  if (role === "ADMIN") return "CONTACTED";
+  if (role === "SAFEGUARDING_OFFICER") return "REVIEWED";
+  return "NEW";
+}

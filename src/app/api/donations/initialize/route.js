@@ -2,13 +2,19 @@ import crypto from "crypto";
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { initializePaystackTransaction } from "@/lib/paystack";
+import { isEmail } from "@/lib/validations";
+import { FREQUENCIES } from "@/lib/constants";
 
 export async function POST(req) {
   const { donorName, donorEmail, amount, frequency, designation } = await req.json();
 
-  if (!donorEmail || !amount || amount <= 0) {
+  if (!donorEmail || !amount || Number(amount) <= 0) {
     return NextResponse.json({ error: "A valid email and amount are required." }, { status: 400 });
   }
+  if (!isEmail(donorEmail)) {
+    return NextResponse.json({ error: "Please provide a valid email address." }, { status: 400 });
+  }
+  const frequencyValue = FREQUENCIES.includes(frequency) ? frequency : "ONE_TIME";
 
   const reference = `luci_${crypto.randomBytes(10).toString("hex")}`;
   const amountKobo = Math.round(Number(amount) * 100);
@@ -20,7 +26,7 @@ export async function POST(req) {
         donorName: donorName || null,
         donorEmail,
         amount: amountKobo,
-        frequency: frequency === "MONTHLY" ? "MONTHLY" : "ONE_TIME",
+        frequency: frequencyValue,
         designation: designation || "General Fund",
         status: "PENDING",
       },
@@ -44,7 +50,6 @@ export async function POST(req) {
 
     return NextResponse.json({ authorizationUrl: paystackRes.data.authorization_url }, { status: 201 });
   } catch (err) {
-    console.error("Donation init error:", err); 
-    return NextResponse.json({ error: err.message || "Something went wrong. Please try again." }, { status: 500 }); 
+    return NextResponse.json({ error: "Something went wrong. Please try again." }, { status: 500 });
   }
 }

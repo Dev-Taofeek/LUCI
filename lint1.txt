@@ -1,0 +1,7 @@
+﻿node.exe : $ eslint
+At C:\Users\HP\AppData\Roaming\npm\pnpm.ps1:24 char:5
++     & "node$exe"  "$basedir/node_modules/pnpm/bin/pnpm.mjs" $args
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ($ eslint:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

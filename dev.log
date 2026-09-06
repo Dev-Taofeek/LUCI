@@ -1,0 +1,345 @@
+$ next dev
+▲ Next.js 16.3.3 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://10.55.145.140:3000
+- Environments: .env
+✓ Ready in 3.0s
+✓ Running next.config.mjs took 116ms
+
+✓ Generated AGENTS.md and CLAUDE.md for AI agents. Set `agentRules: false` in next.config to disable.
+ GET /admin 200 in 6.4s (next.js: 1767ms, application-code: 4.6s)
+ GET /api/auth/csrf 200 in 4.6s (next.js: 4.4s, application-code: 194ms)
+ POST /api/auth/callback/credentials 302 in 71ms (next.js: 29ms, application-code: 42ms)
+ GET /api/auth/signin?csrf=true 302 in 46ms (next.js: 11ms, application-code: 35ms)
+ GET /admin/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000 200 in 601ms (next.js: 162ms, application-code: 439ms)
+ GET /api/auth/session 200 in 168ms (next.js: 41ms, application-code: 127ms)
+ GET /api/auth/session 200 in 67ms (next.js: 16ms, application-code: 51ms)
+ GET /api/auth/session 200 in 80ms (next.js: 37ms, application-code: 43ms)
+ GET /admin/programmes 200 in 618ms (next.js: 438ms, application-code: 180ms)
+ GET /api/admin/programmes 200 in 396ms (next.js: 198ms, application-code: 198ms)
+ GET /api/admin/programmes 200 in 37ms (next.js: 12ms, application-code: 26ms)
+Error: Route "/api/admin/programmes/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at DELETE (src\app\api\admin\programmes\[id]\route.js:33:75)
+  31 |
+  32 |   try {
+> 33 |     const programme = await prisma.programme.delete({ where: { id: params.id } });
+     |                                                                           ^
+  34 |     await logAudit({
+  35 |       userId: session.user.id,
+  36 |       action: "DELETE",
+prisma:error 
+Invalid `prisma.programme.delete()` invocation:
+
+{
+  where: {
+    id: undefined,
+?   slug?: String,
+?   AND?: ProgrammeWhereInput | ProgrammeWhereInput[],
+?   OR?: ProgrammeWhereInput[],
+?   NOT?: ProgrammeWhereInput | ProgrammeWhereInput[],
+?   title?: StringFilter | String,
+?   category?: StringFilter | String,
+?   status?: EnumProgrammeStatusFilter | ProgrammeStatus,
+?   summary?: StringFilter | String,
+?   description?: StringFilter | String,
+?   location?: StringFilter | String,
+?   startDate?: DateTimeFilter | DateTime,
+?   endDate?: DateTimeNullableFilter | DateTime | Null,
+?   impactStat?: StringNullableFilter | String | Null,
+?   heroImage?: StringNullableFilter | String | Null,
+?   galleryImages?: StringNullableListFilter,
+?   objectives?: StringNullableListFilter,
+?   audience?: JsonNullableFilter,
+?   activities?: JsonNullableFilter,
+?   stats?: JsonNullableFilter,
+?   partners?: StringNullableListFilter,
+?   createdAt?: DateTimeFilter | DateTime,
+?   updatedAt?: DateTimeFilter | DateTime
+  }
+}
+
+Argument `where` of type ProgrammeWhereUniqueInput needs at least one of `id` or `slug` arguments. Available options are marked with ?.
+ DELETE /api/admin/programmes/cmtow0uqv00033wfgnrkn50f6 400 in 3.4s (next.js: 2.6s, application-code: 712ms)
+ GET /admin 200 in 611ms (next.js: 17ms, application-code: 593ms)
+ GET /admin/events 200 in 242ms (next.js: 141ms, application-code: 101ms)
+ GET /api/admin/events 200 in 269ms (next.js: 198ms, application-code: 71ms)
+ GET /api/admin/events 200 in 43ms (next.js: 17ms, application-code: 26ms)
+ GET /api/auth/csrf 200 in 139ms (next.js: 46ms, application-code: 93ms)
+ GET /admin/resources 200 in 460ms (next.js: 177ms, application-code: 283ms)
+ GET /api/admin/resources 200 in 401ms (next.js: 334ms, application-code: 67ms)
+ GET /api/admin/resources 200 in 55ms (next.js: 12ms, application-code: 43ms)
+ POST /api/auth/callback/credentials 302 in 375ms (next.js: 16ms, application-code: 359ms)
+ POST / 200 in 408ms (next.js: 110ms, application-code: 298ms)
+ GET /admin/news 200 in 402ms (next.js: 226ms, application-code: 176ms)
+ GET /api/auth/session 200 in 52ms (next.js: 11ms, application-code: 41ms)
+ GET /api/admin/news 200 in 663ms (next.js: 241ms, application-code: 422ms)
+ GET /api/admin/authors 200 in 672ms (next.js: 469ms, application-code: 202ms)
+ GET /api/admin/news 200 in 60ms (next.js: 13ms, application-code: 47ms)
+ GET /api/admin/authors 200 in 76ms (next.js: 37ms, application-code: 39ms)
+ GET /admin/donations 200 in 312ms (next.js: 160ms, application-code: 152ms)
+ GET /api/admin/donations 200 in 300ms (next.js: 220ms, application-code: 80ms)
+ GET /api/admin/donations 200 in 61ms (next.js: 18ms, application-code: 44ms)
+ GET /admin/people 200 in 370ms (next.js: 251ms, application-code: 119ms)
+ GET /api/admin/contacts 200 in 1211ms (next.js: 238ms, application-code: 973ms)
+ GET /api/admin/contacts 200 in 43ms (next.js: 12ms, application-code: 30ms)
+ GET /api/admin/volunteers 200 in 1318ms (next.js: 485ms, application-code: 833ms)
+ GET /api/admin/partnerships 200 in 1319ms (next.js: 949ms, application-code: 370ms)
+ GET /api/admin/memberships 200 in 1329ms (next.js: 736ms, application-code: 594ms)
+ GET /api/admin/volunteers 200 in 80ms (next.js: 14ms, application-code: 66ms)
+ GET /api/admin/partnerships 200 in 84ms (next.js: 35ms, application-code: 49ms)
+ GET /api/admin/memberships 200 in 90ms (next.js: 58ms, application-code: 32ms)
+ GET /api/admin/subscribers 200 in 1450ms (next.js: 1169ms, application-code: 281ms)
+ GET /api/admin/subscribers 200 in 42ms (next.js: 16ms, application-code: 26ms)
+ GET /admin/donations 200 in 96ms (next.js: 16ms, application-code: 80ms)
+ GET /api/admin/donations 200 in 90ms (next.js: 13ms, application-code: 77ms)
+ GET /api/admin/donations 200 in 50ms (next.js: 16ms, application-code: 34ms)
+ GET /admin/safeguarding 200 in 277ms (next.js: 170ms, application-code: 108ms)
+ GET /api/admin/safeguarding 200 in 259ms (next.js: 205ms, application-code: 54ms)
+ GET /api/admin/safeguarding 200 in 50ms (next.js: 12ms, application-code: 38ms)
+ GET /admin/settings 200 in 400ms (next.js: 265ms, application-code: 135ms)
+ GET /api/auth/session 200 in 325ms (next.js: 57ms, application-code: 268ms)
+ GET /api/admin/users 200 in 362ms (next.js: 305ms, application-code: 57ms)
+ GET /api/auth/session 200 in 70ms (next.js: 14ms, application-code: 56ms)
+ GET /api/admin/users 200 in 75ms (next.js: 43ms, application-code: 32ms)
+○ Compiling /programmes ...
+ GET /programmes 200 in 7.7s (next.js: 6.9s, application-code: 825ms)
+ GET /admin 200 in 889ms (next.js: 23ms, application-code: 866ms)
+ GET /programmes/unity-and-peace-summit 200 in 7.4s (next.js: 6.1s, application-code: 1270ms)
+○ Compiling /events ...
+ GET /events 200 in 10.8s (next.js: 10.0s, application-code: 869ms)
+ GET /events/annual-global-care-summit-2026 200 in 5.8s (next.js: 4.9s, application-code: 868ms)
+ GET /api/auth/session 200 in 636ms (next.js: 325ms, application-code: 312ms)
+○ Compiling /news ...
+ GET /api/auth/session 200 in 144ms (next.js: 66ms, application-code: 78ms)
+ GET /donate 200 in 1391ms (next.js: 561ms, application-code: 830ms)
+✓ Finished filesystem cache database compaction in 10.9s
+ GET /news 200 in 12.4s (next.js: 10.9s, application-code: 1419ms)
+ GET / 200 in 273ms (next.js: 28ms, application-code: 245ms)
+ GET /news/healthcare-initiative-rural-villages 200 in 8.2s (next.js: 7.0s, application-code: 1130ms)
+○ Compiling /resources ...
+ GET /resources 200 in 5.7s (next.js: 4.9s, application-code: 737ms)
+ GET /resources/2026-community-engagement-guide 200 in 5.8s (next.js: 4.8s, application-code: 993ms)
+✓ Finished filesystem cache database compaction in 15.4s
+ GET / 200 in 609ms (next.js: 373ms, application-code: 235ms)
+ GET / 200 in 262ms (next.js: 36ms, application-code: 226ms)
+ GET /about 200 in 2.1s (next.js: 1940ms, application-code: 201ms)
+ GET / 200 in 1798ms (next.js: 641ms, application-code: 1157ms)
+✓ Compiled in 15.1s
+ GET / 200 in 437ms (next.js: 135ms, application-code: 302ms)
+ GET / 200 in 883ms (next.js: 28ms, application-code: 856ms)
+ GET / 200 in 219ms (next.js: 18ms, application-code: 201ms)
+ GET / 200 in 68ms (next.js: 13ms, application-code: 55ms)
+ GET / 200 in 62ms (next.js: 14ms, application-code: 48ms)
+ GET / 200 in 49ms (next.js: 11ms, application-code: 39ms)
+ GET / 200 in 48ms (next.js: 10ms, application-code: 38ms)
+⨯ ./src/app/api/admin/safeguarding/route.js:3:1
+Error: Module not found: Can't resolve '@/lib/export'
+  [90m1 |[0m [36mimport[0m { [33mNextResponse[0m } [36mfrom[0m [32m"next/server"[0m;
+  [90m2 |[0m [36mimport[0m { prisma } [36mfrom[0m [32m"@/lib/prisma"[0m;
+[31m[1m>[0m [90m3 |[0m [36mimport[0m { requireRoles, [33mSAFEGUARDING_ROLES[0m } [36mfrom[0m [32m"@/lib/export"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+
+Import map: aliased to relative './src/lib/export' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[browser] ./src/app/api/admin/safeguarding/route.js:3:1
+Error: Module not found: Can't resolve '@/lib/export'
+  1 | import { NextResponse } from "next/server";
+  2 | import { prisma } from "@/lib/prisma";
+> 3 | import { requireRoles, SAFEGUARDING_ROLES } from "@/lib/export";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Import map: aliased to relative './src/lib/export' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./src/app/api/admin/safeguarding/route.js:3:1
+Error: Module not found: Can't resolve '@/lib/export'
+  1 | import { NextResponse } from "next/server";
+  2 | import { prisma } from "@/lib/prisma";
+> 3 | import { requireRoles, SAFEGUARDING_ROLES } from "@/lib/export";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Import map: aliased to relative './src/lib/export' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found 
+ GET / 200 in 92ms (next.js: 18ms, application-code: 74ms)
+ GET / 200 in 83ms (next.js: 25ms, application-code: 58ms)
+ GET / 200 in 71ms (next.js: 18ms, application-code: 54ms)
+ GET / 200 in 153ms (next.js: 23ms, application-code: 130ms)
+ GET / 200 in 104ms (next.js: 23ms, application-code: 81ms)
+ GET / 200 in 281ms (next.js: 135ms, application-code: 147ms)
+ GET / 200 in 179ms (next.js: 20ms, application-code: 160ms)
+ GET / 200 in 88ms (next.js: 14ms, application-code: 73ms)
+ GET / 200 in 168ms (next.js: 32ms, application-code: 137ms)
+ GET / 200 in 149ms (next.js: 28ms, application-code: 121ms)
+ GET / 200 in 113ms (next.js: 21ms, application-code: 93ms)
+✓ Compiled in 732ms
+ GET / 200 in 587ms (next.js: 243ms, application-code: 343ms)
+✓ Compiled in 620ms
+ GET / 200 in 211ms (next.js: 63ms, application-code: 148ms)
+ GET / 200 in 105ms (next.js: 19ms, application-code: 87ms)
+ GET / 200 in 103ms (next.js: 21ms, application-code: 82ms)
+ GET / 200 in 80ms (next.js: 17ms, application-code: 63ms)
+ GET / 200 in 108ms (next.js: 19ms, application-code: 88ms)
+ GET / 200 in 125ms (next.js: 22ms, application-code: 103ms)
+ GET / 200 in 85ms (next.js: 18ms, application-code: 67ms)
+ GET / 200 in 86ms (next.js: 16ms, application-code: 70ms)
+ GET / 200 in 75ms (next.js: 16ms, application-code: 58ms)
+ GET / 200 in 239ms (next.js: 112ms, application-code: 127ms)
+ GET / 200 in 98ms (next.js: 22ms, application-code: 77ms)
+ GET / 200 in 163ms (next.js: 30ms, application-code: 133ms)
+ GET / 200 in 585ms (next.js: 189ms, application-code: 397ms)
+ GET / 200 in 227ms (next.js: 26ms, application-code: 201ms)
+ GET / 200 in 112ms (next.js: 20ms, application-code: 92ms)
+ GET / 200 in 104ms (next.js: 23ms, application-code: 80ms)
+ GET / 200 in 251ms (next.js: 71ms, application-code: 180ms)
+ GET / 200 in 89ms (next.js: 17ms, application-code: 72ms)
+ GET / 200 in 109ms (next.js: 16ms, application-code: 93ms)
+ GET / 200 in 81ms (next.js: 19ms, application-code: 62ms)
+ GET / 200 in 60ms (next.js: 13ms, application-code: 47ms)
+ GET / 200 in 59ms (next.js: 13ms, application-code: 46ms)
+ GET / 200 in 69ms (next.js: 15ms, application-code: 54ms)
+ GET / 200 in 58ms (next.js: 12ms, application-code: 46ms)
+ GET / 200 in 86ms (next.js: 17ms, application-code: 70ms)
+ GET / 200 in 98ms (next.js: 27ms, application-code: 70ms)
+ GET / 200 in 90ms (next.js: 19ms, application-code: 71ms)
+ GET / 200 in 71ms (next.js: 14ms, application-code: 57ms)
+✓ Compiled in 10.6s
+ GET / 200 in 182ms (next.js: 49ms, application-code: 134ms)
+✓ Compiled in 2.8s
+✓ Compiled in 420ms
+ GET / 200 in 261ms (next.js: 165ms, application-code: 96ms)
+✓ Compiled in 241ms
+ GET / 200 in 124ms (next.js: 38ms, application-code: 86ms)
+ GET / 200 in 92ms (next.js: 18ms, application-code: 74ms)
+ GET / 200 in 134ms (next.js: 24ms, application-code: 110ms)
+ GET / 200 in 94ms (next.js: 15ms, application-code: 79ms)
+ GET / 200 in 108ms (next.js: 19ms, application-code: 89ms)
+✓ Compiled in 8.4s
+✓ Compiled in 3.1s
+✓ Compiled in 610ms
+✓ Compiled in 218ms
+ GET / 200 in 126ms (next.js: 59ms, application-code: 67ms)
+ GET /api/auth/session 200 in 1653ms (next.js: 622ms, application-code: 1031ms)
+ GET /api/auth/session 200 in 51ms (next.js: 22ms, application-code: 29ms)
+ GET /api/auth/session 200 in 95ms (next.js: 43ms, application-code: 51ms)
+ GET /admin/programmes 200 in 1188ms (next.js: 809ms, application-code: 379ms)
+ GET /api/admin/programmes 200 in 1046ms (next.js: 553ms, application-code: 493ms)
+ GET /api/admin/programmes 200 in 44ms (next.js: 12ms, application-code: 32ms)
+ GET /admin 200 in 784ms (next.js: 298ms, application-code: 487ms)
+ GET /admin/programmes 200 in 82ms (next.js: 17ms, application-code: 64ms)
+ GET /api/admin/programmes 200 in 54ms (next.js: 9ms, application-code: 45ms)
+ GET /api/admin/programmes 200 in 41ms (next.js: 10ms, application-code: 31ms)
+ GET /admin/events 200 in 558ms (next.js: 339ms, application-code: 219ms)
+ GET /api/admin/events 200 in 343ms (next.js: 241ms, application-code: 101ms)
+ GET /api/admin/events 200 in 47ms (next.js: 17ms, application-code: 30ms)
+ GET /admin/events 200 in 478ms (next.js: 30ms, application-code: 449ms)
+ GET /admin/events 200 in 700ms (next.js: 14ms, application-code: 686ms)
+ GET /api/auth/session 200 in 173ms (next.js: 55ms, application-code: 119ms)
+ GET /api/admin/events 200 in 130ms (next.js: 12ms, application-code: 117ms)
+ GET /api/auth/session 200 in 82ms (next.js: 45ms, application-code: 37ms)
+ GET /api/admin/events 200 in 294ms (next.js: 29ms, application-code: 265ms)
+ GET /admin 200 in 345ms (next.js: 47ms, application-code: 298ms)
+ GET /admin 200 in 159ms (next.js: 10ms, application-code: 148ms)
+ GET /admin 200 in 344ms (next.js: 23ms, application-code: 321ms)
+ GET /api/auth/session 200 in 69ms (next.js: 41ms, application-code: 29ms)
+ GET /api/auth/session 200 in 26ms (next.js: 7ms, application-code: 19ms)
+ GET /api/auth/session 200 in 79ms (next.js: 53ms, application-code: 26ms)
+ GET / 200 in 1619ms (next.js: 727ms, application-code: 892ms)
+ GET /admin 200 in 1921ms (next.js: 1140ms, application-code: 781ms)
+✓ Compiled in 1252ms
+ GET / 200 in 505ms (next.js: 23ms, application-code: 482ms)
+ GET /admin 200 in 597ms (next.js: 53ms, application-code: 544ms)
+ GET /api/auth/session 200 in 128ms (next.js: 74ms, application-code: 54ms)
+ GET /admin/programmes 200 in 227ms (next.js: 146ms, application-code: 81ms)
+ GET /api/admin/programmes 200 in 327ms (next.js: 130ms, application-code: 197ms)
+ GET /api/admin/programmes 200 in 38ms (next.js: 8ms, application-code: 30ms)
+ GET /admin/news 200 in 466ms (next.js: 374ms, application-code: 92ms)
+ GET /api/admin/news 200 in 444ms (next.js: 191ms, application-code: 253ms)
+ GET /api/admin/news 200 in 34ms (next.js: 11ms, application-code: 23ms)
+ GET /api/admin/authors 200 in 486ms (next.js: 317ms, application-code: 169ms)
+ GET /api/admin/authors 200 in 43ms (next.js: 16ms, application-code: 28ms)
+ GET /api/auth/session 200 in 45ms (next.js: 20ms, application-code: 24ms)
+ GET /about 200 in 353ms (next.js: 129ms, application-code: 225ms)
+ GET /programmes 200 in 510ms (next.js: 216ms, application-code: 294ms)
+ GET /impact 200 in 466ms (next.js: 324ms, application-code: 141ms)
+Error [TimeoutError]: The operation was aborted due to timeout
+    at ignore-listed frames {
+  code: 23,
+  INDEX_SIZE_ERR: 1,
+  DOMSTRING_SIZE_ERR: 2,
+  HIERARCHY_REQUEST_ERR: 3,
+  WRONG_DOCUMENT_ERR: 4,
+  INVALID_CHARACTER_ERR: 5,
+  NO_DATA_ALLOWED_ERR: 6,
+  NO_MODIFICATION_ALLOWED_ERR: 7,
+  NOT_FOUND_ERR: 8,
+  NOT_SUPPORTED_ERR: 9,
+  INUSE_ATTRIBUTE_ERR: 10,
+  INVALID_STATE_ERR: 11,
+  SYNTAX_ERR: 12,
+  INVALID_MODIFICATION_ERR: 13,
+  NAMESPACE_ERR: 14,
+  INVALID_ACCESS_ERR: 15,
+  VALIDATION_ERR: 16,
+  TYPE_MISMATCH_ERR: 17,
+  SECURITY_ERR: 18,
+  NETWORK_ERR: 19,
+  ABORT_ERR: 20,
+  URL_MISMATCH_ERR: 21,
+  QUOTA_EXCEEDED_ERR: 22,
+  TIMEOUT_ERR: 23,
+  INVALID_NODE_TYPE_ERR: 24,
+  DATA_CLONE_ERR: 25
+}
+Error [TimeoutError]: The operation was aborted due to timeout
+    at ignore-listed frames {
+  code: 23,
+  INDEX_SIZE_ERR: 1,
+  DOMSTRING_SIZE_ERR: 2,
+  HIERARCHY_REQUEST_ERR: 3,
+  WRONG_DOCUMENT_ERR: 4,
+  INVALID_CHARACTER_ERR: 5,
+  NO_DATA_ALLOWED_ERR: 6,
+  NO_MODIFICATION_ALLOWED_ERR: 7,
+  NOT_FOUND_ERR: 8,
+  NOT_SUPPORTED_ERR: 9,
+  INUSE_ATTRIBUTE_ERR: 10,
+  INVALID_STATE_ERR: 11,
+  SYNTAX_ERR: 12,
+  INVALID_MODIFICATION_ERR: 13,
+  NAMESPACE_ERR: 14,
+  INVALID_ACCESS_ERR: 15,
+  VALIDATION_ERR: 16,
+  TYPE_MISMATCH_ERR: 17,
+  SECURITY_ERR: 18,
+  NETWORK_ERR: 19,
+  ABORT_ERR: 20,
+  URL_MISMATCH_ERR: 21,
+  QUOTA_EXCEEDED_ERR: 22,
+  TIMEOUT_ERR: 23,
+  INVALID_NODE_TYPE_ERR: 24,
+  DATA_CLONE_ERR: 25
+}
+ GET /_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1541963463532-d68292c34b19%3Fq%3D80%26w%3D800%26auto%3Dformat%26fit%3Dcrop&w=640&q=75 500 in 10.9s (next.js: 10.8s, application-code: 127ms)
+ GET /_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1541963463532-d68292c34b19%3Fq%3D80%26w%3D800%26auto%3Dformat%26fit%3Dcrop&w=640&q=75 500 in 10.9s (next.js: 10.8s, application-code: 127ms)
+ GET /_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1591123120675-6f7f1aae0e5b%3Fq%3D80%26w%3D800%26auto%3Dformat%26fit%3Dcrop&w=640&q=75 500 in 10.9s (next.js: 10.9s, application-code: 39ms)
+ GET /_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1591123120675-6f7f1aae0e5b%3Fq%3D80%26w%3D800%26auto%3Dformat%26fit%3Dcrop&w=640&q=75 500 in 10.9s (next.js: 10.9s, application-code: 39ms)
+ GET /resources 200 in 399ms (next.js: 167ms, application-code: 232ms)
+ GET /programmes 200 in 87ms (next.js: 14ms, application-code: 73ms)
+ GET /donate 200 in 213ms (next.js: 121ms, application-code: 93ms)
+ GET /api/public/programmes 200 in 577ms (next.js: 509ms, application-code: 67ms)
+ GET /api/public/programmes 200 in 29ms (next.js: 12ms, application-code: 17ms)
+ GET / 200 in 91ms (next.js: 58ms, application-code: 33ms)
+○ Compiling /what-we-do ...
+ GET /what-we-do 200 in 3.9s (next.js: 3.8s, application-code: 104ms)
+ GET /events 200 in 709ms (next.js: 379ms, application-code: 330ms)
+ GET /news 200 in 380ms (next.js: 161ms, application-code: 219ms)
+⨯ upstream image response timed out for https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1600&auto=format&fit=crop
+ GET /contact 200 in 1851ms (next.js: 1730ms, application-code: 121ms)
+ GET / 200 in 102ms (next.js: 45ms, application-code: 57ms)
+ GET /get-involved 200 in 1846ms (next.js: 1680ms, application-code: 166ms)
+ GET / 200 in 145ms (next.js: 103ms, application-code: 42ms)

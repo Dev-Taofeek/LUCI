@@ -1,6 +1,5 @@
 import "./globals.css";
-import TopNavBar from "@/components/layout/TopNavBar";
-import Footer from "@/components/layout/Footer";
+import SiteChrome from "@/components/layout/SiteChrome";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 
 const cormorant = Cormorant_Garamond({
@@ -19,17 +18,21 @@ const manrope = Manrope({
 
 const siteUrl = "https://luci-pi.vercel.app";
 const siteName = "LUCI — Living Unity Core Initiative";
+
 const siteDescription =
   "Strengthening families, celebrating diversity, and building meaningful relationships for a more united society and nation.";
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
+
   title: {
     default: "LUCI - Building Bridges, One Family at a Time",
     template: "%s | LUCI",
   },
+
   description: siteDescription,
   applicationName: siteName,
+
   keywords: [
     "LUCI",
     "Living Unity Core Initiative",
@@ -38,7 +41,6 @@ export const metadata = {
     "NGO",
   ],
 
-  // Favicon & app icons
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -48,17 +50,25 @@ export const metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
     shortcut: ["/favicon.ico"],
   },
+
   manifest: "/site.webmanifest",
 
-  // Social sharing
   openGraph: {
     type: "website",
     url: siteUrl,
     siteName,
     title: "LUCI - Building Bridges, One Family at a Time",
     description: siteDescription,
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: siteName }],
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: siteName,
+      },
+    ],
   },
+
   twitter: {
     card: "summary_large_image",
     title: "LUCI - Building Bridges, One Family at a Time",
@@ -90,11 +100,8 @@ export default function SiteLayout({ children }) {
         >
           Skip to main content
         </a>
-        <TopNavBar />
-        <main id="main" className="pt-16 lg:pt-20 min-h-screen">
-          {children}
-        </main>
-        <Footer />
+
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );

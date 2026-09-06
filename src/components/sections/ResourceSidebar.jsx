@@ -3,16 +3,16 @@ import { FileText } from "lucide-react";
 import Button from "@/components/ui/Button";
 import NewsletterForm from "@/components/sections/NewsletterForm";
 
-export function ResourceActionCard({ description, fileFormat }) {
+export function ResourceActionCard({ description, fileFormat, href }) {
   return (
     <div className="bg-white border border-border-mid rounded-card p-5 sm:p-6 md:p-8 flex flex-col gap-3">
       <h3 className="text-lg sm:text-xl">Access Resource</h3>
       <p className="text-sm text-muted">{description}</p>
       <Button
         className="w-full justify-center"
-        onClick={() => window.print()}
+        href={href}
       >
-        <FileText size={16} className="shrink-0" /> Download Full Report
+        <FileText size={16} className="shrink-0" /> Download Resource
       </Button>
       <span className="text-sm text-muted text-center">{fileFormat}</span>
     </div>

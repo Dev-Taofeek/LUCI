@@ -4,7 +4,10 @@ packages:
 overrides:
   js-yaml: 4.3.1
 
+strictDepBuilds: false
+
 allowBuilds:
+  '@embedded-postgres/windows-x64': true
   '@prisma/engines': true
   better-sqlite3: true
   esbuild: true

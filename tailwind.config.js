@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
@@ -40,6 +39,7 @@ module.exports = {
 
       boxShadow: {
         card: "0 4px 10px rgba(110, 15, 26, 0.04)",
+        header: "0 1px 2px rgba(16, 8, 6, 0.06)",
       },
     },
   },

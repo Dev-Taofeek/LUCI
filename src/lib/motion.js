@@ -10,11 +10,6 @@ export const fadeInUp = {
   },
 };
 
-export const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.4, ease: "easeOut" } },
-};
-
 export const staggerContainer = {
   hidden: {},
   visible: {

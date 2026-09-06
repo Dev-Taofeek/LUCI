@@ -1,0 +1,50 @@
+﻿node.exe : $ eslint
+At C:\Users\HP\AppData\Roaming\npm\pnpm.ps1:24 char:5
++     & "node$exe"  "$basedir/node_modules/pnpm/bin/pnpm.mjs" $args
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ($ eslint:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+C:\Users\HP\Desktop\Projects\LUCI\src\hooks\useDataLoad.js
+  21:3  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+  19 |
+  20 |   const pickRef = useRef(pick);
+> 21 |   pickRef.current = pick;
+     |   ^^^^^^^^^^^^^^^ Cannot update ref during render
+  22 |   const errorMessageRef = useRef(errorMessage);
+  23 |   errorMessageRef.current = errorMessage;
+  24 |                                                                                                                                                                                                                                                                                                                                          react-hooks/refs
+  23:3  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+  21 |   pickRef.current = pick;
+  22 |   const errorMessageRef = useRef(errorMessage);
+> 23 |   errorMessageRef.current = errorMessage;
+     |   ^^^^^^^^^^^^^^^^^^^^^^^ Cannot update ref during render
+  24 |
+  25 |   useEffect(() => {
+  26 |     if (!url) {                                                                                                                                                                                                                                                                                                                              react-hooks/refs
+  27:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  25 |   useEffect(() => {
+  26 |     if (!url) {
+> 27 |       setLoading(false);
+     |       ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  28 |       return;
+  29 |     }
+  30 |     let cancelled = false;  react-hooks/set-state-in-effect
+
+Γ£û 3 problems (3 errors, 0 warnings)
+
+[ELIFECYCLE] Command failed with exit code 1.

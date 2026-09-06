@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Label, Input, Select } from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
-import { PROGRAMMES } from "@/lib/data/programmes";
 import { cn } from "@/lib/utils";
 
 const PRESET_AMOUNTS = [10, 25, 50, 100];
@@ -13,10 +12,27 @@ export default function DonationForm() {
   const [customAmount, setCustomAmount] = useState("");
   const [frequency, setFrequency] = useState("ONE_TIME");
   const [designation, setDesignation] = useState("General Fund");
+  const [programmes, setProgrammes] = useState([]);
   const [donorName, setDonorName] = useState("");
   const [donorEmail, setDonorEmail] = useState("");
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch("/api/public/programmes");
+        const data = await res.json();
+        if (!cancelled) setProgrammes(data.programmes || []);
+      } catch {
+        // keep designation list empty; General Fund is always available
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const parsedCustom = Number(customAmount);
   const customInvalid =
@@ -123,7 +139,7 @@ export default function DonationForm() {
             onChange={(e) => setDesignation(e.target.value)}
           >
             <option>General Fund</option>
-            {PROGRAMMES.map((p) => (
+            {programmes.map((p) => (
               <option key={p.slug}>{p.title}</option>
             ))}
           </Select>

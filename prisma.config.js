@@ -1,13 +1,14 @@
 import { defineConfig } from "prisma/config";
 
 export default defineConfig({
-  schema: "prisma/schema.prisma",
+  schema: "src/prisma/schema.prisma",
 
   migrations: {
-    path: "prisma/migrations",
+    path: "src/prisma/migrations",
+    seed: "node src/prisma/seed.js",
   },
 
   datasource: {
-    url: "file:./dev.db",
+    url: process.env.DATABASE_URL ?? "postgresql://postgres:postgres@localhost:5432/luci",
   },
 });

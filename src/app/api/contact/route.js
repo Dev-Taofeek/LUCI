@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { isEmail } from "@/lib/validations";
 
 export async function POST(req) {
   const { fullName, email, subject, message } = await req.json();
@@ -10,6 +11,9 @@ export async function POST(req) {
       { status: 400 }
     );
   }
+  if (!isEmail(email)) {
+    return NextResponse.json({ error: "Please provide a valid email address." }, { status: 400 });
+  }
 
   try {
     const submission = await prisma.contactSubmission.create({
@@ -17,6 +21,7 @@ export async function POST(req) {
     });
     return NextResponse.json({ submission }, { status: 201 });
   } catch (err) {
+    console.error("POST contact failed:", err);
     return NextResponse.json({ error: "Something went wrong." }, { status: 500 });
   }
 }
