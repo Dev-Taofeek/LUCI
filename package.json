@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "postinstall": "prisma generate --config src/prisma/prisma.config.ts",
+    "postinstall": "prisma generate",
     "db:start": "node scripts/dev-db.mjs start",
     "db:status": "node scripts/dev-db.mjs status",
     "db:stop": "node scripts/dev-db.mjs stop",
