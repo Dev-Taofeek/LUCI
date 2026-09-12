@@ -5,7 +5,7 @@ import { ShieldAlert, X, Save, Loader2, EyeOff } from "lucide-react";
 import { Select } from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 import DataTable from "@/components/admin/DataTable";
-import { StatusPill } from "@/components/admin/AdminUI";
+import { AdminLoading, StatusPill } from "@/components/admin/AdminUI";
 import { formatDate } from "@/lib/format";
 import { SAFEGUARDING_STATUSES } from "@/lib/constants";
 import useDataLoad from "@/hooks/useDataLoad";
@@ -99,9 +99,7 @@ export default function AdminSafeguardingPage() {
 
       {error && <p className="text-sm text-maroon-deep">{error}</p>}
 
-      {loading ? (
-        <p className="text-muted">Loading...</p>
-      ) : (
+      {loading ? <AdminLoading label="Loading reports" /> : (
         <>
           <p className="text-sm text-muted">
             {reports.length} report{reports.length === 1 ? "" : "s"}

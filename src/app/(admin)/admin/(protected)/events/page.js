@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Plus, Pencil, Trash2, Users } from "lucide-react";
 import Button from "@/components/ui/Button";
 import DataTable from "@/components/admin/DataTable";
+import { AdminLoading } from "@/components/admin/AdminUI";
 import EventFormDrawer from "@/components/admin/EventFormDrawer";
 import { formatDate } from "@/lib/format";
 import useDataLoad from "@/hooks/useDataLoad";
@@ -79,9 +80,7 @@ export default function AdminEventsPage() {
 
       {error && <p className="text-sm text-maroon-deep">{error}</p>}
 
-      {loading ? (
-        <p className="text-muted">Loading...</p>
-      ) : (
+      {loading ? <AdminLoading label="Loading events" /> : (
         <DataTable columns={columns} rows={events} emptyMessage="No events yet. Create your first one." />
       )}
 

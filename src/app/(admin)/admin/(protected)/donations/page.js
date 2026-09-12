@@ -4,7 +4,7 @@ import { useState } from "react";
 import { RefreshCw } from "lucide-react";
 import { Select } from "@/components/ui/Input";
 import DataTable from "@/components/admin/DataTable";
-import { StatusPill } from "@/components/admin/AdminUI";
+import { AdminLoading, StatusPill } from "@/components/admin/AdminUI";
 import { formatDate } from "@/lib/format";
 import useDataLoad from "@/hooks/useDataLoad";
 
@@ -94,9 +94,7 @@ export default function AdminDonationsPage() {
 
       {error && <p className="text-sm text-maroon-deep">{error}</p>}
 
-      {loading ? (
-        <p className="text-muted">Loading...</p>
-      ) : (
+      {loading ? <AdminLoading label="Loading donations" /> : (
         <>
           <p className="text-sm text-muted">
             {donations.length} donation{donations.length === 1 ? "" : "s"}

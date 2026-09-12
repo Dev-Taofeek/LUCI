@@ -48,3 +48,40 @@ export function StatusPill({ status }) {
     </span>
   );
 }
+
+export function AdminLoading({ label = "Loading" }) {
+  return (
+    <div
+      role="status"
+      aria-live="polite"
+      className="flex flex-col items-center justify-center py-16 sm:py-20"
+    >
+      <div className="relative size-12 sm:size-14">
+        <span className="absolute -inset-2.5 rounded-full border border-maroon-deep/10" />
+        <span
+          className="absolute -inset-2.5 rounded-full border-2 border-transparent border-t-gold animate-spin"
+          style={{ animationDuration: "2.4s", animationDirection: "reverse" }}
+        />
+        <span className="absolute inset-0 rounded-full border-2 border-border-light border-t-maroon-deep animate-spin" />
+        <span className="absolute inset-0 m-auto size-2 rounded-full bg-maroon-deep" />
+      </div>
+      <p className="mt-5 flex items-center gap-2 text-sm font-medium text-muted">
+        <span>{label}</span>
+        <span className="inline-flex items-center gap-0.5" aria-hidden="true">
+          <span
+            className="size-1 rounded-full bg-maroon-deep/70 animate-bounce"
+            style={{ animationDelay: "0s" }}
+          />
+          <span
+            className="size-1 rounded-full bg-maroon-deep/70 animate-bounce"
+            style={{ animationDelay: "0.15s" }}
+          />
+          <span
+            className="size-1 rounded-full bg-maroon-deep/70 animate-bounce"
+            style={{ animationDelay: "0.3s" }}
+          />
+        </span>
+      </p>
+    </div>
+  );
+}

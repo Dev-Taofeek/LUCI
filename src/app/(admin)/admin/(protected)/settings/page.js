@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Plus, Pencil, Trash2, ShieldCheck } from "lucide-react";
 import Button from "@/components/ui/Button";
 import DataTable from "@/components/admin/DataTable";
+import { AdminLoading } from "@/components/admin/AdminUI";
 import UserFormDrawer from "@/components/admin/UserFormDrawer";
 import { formatDate } from "@/lib/format";
 import { ROLE_LABELS } from "@/lib/constants";
@@ -112,9 +113,7 @@ export default function AdminSettingsPage() {
 
       {error && <p className="text-sm text-maroon-deep">{error}</p>}
 
-      {loading ? (
-        <p className="text-muted">Loading...</p>
-      ) : (
+      {loading ? <AdminLoading label="Loading users" /> : (
         <DataTable columns={columns} rows={users} emptyMessage="No users yet." />
       )}
 

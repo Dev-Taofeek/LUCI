@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Plus, Pencil, Trash2 } from "lucide-react";
 import Button from "@/components/ui/Button";
 import DataTable from "@/components/admin/DataTable";
-import { StatusPill } from "@/components/admin/AdminUI";
+import { AdminLoading, StatusPill } from "@/components/admin/AdminUI";
 import ProgrammeFormDrawer from "@/components/admin/ProgrammeFormDrawer";
 import useDataLoad from "@/hooks/useDataLoad";
 import { useConfirm } from "@/components/admin/ConfirmProvider";
@@ -71,9 +71,7 @@ export default function AdminProgrammesPage() {
 
       {error && <p className="text-sm text-maroon-deep">{error}</p>}
 
-      {loading ? (
-        <p className="text-muted">Loading...</p>
-      ) : (
+      {loading ? <AdminLoading label="Loading programmes" /> : (
         <DataTable columns={columns} rows={programmes} emptyMessage="No programmes yet. Create your first one." />
       )}
 

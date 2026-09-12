@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Plus, Pencil, Trash2 } from "lucide-react";
 import Button from "@/components/ui/Button";
 import DataTable from "@/components/admin/DataTable";
-import { StatusPill } from "@/components/admin/AdminUI";
+import { AdminLoading, StatusPill } from "@/components/admin/AdminUI";
 import ArticleFormDrawer from "@/components/admin/ArticleFormDrawer";
 import { formatDate } from "@/lib/format";
 import useDataLoad from "@/hooks/useDataLoad";
@@ -90,9 +90,7 @@ export default function AdminNewsPage() {
 
       {error && <p className="text-sm text-maroon-deep">{error}</p>}
 
-      {loading ? (
-        <p className="text-muted">Loading...</p>
-      ) : (
+      {loading ? <AdminLoading label="Loading articles" /> : (
         <DataTable columns={columns} rows={articles} emptyMessage="No articles yet. Write your first one." />
       )}
 

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Inbox, Trash2, Loader2 } from "lucide-react";
 import { Select } from "@/components/ui/Input";
-import { StatusPill } from "@/components/admin/AdminUI";
+import { AdminLoading, StatusPill } from "@/components/admin/AdminUI";
 import { cn } from "@/lib/utils";
 import { formatDate } from "@/lib/format";
 import { useConfirm } from "@/components/admin/ConfirmProvider";
@@ -212,7 +212,7 @@ export default function AdminPeoplePage() {
       {error && <p className="text-sm text-maroon-deep">{error}</p>}
 
       {loading ? (
-        <p className="text-muted">Loading...</p>
+        <AdminLoading label="Loading people" />
       ) : rows.length === 0 ? (
         <div className="bg-white border border-border-light rounded-card p-10 text-center">
           <Inbox size={32} strokeWidth={1.5} className="mx-auto text-border-mid mb-3" />
