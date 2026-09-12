@@ -58,7 +58,22 @@
   :focus-visible {
     outline: 2px solid var(--color-maroon);
     outline-offset: 2px;
-    border-radius: 2px;
+  }
+}
+
+@layer components {
+  /* Consistent admin page headings. Class selectors out-rank the h1/h2
+     element rules in @layer base, so admin pages stay compact and tidy. */
+  .admin-h1 {
+    @apply text-[28px] font-display font-semibold leading-tight text-charcoal;
+  }
+
+  .admin-h2 {
+    @apply text-xl font-display font-semibold leading-snug text-charcoal;
+  }
+
+  .admin-subtitle {
+    @apply text-sm text-muted;
   }
 }
 

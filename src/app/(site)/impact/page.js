@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
+import PageHero from "@/components/ui/PageHero";
 import { HeroStatCard, StatCard } from "@/components/sections/StatBentoGrid";
 import GeoFootprintMap from "@/components/sections/GeoFootprintMap";
 import { AllocationList, AllocationRadarChart } from "@/components/sections/ImpactAllocation";
@@ -14,40 +15,24 @@ export default function ImpactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-maroon-deep py-14 sm:py-16 md:py-20 flex justify-center">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-          className="relative z-10 container-luci flex flex-col items-center text-center gap-4 sm:gap-6 max-w-2xl"
-        >
-          <motion.span
-            variants={fadeInUp}
-            className="bg-gold/10 border border-gold/25 text-white text-xs sm:text-sm tracking-[0.05em] rounded-control px-4 sm:px-6 py-1.5 sm:py-2"
-          >
-            OUR IMPACT
-          </motion.span>
-          <motion.h1
-            variants={fadeInUp}
-            className="text-white text-2xl sm:text-3xl md:text-4xl leading-tight"
-          >
+      <PageHero
+        tone="dark"
+        eyebrow="Our Impact"
+        title={
+          <>
             Our Ripple Effect of Care:{" "}
             <span className="text-gold">Measuring Real Change.</span>
-          </motion.h1>
-          <motion.p variants={fadeInUp} className="text-white/90 text-sm sm:text-base">
-            Transparency, accountability, and real human stories. Explore how
-            our initiatives are transforming lives and strengthening
-            communities across regions.
-          </motion.p>
-          <motion.a
-            variants={fadeInUp}
-            href="#allocation"
-            className="flex items-center gap-2 text-warm-white pt-2 hover:text-gold transition-colors"
-          >
-            Explore the data <ArrowRight size={16} />
-          </motion.a>
-        </motion.div>
-      </section>
+          </>
+        }
+        subtitle="Transparency, accountability, and real human stories. Explore how our initiatives are transforming lives and strengthening communities across regions."
+      >
+        <a
+          href="#allocation"
+          className="flex items-center gap-2 pt-1 text-sm font-semibold text-warm-white transition-colors hover:text-gold"
+        >
+          Explore the data <ArrowRight size={16} />
+        </a>
+      </PageHero>
 
       {/* Impact Statistics Bento Grid */}
       <section className="bg-white section-padding">

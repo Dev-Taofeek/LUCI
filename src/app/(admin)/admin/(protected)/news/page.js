@@ -80,7 +80,7 @@ export default function AdminNewsPage() {
     <div className="flex flex-col gap-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="!text-[28px]">News &amp; Insights</h1>
+          <h1 className="admin-h1">News &amp; Insights</h1>
           <p>Draft and publish articles for the public newsroom.</p>
         </div>
         <Button as="button" variant="primary" onClick={() => setEditing({})} className="flex items-center gap-2">

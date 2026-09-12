@@ -40,7 +40,7 @@ export default async function AdminDashboardPage() {
   return (
     <div className="flex flex-col gap-8">
       <div>
-        <h1 className="!text-[28px]">Dashboard</h1>
+        <h1 className="admin-h1">Dashboard</h1>
         <p>Overview of LUCI&apos;s programmes, engagement, and giving.</p>
       </div>
 
@@ -61,7 +61,7 @@ export default async function AdminDashboardPage() {
       </div>
 
       <div className="bg-white border border-border-light rounded-[12px] p-6">
-        <h2 className="!text-[20px] mb-4">Recent Donations</h2>
+        <h2 className="admin-h2 mb-4">Recent Donations</h2>
         {recentDonations.length === 0 ? (
           <p className="text-muted">No donations recorded yet.</p>
         ) : (

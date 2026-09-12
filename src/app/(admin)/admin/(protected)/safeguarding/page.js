@@ -93,7 +93,7 @@ export default function AdminSafeguardingPage() {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h1 className="!text-[28px]">Safeguarding</h1>
+        <h1 className="admin-h1">Safeguarding</h1>
         <p>Restricted — reports are only visible to Safeguarding Officers and Super Admins.</p>
       </div>
 

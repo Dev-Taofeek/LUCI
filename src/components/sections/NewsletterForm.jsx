@@ -5,8 +5,7 @@ import { cn } from "@/lib/utils";
 
 /**
  * Email capture form used across the site. Subscribes to `POST {endpoint}`
- * with `{ email }`; shows a success note only when the request succeeds so the
- * component stays honest until the subscription API is wired up.
+ * with `{ email }` and shows a success note only when the request succeeds.
  * `className` styles the layout wrapper (field + button).
  */
 export default function NewsletterForm({
@@ -66,6 +65,11 @@ export default function NewsletterForm({
           {status === "submitting" ? "Subscribing…" : "Subscribe"}
         </button>
       </div>
+      {status === "error" && (
+        <p role="alert" className="mt-2 text-sm font-medium text-danger">
+          Couldn&apos;t subscribe right now — please try again.
+        </p>
+      )}
     </form>
   );
 }

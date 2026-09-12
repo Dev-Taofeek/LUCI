@@ -22,7 +22,7 @@ export default function ConfirmDialog({
         className="w-full max-w-sm rounded-lg bg-white p-6 shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 className="text-lg font-semibold text-ink">{title}</h2>
+        <h2 className="text-lg font-semibold text-charcoal">{title}</h2>
         {message && <p className="mt-2 text-sm text-muted">{message}</p>}
         <div className="mt-6 flex justify-end gap-3">
           <Button as="button" variant="secondary" onClick={onCancel}>

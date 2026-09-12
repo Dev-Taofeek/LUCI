@@ -15,6 +15,7 @@ const variants = {
   outlineOnDark: "border border-white text-white bg-transparent hover:bg-white/10",
   lightSolid: "bg-warm-white text-maroon-deep hover:bg-white",
   accentWhite: "bg-gold text-charcoal hover:bg-white hover:text-maroon-deep",
+  danger: "bg-danger text-white hover:bg-maroon-dark",
 };
 
 function isExternal(href) {

@@ -69,7 +69,7 @@ export default function AdminEventsPage() {
     <div className="flex flex-col gap-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="!text-[28px]">Events</h1>
+          <h1 className="admin-h1">Events</h1>
           <p>Manage events and their public registration pages.</p>
         </div>
         <Button as="button" variant="primary" onClick={() => setEditing({})} className="flex items-center gap-2">

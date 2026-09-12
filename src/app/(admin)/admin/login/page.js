@@ -42,7 +42,7 @@ export default function AdminLoginPage() {
           <span className="bg-maroon-deep/10 rounded-full size-12 flex items-center justify-center">
             <Lock size={20} className="text-maroon-deep" />
           </span>
-          <h1 className="!text-[28px]">LUCI Admin</h1>
+          <h1 className="admin-h1">LUCI Admin</h1>
           <p className="text-sm">Sign in to manage the site.</p>
         </div>
 

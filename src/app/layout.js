@@ -61,7 +61,7 @@ export const metadata = {
     description: siteDescription,
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/h-hero.webp",
         width: 1200,
         height: 630,
         alt: siteName,
@@ -73,7 +73,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "LUCI - Building Bridges, One Family at a Time",
     description: siteDescription,
-    images: ["/og-image.jpg"],
+    images: ["/h-hero.webp"],
   },
 
   robots: {

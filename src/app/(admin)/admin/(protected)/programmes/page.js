@@ -61,7 +61,7 @@ export default function AdminProgrammesPage() {
     <div className="flex flex-col gap-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="!text-[28px]">Programmes</h1>
+          <h1 className="admin-h1">Programmes</h1>
           <p>Manage the programmes shown on the public site.</p>
         </div>
         <Button as="button" variant="primary" onClick={() => setEditing({})} className="flex items-center gap-2">

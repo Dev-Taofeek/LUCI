@@ -4,10 +4,11 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HeartHandshake, Users, Handshake, DollarSign } from "lucide-react";
 import Button from "@/components/ui/Button";
+import PageHero from "@/components/ui/PageHero";
 import ParticipationSection from "@/components/sections/ParticipationSection";
 import ParticipationForm from "@/components/sections/ParticipationForm";
 import NeededSkillsSection from "@/components/sections/NeededSkillsSection";
-import { fadeInUp, staggerContainer, tabContentTransition } from "@/lib/motion";
+import { tabContentTransition } from "@/lib/motion";
 
 const TABS = ["Volunteer", "Membership", "Partnership", "Needed Skills"];
 
@@ -39,46 +40,26 @@ export default function GetInvolvedPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-maroon-deep min-h-[380px] sm:min-h-[440px] md:min-h-[480px] flex items-center justify-center py-16 sm:py-20 md:py-24">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-          className="container-luci max-w-2xl flex flex-col items-center text-center gap-4 sm:gap-6"
+      <PageHero
+        tone="dark"
+        title="Join the Movement of Care"
+        subtitle="Whether you are an individual looking to volunteer your time, a professional seeking to join our membership, or an organization wanting to partner for greater impact, there is a place for you in the Love, Unity, and Care Initiative."
+      >
+        <Button
+          variant="accent"
+          onClick={() => setActiveTab("Volunteer")}
+          className="cursor-pointer w-full sm:w-auto"
         >
-          <motion.h1
-            variants={fadeInUp}
-            className="text-white text-3xl sm:text-4xl md:text-5xl leading-tight"
-          >
-            Join the Movement of Care
-          </motion.h1>
-          <motion.p variants={fadeInUp} className="text-white text-sm sm:text-base">
-            Whether you are an individual looking to volunteer your time, a
-            professional seeking to join our membership, or an organization
-            wanting to partner for greater impact, there is a place for you
-            in the Love, Unity, and Care Initiative.
-          </motion.p>
-          <motion.div
-            variants={fadeInUp}
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 w-full sm:w-auto"
-          >
-            <Button
-              variant="accent"
-              onClick={() => setActiveTab("Volunteer")}
-              className="cursor-pointer w-full sm:w-auto"
-            >
-              Volunteer Now
-            </Button>
-            <Button
-              variant="accentOutline"
-              onClick={() => setActiveTab("Partnership")}
-              className="cursor-pointer w-full sm:w-auto"
-            >
-              Partner With Us
-            </Button>
-          </motion.div>
-        </motion.div>
-      </section>
+          Volunteer Now
+        </Button>
+        <Button
+          variant="accentOutline"
+          onClick={() => setActiveTab("Partnership")}
+          className="cursor-pointer w-full sm:w-auto"
+        >
+          Partner With Us
+        </Button>
+      </PageHero>
 
       {/* Tab nav */}
       <nav

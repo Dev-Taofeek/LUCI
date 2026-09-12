@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { RefreshCw } from "lucide-react";
 import { Select } from "@/components/ui/Input";
 import DataTable from "@/components/admin/DataTable";
 import { StatusPill } from "@/components/admin/AdminUI";
 import { formatDate } from "@/lib/format";
+import useDataLoad from "@/hooks/useDataLoad";
 
 const CURRENCY_SYMBOLS = { NGN: "₦", USD: "$", GBP: "£", EUR: "€" };
 
@@ -15,55 +16,21 @@ function fmtAmount(row) {
 }
 
 export default function AdminDonationsPage() {
-  const [donations, setDonations] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
   const [filters, setFilters] = useState({ status: "ALL", frequency: "ALL" });
   const [refreshing, setRefreshing] = useState(false);
 
-  async function load(next = filters) {
-    setLoading(true);
-    setError("");
-    try {
-      const qs = new URLSearchParams(
-        Object.entries(next).filter(([, v]) => v && v !== "ALL")
-      ).toString();
-      const res = await fetch(`/api/admin/donations?${qs}`);
-      const data = await res.json();
-      setDonations(data.donations || []);
-    } catch {
-      setError("Could not load donations.");
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      try {
-        const res = await fetch("/api/admin/donations");
-        const data = await res.json();
-        if (!cancelled) {
-          setDonations(data.donations || []);
-          setLoading(false);
-        }
-      } catch {
-        if (!cancelled) {
-          setError("Could not load donations.");
-          setLoading(false);
-        }
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  const qs = new URLSearchParams(
+    Object.entries(filters).filter(([, v]) => v && v !== "ALL")
+  ).toString();
+  const url = `/api/admin/donations${qs ? `?${qs}` : ""}`;
+  const { data: donations, loading, error, reload } = useDataLoad(
+    url,
+    (json) => json.donations || [],
+    "Could not load donations."
+  );
 
   function applyFilter(key, value) {
-    const next = { ...filters, [key]: value };
-    setFilters(next);
-    load(next);
+    setFilters((prev) => ({ ...prev, [key]: value }));
   }
 
   const columns = [
@@ -89,13 +56,13 @@ export default function AdminDonationsPage() {
     <div className="flex flex-col gap-6">
       <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:justify-between">
         <div>
-          <h1 className="!text-[28px]">Donations</h1>
+          <h1 className="admin-h1">Donations</h1>
           <p>Monitor and filter incoming donor contributions.</p>
         </div>
         <button
           onClick={() => {
             setRefreshing(true);
-            load().finally(() => setRefreshing(false));
+            reload().finally(() => setRefreshing(false));
           }}
           disabled={refreshing}
           className="inline-flex items-center justify-center gap-2 self-start sm:self-auto text-sm font-semibold text-maroon-deep border border-maroon-deep/30 rounded-control px-4 py-2 hover:bg-maroon-deep/5 disabled:opacity-50"

@@ -1,8 +1,7 @@
 "use client";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { ShieldCheck, HeartHandshake } from "lucide-react";
-import { fadeInUp, staggerContainer } from "@/lib/motion";
+import PageHero from "@/components/ui/PageHero";
 import DonationForm from "@/components/sections/DonationForm";
 
 const IMPACT_STATS = [
@@ -15,32 +14,13 @@ export default function DonatePage() {
   return (
     <div className="pb-12 sm:pb-16 md:pb-20">
       {/* Hero */}
-      <section className="w-full bg-maroon-deep py-12 sm:py-16 md:py-20 flex justify-center">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-          className="container-luci flex flex-col items-center text-center gap-4 sm:gap-6 max-w-2xl"
-        >
-          <motion.span
-            variants={fadeInUp}
-            className="bg-gold/10 border border-gold/20 text-white text-xs sm:text-sm font-semibold btn-tracking rounded-control px-4 sm:px-6 py-1.5 sm:py-2 flex items-center gap-2"
-          >
-            <HeartHandshake size={16} className="shrink-0" /> Support LUCI
-          </motion.span>
-          <motion.h1
-            variants={fadeInUp}
-            className="text-white text-3xl sm:text-4xl md:text-5xl leading-tight"
-          >
-            Your Gift Builds Bridges
-          </motion.h1>
-          <motion.p variants={fadeInUp} className="text-white/90 text-sm sm:text-base">
-            Every donation directly funds our family development, community,
-            and youth programmes. Choose a one-time gift or become a monthly
-            supporter of our mission.
-          </motion.p>
-        </motion.div>
-      </section>
+      <PageHero
+        tone="dark"
+        eyebrow="Support LUCI"
+        icon={<HeartHandshake size={16} />}
+        title="Your Gift Builds Bridges"
+        subtitle="Every donation directly funds our family development, community, and youth programmes. Choose a one-time gift or become a monthly supporter of our mission."
+      />
 
       {/* Form + impact context */}
       <section className="container-luci py-10 sm:py-14 md:py-20 grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10 md:gap-12">

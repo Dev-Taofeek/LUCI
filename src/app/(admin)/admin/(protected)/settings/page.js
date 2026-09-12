@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { Plus, Pencil, Trash2, ShieldCheck } from "lucide-react";
 import Button from "@/components/ui/Button";
 import DataTable from "@/components/admin/DataTable";
-import { StatusPill } from "@/components/admin/AdminUI";
 import UserFormDrawer from "@/components/admin/UserFormDrawer";
 import { formatDate } from "@/lib/format";
 import { ROLE_LABELS } from "@/lib/constants";
@@ -69,8 +68,9 @@ export default function AdminSettingsPage() {
       label: "Role",
       render: (row) => (
         <span className="inline-flex items-center gap-2">
-          <StatusPill status={rolePillStatus(row.role)} />
-          <span className="text-xs text-muted">{ROLE_LABELS[row.role] || row.role}</span>
+          <span className="rounded-full bg-maroon-deep/10 px-2.5 py-1 text-xs font-semibold text-maroon-deep">
+            {ROLE_LABELS[row.role] || row.role}
+          </span>
         </span>
       ),
     },
@@ -100,7 +100,7 @@ export default function AdminSettingsPage() {
     <div className="flex flex-col gap-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="!text-[28px] flex items-center gap-2">
+          <h1 className="admin-h1 flex items-center gap-2">
             <ShieldCheck size={22} className="text-maroon-deep" /> Settings
           </h1>
           <p>Manage admin accounts and roles (Super Admin only).</p>
@@ -130,11 +130,4 @@ export default function AdminSettingsPage() {
       )}
     </div>
   );
-}
-
-function rolePillStatus(role) {
-  if (role === "SUPER_ADMIN") return "RESOLVED";
-  if (role === "ADMIN") return "CONTACTED";
-  if (role === "SAFEGUARDING_OFFICER") return "REVIEWED";
-  return "NEW";
 }

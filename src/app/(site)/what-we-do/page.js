@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Ear, Lightbulb, Link2, Users2, Rocket, BarChart3 } from "lucide-react";
 import FocusArea from "@/components/sections/FocusArea";
 import StrategyStep from "@/components/sections/StrategyStep";
+import PageHero from "@/components/ui/PageHero";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 
 const FOCUS_AREAS = [
@@ -45,22 +46,10 @@ export default function WhatWeDoPage() {
   return (
     <>
       {/* Hero */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        animate="visible"
-        className="container-luci py-10 sm:py-14 lg:py-16 flex flex-col items-center gap-4 sm:gap-6 text-center"
-      >
-        <motion.h1 variants={fadeInUp} className="text-3xl sm:text-4xl md:text-5xl leading-tight">
-          Our Focus Areas
-        </motion.h1>
-        <motion.p variants={fadeInUp} className="text-sm sm:text-base max-w-xl sm:max-w-3xl">
-          Driving social change through relational bridge building. We
-          believe that by strengthening families and fostering unity within
-          communities, we can create a sustainable foundation for holistic
-          development across the region.
-        </motion.p>
-      </motion.section>
+      <PageHero
+        title="Our Focus Areas"
+        subtitle="Driving social change through relational bridge building. We believe that by strengthening families and fostering unity within communities, we can create a sustainable foundation for holistic development across the region."
+      />
 
       {/* Focus Areas */}
       <div className="flex flex-col gap-12 sm:gap-16 lg:gap-20 pb-12 sm:pb-16 lg:pb-20">

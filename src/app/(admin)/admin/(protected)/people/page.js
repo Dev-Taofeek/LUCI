@@ -75,24 +75,28 @@ export default function AdminPeoplePage() {
   const [savingId, setSavingId] = useState(null);
   const [error, setError] = useState("");
 
+  async function fetchAll() {
+    const entries = await Promise.all(
+      TABS.map(async (tab) => {
+        const res = await fetch(tab.endpoint);
+        const json = await res.json();
+        return { key: tab.key, list: json[tab.key] || [] };
+      })
+    );
+    const results = {};
+    const nextCounts = {};
+    for (const { key, list } of entries) {
+      results[key] = list;
+      nextCounts[key] = list.length;
+    }
+    return { results, nextCounts };
+  }
+
   async function loadAll() {
     setLoading(true);
     setError("");
     try {
-      const entries = await Promise.all(
-        TABS.map(async (tab) => {
-          const res = await fetch(tab.endpoint);
-          const json = await res.json();
-          const list = json[tab.key] || [];
-          return { key: tab.key, list };
-        })
-      );
-      const results = {};
-      const nextCounts = {};
-      for (const { key, list } of entries) {
-        results[key] = list;
-        nextCounts[key] = list.length;
-      }
+      const { results, nextCounts } = await fetchAll();
       setData(results);
       setCounts(nextCounts);
     } catch {
@@ -106,30 +110,15 @@ export default function AdminPeoplePage() {
     let cancelled = false;
     (async () => {
       try {
-        const entries = await Promise.all(
-          TABS.map(async (tab) => {
-            const res = await fetch(tab.endpoint);
-            const json = await res.json();
-            const list = json[tab.key] || [];
-            return { key: tab.key, list };
-          })
-        );
-        const results = {};
-        const nextCounts = {};
-        for (const { key, list } of entries) {
-          results[key] = list;
-          nextCounts[key] = list.length;
-        }
+        const { results, nextCounts } = await fetchAll();
         if (!cancelled) {
           setData(results);
           setCounts(nextCounts);
-          setLoading(false);
         }
       } catch {
-        if (!cancelled) {
-          setError("Could not load people records.");
-          setLoading(false);
-        }
+        if (!cancelled) setError("Could not load people records.");
+      } finally {
+        if (!cancelled) setLoading(false);
       }
     })();
     return () => {
@@ -184,7 +173,7 @@ export default function AdminPeoplePage() {
     <div className="flex flex-col gap-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="!text-[28px]">People</h1>
+          <h1 className="admin-h1">People</h1>
           <p>Volunteers, members, partners, and contact inbox.</p>
         </div>
       </div>

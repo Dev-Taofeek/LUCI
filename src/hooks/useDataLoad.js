@@ -22,9 +22,10 @@ export default function useDataLoad(url, pick, errorMessage = "Could not load da
   useEffect(() => {
     pickRef.current = pick;
     errorMessageRef.current = errorMessage;
-  });
+  }, [pick, errorMessage]);
 
   useEffect(() => {
+    if (!url) return;
     let cancelled = false;
     (async () => {
       try {
