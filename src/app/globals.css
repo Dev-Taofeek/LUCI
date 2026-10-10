@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    font-size: 18px;
+  }
+
   :root {
     color-scheme: light;
     --color-maroon: #841818;
