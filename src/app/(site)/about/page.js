@@ -31,24 +31,12 @@ export default function AboutPage() {
   return (
     <>
       {/* 1. Who We Are — split hero (text left, image right) */}
-      <section className="relative overflow-hidden">
-        {/* Hero background — LUCI logo */}
-        <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-          <Image
-            src="/luci-logo.png"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-contain object-center opacity-30 scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-warm-white via-warm-white/90 to-warm-white/55" />
-        </div>
-
+      <section className="container-luci py-10 sm:py-14 lg:py-16">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="container-luci relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center py-10 sm:py-14 lg:py-16"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center"
         >
           <motion.div variants={fadeInUp} className="flex flex-col gap-4 sm:gap-6 order-2 md:order-1">
             <h1 className="text-3xl sm:text-4xl md:text-5xl leading-tight">
@@ -75,15 +63,16 @@ export default function AboutPage() {
 
           <motion.div
             variants={fadeInUp}
-            className="relative h-[260px] sm:h-[360px] md:h-[420px] lg:h-[500px] w-full rounded-card overflow-hidden order-1 md:order-2 bg-white border border-border-light"
+            className="relative h-[260px] sm:h-[360px] md:h-[420px] lg:h-[500px] w-full rounded-card overflow-hidden order-1 md:order-2"
           >
             <Image
               src={ABOUT_IMAGE}
-              alt="LUCI — The Bridge Building Family Organization emblem"
+              alt="LUCI community"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-contain p-3 sm:p-5"
+              className="object-cover"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-maroon-deep/40 to-transparent" />
           </motion.div>
         </motion.div>
       </section>
