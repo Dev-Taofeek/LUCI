@@ -9,7 +9,7 @@ import { fadeInUp, staggerContainer } from "@/lib/motion";
 import TeamMemberCard from "@/components/sections/TeamMemberCard";
 import CorporateCatalystsCarousel from "@/components/sections/CorporateCatalystsCarousel";
 
-const ABOUT_IMAGE = "/luci-logo.jpg";
+const ABOUT_IMAGE = "/luci-cover.jpg";
 
 const STEPS = [
   { icon: <Users size={24} />, label: "Family", state: "active" },
