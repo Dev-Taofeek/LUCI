@@ -8,7 +8,7 @@ import ProgressStep from "@/components/sections/ProgressStep";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import TeamMemberCard from "@/components/sections/TeamMemberCard";
 
-const ABOUT_IMAGE = "/a-hero.webp";
+const ABOUT_IMAGE = "/hero-about.jpg";
 
 const STEPS = [
   { icon: <Users size={24} />, label: "Family", state: "active" },
@@ -20,22 +20,14 @@ const STEPS = [
 
 const TEAM = [
   {
-    name: "Amina Bello",
-    role: "Founder & Executive Director",
-    bio: "With over 15 years in social development, Amina founded LUCI to bridge gaps in community cohesion.",
-    image:
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    name: "David Ojo",
-    role: "Director of Programmes",
-    bio: "David oversees all grassroots initiatives, ensuring our educational and bridge-building work stays impactful.",
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop",
+    name: "Felix O. Omusi",
+    role: "General Co-ordinator",
+    bio: "General Co-ordinator of LUCI — Living Unity Core Initiative, making \"Beauty in Diversity\" work. Compiler of the LUCI Reflection: \"Unity: The Good News.\"",
+    image: "/team-felix-omusi.jpg",
   },
 ];
 
-const PARTNERS = ["GlobalFund", "GreenEarth", "CareNet", "UN Dev"];
+const PARTNERS = ["Lagos Business School", "Pan-Atlantic University", "University of Navarra", "The Lagoon School", "Whitesands School"];
 
 export default function AboutPage() {
   return (
@@ -55,17 +47,18 @@ export default function AboutPage() {
               {" "}Building Communities.
             </h1>
             <p className="text-sm sm:text-base">
-              The Love, Unity, and Care Initiative (LUCI) is an NGO dedicated
-              to fostering social cohesion through family and community
-              building. We believe that strong, united families are the
-              bedrock of a thriving, inclusive society.
+              The Living Unity Core Initiative (LUCI) is a non-political,
+              non-governmental organization dedicated to promoting and
+              fostering beauty in diversity through family space. We believe
+              that sound families make a sound society, and sound families
+              make a sound nation.
             </p>
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
               <span className="bg-gold-light text-maroon-deep text-xs font-semibold btn-tracking rounded-control px-3 py-1.5">
-                Est. 2010
+                Non-Political
               </span>
               <span className="bg-maroon-deep text-white text-xs font-semibold btn-tracking rounded-control px-3 py-1.5">
-                Global Impact
+                Non-Governmental Organization
               </span>
             </div>
           </motion.div>
@@ -99,14 +92,14 @@ export default function AboutPage() {
             <IconCard
               icon={<Eye className="text-maroon-deep" size={20} />}
               title="Our Vision"
-              description="A world where every community is united, every family is empowered, and diverse individuals coexist peacefully, driving sustainable societal growth."
+              description="So that we might fulfill our duty as leaven — families with a transcendental perspective, seeing beyond the horizon and naturally committing to fostering unity and charity."
             />
           </motion.div>
           <motion.div variants={fadeInUp}>
             <IconCard
               icon={<HeartHandshake className="text-maroon-deep" size={20} />}
               title="Our Mission"
-              description="To build relational bridges by providing resources, education, and support systems that strengthen families and promote inclusive community development."
+              description="Promoting and fostering beauty in diversity through family space to achieve better society and nation: A more perfect union."
               tint="gold"
             />
           </motion.div>
@@ -167,7 +160,7 @@ export default function AboutPage() {
       <section className="bg-white border-t border-border-light py-10 sm:py-12">
         <div className="container-luci flex flex-col gap-6 sm:gap-8 items-center">
           <span className="text-xs sm:text-sm font-semibold text-muted btn-tracking uppercase text-center">
-            Trusted By Our Partners
+            Our Corporate Catalysts
           </span>
           <div className="flex items-center justify-center gap-6 sm:gap-8 md:gap-12 opacity-60 flex-wrap">
             {PARTNERS.map((name) => (
