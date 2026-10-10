@@ -9,7 +9,7 @@ export default function ContactPage() {
       {/* Hero */}
       <PageHero
         title="Get in Touch"
-        subtitle="We're here to listen, collaborate, and support our community. Reach out to us through any of our channels."
+        subtitle="To promote and foster the well-being of the family and the growing of commitment to the building of relational bridges of humanity for a better society and nation."
       />
 
       {/* Bento grid: contact info + map / form */}
