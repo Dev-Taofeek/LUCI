@@ -77,20 +77,6 @@ export default function AboutPage() {
         </motion.div>
       </section>
 
-      {/* Cover image — The Bridge Building Family Organization */}
-      <section className="container-luci pb-10 sm:pb-14 lg:pb-16">
-        <motion.div variants={fadeInUp}>
-          <div className="relative h-64 sm:h-80 md:h-96 w-full rounded-card overflow-hidden">
-            <Image
-              src="/hero-home.jpg"
-              alt="The Bridge Building Family Organization"
-              fill
-              sizes="(max-width: 768px) 100vw, 1280px"
-              className="object-cover"
-            />
-          </div>
-        </motion.div>
-      </section>
 
       {/* Vision & Mission */}
       <section className="bg-white section-padding">
