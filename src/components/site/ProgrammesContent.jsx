@@ -42,9 +42,10 @@ export default function ProgrammesContent({ programmes }) {
             Where Our Mission Becomes Action.
           </motion.h1>
           <motion.p variants={fadeInUp} className="text-sm sm:text-base">
-            Explore the tangible ways we are driving positive change in
-            communities, families, and youth through dedicated projects and
-            unified efforts.
+            Our inspired activities, thus programmes, are rather "cradle to grave" in nature:
+            our activities begin with the family (existing and potential), through to
+            collaborative spirit for common good, and fruiting to stronger families,
+            sound citizenry and deepening patriotic well-being.
           </motion.p>
         </motion.div>
       </section>
