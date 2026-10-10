@@ -43,7 +43,7 @@ export default function GetInvolvedPage() {
       <PageHero
         tone="dark"
         title="Join the Movement of Care"
-        subtitle="Whether you are an individual looking to volunteer your time, a professional seeking to join our membership, or an organization wanting to partner for greater impact, there is a place for you in the Love, Unity, and Care Initiative."
+        subtitle="Whether you are an individual looking to volunteer your time, a professional seeking to join our membership, or an organization wanting to partner for greater impact, there is a place for you in the Living Unity Core Initiative."
       >
         <Button
           variant="accent"
@@ -111,18 +111,18 @@ export default function GetInvolvedPage() {
               <ParticipationSection
                 icon={<HeartHandshake className="text-gold" size={24} />}
                 title="Volunteer With Us"
-                description="Our volunteers are the heartbeat of LUCI. By giving your time and energy, you directly impact lives and help build stronger, more unified communities. Fill out the form below to start your journey with us."
+                description="Our activities begin with the family (existing and potential) and fruit to stronger families, sound citizenry and deepening patriotic well-being. Join our Daily Reach-out Programme, the Unity-Flame Programme, or our robust counselling services. Fill out the form below to start your journey with us."
                 image={VOLUNTEER_IMAGE}
                 form={
                   <ParticipationForm
                     endpoint="/api/get-involved/volunteer"
                     submitLabel="Register as Volunteer"
                     successMessage="We'll be in touch about upcoming volunteer opportunities that match your skills."
-                    skillOptions={["Teaching/Mentoring", "Event Planning", "Healthcare"]}
+                    skillOptions={["Counselling", "Family Enrichment", "Advocacy", "Women's Development", "NYSC Support"]}
                     fields={[
                       { name: "fullName", label: "Full Name", placeholder: "Jane Doe", required: true },
                       { name: "email", label: "Email Address", type: "email", placeholder: "jane@example.com", required: true },
-                      { name: "phone", label: "Phone Number", placeholder: "+1 234 567 8900" },
+                      { name: "phone", label: "Phone Number", placeholder: "+234 802 885 2121" },
                       { name: "location", label: "Location", placeholder: "City, Country" },
                       {
                         name: "message",
@@ -149,7 +149,7 @@ export default function GetInvolvedPage() {
               <ParticipationSection
                 icon={<Users className="text-gold" size={24} />}
                 title="Become a Member"
-                description="LUCI members are professionals and advocates who champion our mission year-round — attending forums, mentoring local leaders, and helping shape our programme direction."
+                description="Membership is open to families and individuals (as potential families) under three routes: Primary Members (PM), Associate Members (AM), and Integral Members (IM) — all being persons who will generously commit their talents, time and treasures to the prompt realization of the vision, mission and aspirations of LUCI."
                 image={MEMBERSHIP_IMAGE}
                 form={
                   <ParticipationForm
@@ -159,7 +159,10 @@ export default function GetInvolvedPage() {
                     fields={[
                       { name: "fullName", label: "Full Name", placeholder: "Jane Doe", required: true },
                       { name: "email", label: "Email Address", type: "email", placeholder: "jane@example.com", required: true },
-                      { name: "phone", label: "Phone Number", placeholder: "+1 234 567 8900" },
+                      { name: "phone", label: "Phone Number", placeholder: "+234 802 885 2121" },
+                      { name: "state", label: "State of Residence", placeholder: "Lagos" },
+                      { name: "lga", label: "LGA of Residence", placeholder: "Ikeja" },
+                      { name: "address", label: "Residential Address", placeholder: "Street, area, city", fullWidth: true },
                       {
                         name: "reason",
                         label: "Why do you want to join LUCI?",
@@ -196,7 +199,7 @@ export default function GetInvolvedPage() {
                       { name: "organisation", label: "Organisation Name", placeholder: "Acme Foundation", required: true },
                       { name: "contactName", label: "Contact Name", placeholder: "Jane Doe", required: true },
                       { name: "email", label: "Email Address", type: "email", placeholder: "jane@acme.org", required: true },
-                      { name: "phone", label: "Phone Number", placeholder: "+1 234 567 8900" },
+                      { name: "phone", label: "Phone Number", placeholder: "+234 802 885 2121" },
                       {
                         name: "proposalSummary",
                         label: "Partnership Proposal",
