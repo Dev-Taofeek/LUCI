@@ -20,7 +20,7 @@ const siteUrl = "https://luci-pi.vercel.app";
 const siteName = "LUCI — Living Unity Core Initiative";
 
 const siteDescription =
-  "Promoting and fostering beauty in diversity through family space to achieve better society and nation: A more perfect union.";
+  "Promoting and fostering beauty in diversity through family space to achieve better society and nation: A more perfect union. Sound Families make Sound Society and Sound Nation.";
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
@@ -43,7 +43,15 @@ export const metadata = {
     "NGO",
     "diversity",
     "unity",
+    "The Bridge Building Family Organization",
+    "relational bridges",
+    "family enrichment",
+    "national unity",
   ],
+
+  alternates: {
+    canonical: "/",
+  },
 
   icons: {
     icon: [
@@ -59,6 +67,7 @@ export const metadata = {
 
   openGraph: {
     type: "website",
+    locale: "en_US",
     url: siteUrl,
     siteName,
     title: "LUCI - Sound Families make Sound Society and Sound Nation",
@@ -69,6 +78,7 @@ export const metadata = {
         width: 1200,
         height: 630,
         alt: siteName,
+        type: "image/jpeg",
       },
     ],
   },
@@ -83,6 +93,12 @@ export const metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -92,12 +108,35 @@ export const viewport = {
   themeColor: "#841818",
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "NGO",
+  name: "LUCI — Living Unity Core Initiative",
+  alternateName: "The Bridge Building Family Organization",
+  url: siteUrl,
+  description: siteDescription,
+  slogan: "Building Bridges, a Family Commitment.",
+  email: "co-ordinator@luci-ng.org",
+  telephone: "+234-802-885-2121",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "5, Obafemi Awolowo way, P.O. Box 14008",
+    addressLocality: "Ikeja",
+    addressRegion: "Lagos",
+    addressCountry: "NG",
+  },
+};
+
 export default function SiteLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${cormorant.variable} ${manrope.variable} bg-warm-white font-sans antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:bg-white focus:text-maroon-deep focus:px-4 focus:py-2.5 focus:rounded-control focus:shadow-md focus:font-semibold"
