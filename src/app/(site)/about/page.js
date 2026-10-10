@@ -63,14 +63,14 @@ export default function AboutPage() {
 
           <motion.div
             variants={fadeInUp}
-            className="relative h-[260px] sm:h-[360px] md:h-[420px] lg:h-[500px] w-full rounded-card overflow-hidden order-1 md:order-2 bg-white border border-border-light"
+            className="relative h-[260px] sm:h-[360px] md:h-[420px] lg:h-[500px] w-full order-1 md:order-2"
           >
             <Image
               src={ABOUT_IMAGE}
               alt="LUCI — The Bridge Building Family Organization emblem"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-contain p-4 sm:p-6"
+              className="object-contain"
               priority
             />
           </motion.div>
