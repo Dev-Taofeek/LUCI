@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { isEmail } from "@/lib/validations";
 
 export async function POST(req) {
-  const { fullName, email, phone, reason } = await req.json();
+  const { fullName, email, phone, reason, state, lga, address } = await req.json();
 
   if (!fullName || !email) {
     return NextResponse.json({ error: "Name and email are required." }, { status: 400 });
@@ -14,7 +14,7 @@ export async function POST(req) {
 
   try {
     const application = await prisma.membershipApplication.create({
-      data: { fullName, email, phone, reason: reason || "" },
+      data: { fullName, email, phone, reason: reason || "", state, lga, address },
     });
     return NextResponse.json({ application }, { status: 201 });
   } catch (err) {
