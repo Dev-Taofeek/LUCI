@@ -39,9 +39,9 @@ export default function AboutPage() {
             alt=""
             fill
             sizes="100vw"
-            className="object-cover object-center opacity-15"
+            className="object-contain object-center opacity-30 scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-warm-white via-warm-white/85 to-warm-white/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-warm-white via-warm-white/90 to-warm-white/55" />
         </div>
 
         <motion.div
@@ -75,16 +75,15 @@ export default function AboutPage() {
 
           <motion.div
             variants={fadeInUp}
-            className="relative h-[260px] sm:h-[360px] md:h-[420px] lg:h-[500px] w-full rounded-card overflow-hidden order-1 md:order-2"
+            className="relative h-[260px] sm:h-[360px] md:h-[420px] lg:h-[500px] w-full rounded-card overflow-hidden order-1 md:order-2 bg-white border border-border-light"
           >
             <Image
               src={ABOUT_IMAGE}
-              alt="LUCI community"
+              alt="LUCI — The Bridge Building Family Organization emblem"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
+              className="object-contain p-3 sm:p-5"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-maroon-deep/40 to-transparent" />
           </motion.div>
         </motion.div>
       </section>
