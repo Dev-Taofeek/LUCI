@@ -1,10 +1,10 @@
 # LUCI — Living Unity Core Initiative
 
-The official website of the **Living Unity Core Initiative (LUCI)** — a non-political, non-governmental organization dedicated to promoting and fostering beauty in diversity through family space to achieve a better society and nation: **A more perfect union.**
+The official website of the **Living Unity Core Initiative (LUCI)** — a non-political, non-governmental organization dedicated to promoting and fostering beauty in diversity through family space to achieve better society and nation(s): **A more perfect union.**
 
 > **Sound Families make Sound Society and Sound Nation.**
 >
-> *To promote and foster the well-being of the family and the growing of commitment to the building of relational bridges of humanity for a better society and nation.*
+> *To promote and foster the well-being of the family and the growing of commitment to the building of relational bridges of humanity for better society and nation(s).*
 
 ## About the Organization
 
