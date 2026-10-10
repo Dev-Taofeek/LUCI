@@ -8,7 +8,7 @@ import Button from "@/components/ui/Button";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import { Eye, HeartHandshake } from "lucide-react";
 
-const HERO_IMAGE = "/hero-home.jpg";
+const HERO_IMAGE = "/luci-logo.png";
 
 export default function HomePage() {
   return (
