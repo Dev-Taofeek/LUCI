@@ -31,7 +31,7 @@ export default function Footer() {
                 LUCI
               </span>
               <p className="text-sm text-warm-white/80">
-                Living Unity Core Initiative. Building bridges, One Family at a time.
+                Living Unity Core Initiative. Building Bridges, a Family Commitment.
               </p>
             </div>
 
