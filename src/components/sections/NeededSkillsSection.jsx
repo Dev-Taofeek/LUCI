@@ -1,12 +1,12 @@
 import { GraduationCap, Calendar, HeartPulse, Megaphone, Code2, Wallet } from "lucide-react";
 
 const SKILLS = [
-  { icon: GraduationCap, label: "Teaching & Mentoring", description: "Literacy programs, tutoring, and skills workshops." },
-  { icon: Calendar, label: "Event Planning", description: "Coordinating summits, forums, and community days." },
-  { icon: HeartPulse, label: "Healthcare", description: "Maternal health outreach and wellness clinics." },
-  { icon: Megaphone, label: "Advocacy & Communications", description: "Storytelling, media, and policy dialogue." },
-  { icon: Code2, label: "Digital Skills", description: "Coding bootcamps for the Future Leaders Tech Hub." },
-  { icon: Wallet, label: "Finance & Grants", description: "Budgeting support and grant-writing expertise." },
+  { icon: HeartPulse, label: "Counselling & Family Support", description: "Pre-marriage, married life and family counselling services." },
+  { icon: GraduationCap, label: "Family Enrichment", description: "In-depth studies and human development programmes." },
+  { icon: Calendar, label: "Seminars & Workshops", description: "A Daily Reach-out Programme and The Unity-Flame Programme." },
+  { icon: Megaphone, label: "Advocacy & Communications", description: "Communicating unity and charity innovatively." },
+  { icon: Code2, label: "Unity Structures", description: "NYSC welfare and promotion, Hate-Free/Violence-Free nation." },
+  { icon: Wallet, label: "Women's Development", description: "Recognizing and telling the stories of great bridge-building women." },
 ];
 
 export default function NeededSkillsSection() {
