@@ -65,7 +65,7 @@ export const metadata = {
     description: siteDescription,
     images: [
       {
-        url: "/h-hero.webp",
+        url: "/hero-home.jpg",
         width: 1200,
         height: 630,
         alt: siteName,
@@ -77,7 +77,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "LUCI - Sound Families make Sound Society and Sound Nation",
     description: siteDescription,
-    images: ["/h-hero.webp"],
+    images: ["/hero-home.jpg"],
   },
 
   robots: {
