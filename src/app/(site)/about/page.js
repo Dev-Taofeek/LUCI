@@ -31,12 +31,24 @@ export default function AboutPage() {
   return (
     <>
       {/* 1. Who We Are — split hero (text left, image right) */}
-      <section className="container-luci py-10 sm:py-14 lg:py-16">
+      <section className="relative overflow-hidden">
+        {/* Hero background — LUCI logo */}
+        <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+          <Image
+            src="/luci-logo.png"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-center opacity-15"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-warm-white via-warm-white/85 to-warm-white/40" />
+        </div>
+
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center"
+          className="container-luci relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center py-10 sm:py-14 lg:py-16"
         >
           <motion.div variants={fadeInUp} className="flex flex-col gap-4 sm:gap-6 order-2 md:order-1">
             <h1 className="text-3xl sm:text-4xl md:text-5xl leading-tight">
