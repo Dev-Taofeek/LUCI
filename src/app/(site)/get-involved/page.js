@@ -13,11 +13,11 @@ import { tabContentTransition } from "@/lib/motion";
 const TABS = ["Volunteer", "Membership", "Partnership", "Needed Skills"];
 
 const VOLUNTEER_IMAGE =
-  "https://images.unsplash.com/photo-1593113630400-ea4288922497?q=80&w=1200&auto=format&fit=crop";
+  "/getinvolved-volunteer.jpg";
 const MEMBERSHIP_IMAGE =
-  "https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1200&auto=format&fit=crop";
+  "/getinvolved-membership.jpg";
 const PARTNERSHIP_IMAGE =
-  "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop";
+  "/getinvolved-partnership.jpg";
 
 export default function GetInvolvedPage() {
   const [activeTab, setActiveTab] = useState("Volunteer");
