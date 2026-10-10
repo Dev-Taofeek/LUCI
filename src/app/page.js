@@ -14,8 +14,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSection
-        variant="solid"
-        emblem={HERO_IMAGE}
+        image={HERO_IMAGE}
         title="Sound Families make Sound Society and Sound Nation."
         subtitle="To promote and foster the well-being of the family and the growing of commitment to the building of relational bridges of humanity for a better society and nation."
         minHeight="min-h-[500px] sm:min-h-[560px] lg:min-h-[640px]"
