@@ -206,6 +206,9 @@ model MembershipApplication {
   email     String
   phone     String
   reason    String   @db.Text
+  state     String?
+  lga       String?
+  address   String?
   status    String   @default("NEW")
   createdAt DateTime @default(now())
 }
