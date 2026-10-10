@@ -48,7 +48,7 @@ export default function WhatWeDoPage() {
       {/* Hero */}
       <PageHero
         title="Our Focus Areas"
-        subtitle="Our inspired activities, thus programmes, are rather \"cradle to grave\" in nature: our activities begin with the family (existing and potential), and going through the family (by family development & enrichment programmes), through to collaborative spirit for common good, and fruiting to stronger families, sound citizenry and deepening patriotic well-being."
+        subtitle={'Our inspired activities, thus programmes, are rather "cradle to grave" in nature: our activities begin with the family (existing and potential), and going through the family (by family development & enrichment programmes), through to collaborative spirit for common good, and fruiting to stronger families, sound citizenry and deepening patriotic well-being.'}
       />
 
       {/* Focus Areas */}
