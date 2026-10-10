@@ -7,7 +7,6 @@ import { fadeInUp, staggerContainer } from "@/lib/motion";
 export default function HeroSection({
   variant = "image",
   image,
-  emblem,
   eyebrow,
   title,
   subtitle,
@@ -46,19 +45,6 @@ export default function HeroSection({
         animate="visible"
         className="relative z-10 container-luci flex flex-col items-center text-center gap-4 sm:gap-5 lg:gap-6 max-w-xl sm:max-w-2xl lg:max-w-3xl"
       >
-        {emblem && (
-          <motion.div variants={fadeInUp} className="mb-1 sm:mb-2">
-            <Image
-              src={emblem}
-              alt="LUCI — The Bridge Building Family Organization"
-              width={400}
-              height={250}
-              priority
-              className="h-28 sm:h-36 lg:h-44 w-auto object-contain"
-            />
-          </motion.div>
-        )}
-
         {eyebrow && (
           <motion.span
             variants={fadeInUp}
