@@ -4,12 +4,6 @@ import { ShieldCheck, HeartHandshake } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import DonationForm from "@/components/sections/DonationForm";
 
-const IMPACT_STATS = [
-  { value: "$25", label: "Provides school supplies for one child for a term" },
-  { value: "$50", label: "Funds a family counseling session" },
-  { value: "$100", label: "Sponsors a community health outreach day" },
-];
-
 export default function DonatePage() {
   return (
     <div className="pb-12 sm:pb-16 md:pb-20">
@@ -19,7 +13,7 @@ export default function DonatePage() {
         eyebrow="Support LUCI"
         icon={<HeartHandshake size={16} />}
         title="Your Gift Builds Bridges"
-        subtitle="Every donation directly funds our family development, community, and youth programmes. Choose a one-time gift or become a monthly supporter of our mission."
+        subtitle="Every donation directly funds our family life support, family enrichment, and advocacy programmes. Choose a one-time gift or become a monthly supporter of our mission."
       />
 
       {/* Form + impact context */}
@@ -34,18 +28,12 @@ export default function DonatePage() {
               your contribution makes possible.
             </p>
           </div>
-          <div className="flex flex-col gap-3 sm:gap-4">
-            {IMPACT_STATS.map((stat) => (
-              <div
-                key={stat.value}
-                className="bg-white border border-border-mid rounded-card p-4 sm:p-5 md:p-6 flex items-center gap-4 sm:gap-6"
-              >
-                <span className="font-display font-semibold text-2xl sm:text-3xl text-maroon-deep shrink-0">
-                  {stat.value}
-                </span>
-                <span className="text-sm sm:text-base text-muted">{stat.label}</span>
-              </div>
-            ))}
+          <div className="bg-white border border-border-mid rounded-card p-4 sm:p-5 md:p-6 flex flex-col gap-2">
+            <p className="text-sm sm:text-base text-charcoal">
+              Your contribution supports our family life support,
+              family enrichment, and advocacy programmes — from the
+              family level, for a better society and better nation.
+            </p>
           </div>
           <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-sm text-muted pt-2">
             <ShieldCheck size={18} className="text-gold shrink-0" />
