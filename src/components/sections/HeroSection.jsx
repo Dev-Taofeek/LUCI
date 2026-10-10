@@ -11,7 +11,7 @@ export default function HeroSection({
   title,
   subtitle,
   actions,
-  minHeight = "min-h-[500px] sm:min-h-[560px] lg:min-h-[640px]",
+  minHeight = "min-h-screen",
 }) {
   return (
     <section
