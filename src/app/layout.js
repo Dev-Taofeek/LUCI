@@ -20,7 +20,7 @@ const siteUrl = "https://luci-pi.vercel.app";
 const siteName = "LUCI — Living Unity Core Initiative";
 
 const siteDescription =
-  "Promoting and fostering beauty in diversity through family space to achieve better society and nation: A more perfect union. Sound Families make Sound Society and Sound Nation.";
+  "Promoting and fostering beauty in diversity through family space to achieve better society and nation(s): A more perfect union. Sound Families make Sound Society and Sound Nation.";
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
