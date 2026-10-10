@@ -13,263 +13,120 @@ const prisma = new PrismaClient({
 // programme content, since the public site reads from Prisma directly.
 const PROGRAMMES = [
   {
-    slug: "family-empowerment-workshop",
+    slug: "pre-marriage-married-life-family-support",
     category: "Family Development",
     status: "ACTIVE",
-    title: "Family Empowerment Workshop",
+    title: "Pre-Marriage, Married Life & Family Support",
     summary:
-      "Empowering local families through financial literacy, counseling, and community support systems to build sustainable futures.",
+      "Pre-Marriage, Married Life & Family Inspiring/Support Programmes; Seminars/Workshops and Counselling Services.",
     description:
-      "Empowering local families through financial literacy, counseling, and community support systems to build sustainable futures.",
-    location: "Lagos, Nigeria",
-    startDate: new Date("2024-10-01"),
-    endDate: new Date("2024-12-15"),
-    impactStat: "500+ Families Reached",
-    heroImage:
-      "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?q=80&w=800&auto=format&fit=crop",
+      "Pre-Marriage, Married Life & Family Inspiring/Support Programmes; Seminars/Workshops and Counselling Services. With Pre-Marriage Persons, and With Married & Family Life: it is an outright fallacy to fight against juvenile delinquency or against the prostitution of women while favouring the discrediting or deterioration of the institution of the family! Components: A Daily Reach-out Programme, The Unity-Flame Programme, and Robust Counselling Services.",
+    location: "Nigeria",
+    startDate: new Date("2026-01-01"),
+    endDate: null,
+    impactStat: "A Daily Reach-Out Programme",
+    heroImage: "/programme-family-life.jpg",
     galleryImages: [],
-    objectives: [],
+    objectives: [
+      "With Pre-Marriage Persons",
+      "With Married & Family Life",
+      "A Daily Reach-out Programme",
+      "The Unity-Flame Programme",
+      "Robust Counselling Services",
+    ],
     partners: [],
   },
   {
-    slug: "future-leaders-tech-hub",
-    category: "Youth Initiative",
-    status: "UPCOMING",
-    title: "Future Leaders Tech Hub",
+    slug: "in-depth-family-enrichment",
+    category: "Family Development",
+    status: "ACTIVE",
+    title: "In-depth Family Enrichment Programmes",
     summary:
-      "Equipping youth with digital skills, coding fundamentals, and mentorship to prepare them for the modern workforce.",
+      "Advancing studies and human development programmes for a better society.",
     description:
-      "Equipping youth with digital skills, coding fundamentals, and mentorship to prepare them for the modern workforce.",
-    location: "Accra, Ghana",
-    startDate: new Date("2025-01-10"),
-    endDate: new Date("2025-03-20"),
-    impactStat: "Goal: 200 Students",
-    heroImage:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop",
+      "LUCI will actively be concerned with advancing studies and human development programmes for a better society. We conscientiously work innovatively to create these programmes and be sustained organically; as an integral element of the overall transcendental goal of our families, their children and wards, through various strategies.",
+    location: "Nigeria",
+    startDate: new Date("2026-01-01"),
+    endDate: null,
+    impactStat: "Human Development & Formation",
+    heroImage: "/programme-family-enrichment.jpg",
     galleryImages: [],
-    objectives: [],
+    objectives: ["Family bonding", "Bridge-building", "Counselling"],
     partners: [],
   },
   {
-    slug: "clean-water-access-project",
-    category: "Community Infrastructure",
-    status: "COMPLETED",
-    title: "Clean Water Access Project",
-    summary:
-      "Installation of sustainable solar-powered water filtration systems in underserved rural communities.",
-    description:
-      "Installation of sustainable solar-powered water filtration systems in underserved rural communities.",
-    location: "Nairobi, Kenya",
-    startDate: new Date("2024-03-01"),
-    endDate: new Date("2024-08-15"),
-    impactStat: "1,200 Lives Improved",
-    heroImage:
-      "https://images.unsplash.com/photo-1541963463532-d68292c34b19?q=80&w=800&auto=format&fit=crop",
-    galleryImages: [],
-    objectives: [],
-    partners: [],
-  },
-  {
-    slug: "unity-and-peace-summit",
+    slug: "commitment-to-identified-structures-of-unity",
     category: "Community Building",
     status: "ACTIVE",
-    title: "Unity & Peace Summit",
+    title: "Commitment to Identified Structures of Unity",
     summary:
-      "Bridging divides and fostering lasting understanding among diverse cultural groups through structured dialogue.",
+      "Promoting, initiating, strengthening and supporting physical, material and institutional infrastructures considered as catalysts to building unity.",
     description:
-      "The Unity & Peace Summit is a cornerstone initiative designed to bridge divides and foster deep, lasting understanding among diverse cultural groups within our communities. By bringing together community leaders, elders, youth representatives, and policymakers, we create a safe, structured environment for constructive dialogue. The programme focuses on conflict resolution training, shared cultural celebration, and collaborative problem-solving for local issues.",
-    location: "Nairobi, Kenya",
-    startDate: new Date("2023-01-01"),
+      "Promoting, initiating, strengthening and supporting as appropriate, physical, material and institutional infrastructures considered as catalysts to building unity; supporting institutions like the National Youth Service Corps Scheme (and similar unity infrastructures), giving them prominence and pride of place. Promoting Corpers' Welfare Initiatives. Identifying, Promoting and Supporting Programmes to amplifying a Hate-Free/Violence-Free nation. Other structures that would be considered as pillars of unity; like in the sphere of sports, in cultural unity (relations among cultures) and other areas of typical achievements of national pride.",
+    location: "Nigeria",
+    startDate: new Date("2026-01-01"),
     endDate: null,
-    impactStat: "320+ Leaders Trained",
-    heroImage:
-      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1600&auto=format&fit=crop",
-    galleryImages: [
-      "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=600&auto=format&fit=crop",
-    ],
+    impactStat: "NYSC Welfare & Promotion Initiative",
+    heroImage: "/programme-unity-structures.jpg",
+    galleryImages: [],
     objectives: [
-      "Train 500 local leaders in conflict resolution.",
-      "Establish 20 ongoing cross-community dialogue circles.",
-      "Reduce reported inter-community incidents by 30%.",
+      "NYSC Welfare and Promotion Initiative",
+      "Hate-Free/Violence-Free Nation",
+      "Identifying and Promoting Such Other Structures in Sports, Unity of Cultures etc.",
     ],
-    audience: {
-      description:
-        "This program directly serves those positioned to influence positive change within their networks.",
-      tags: ["Community Leaders", "Local Youth (18-35)", "Educators", "Civic Officials"],
-    },
-    activities: [
-      {
-        title: "Leadership Training Retreats",
-        description:
-          "Intensive 3-day workshops focusing on mediation, active listening, and restorative justice practices for selected community representatives.",
-      },
-      {
-        title: "Youth Peace Forums",
-        description:
-          "Monthly gatherings where young people from differing backgrounds collaborate on community service projects, building trust through shared effort.",
-      },
-      {
-        title: "Annual Summit",
-        description:
-          "A large-scale event showcasing progress, sharing stories of reconciliation, and setting community goals for the upcoming year.",
-      },
-    ],
-    stats: [
-      { value: "95%", label: "Participant Satisfaction Rate" },
-      { value: "320+", label: "Leaders Trained in 2023" },
-      { value: "45", label: "Community Dialogues Hosted" },
-    ],
-    partners: ["Partner A", "Partner B", "Partner C", "Partner D"],
+    partners: [],
   },
-];
-
-const EVENTS = [
   {
-    slug: "annual-global-care-summit-2026",
-    title: "Annual Global Care Summit 2026",
+    slug: "special-womans-development-programme",
+    category: "Family Development",
+    status: "ACTIVE",
+    title: "The Special Woman's Development Programme",
     summary:
-      "Our flagship event bringing together global leaders, local changemakers, and volunteers to discuss sustainable community care strategies.",
+      "Recognizing and telling the stories of great bridge-building women of our time (Inspiring Special-Grace Building Bridges).",
     description:
-      "Join us for a transformative gathering of leaders, volunteers, and partners dedicated to sustainable community care. The summit features keynote sessions, interactive workshops, and networking opportunities spanning health, education, and family empowerment.\n\nExpect interactive discussions, case studies tailored to regional challenges, and invaluable networking opportunities with peers and mentors from across the continent.",
-    location: "Nairobi International Conference Centre",
-    startDate: new Date("2026-10-15T09:00:00.000Z"),
-    endDate: new Date("2026-10-16T16:00:00.000Z"),
-    heroImage:
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1600&auto=format&fit=crop",
-    speakers: [
-      {
-        name: "Dr. Amina Okafor",
-        role: "Director of Community Development, LUCI",
-        photo:
-          "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=400&auto=format&fit=crop",
-      },
-      {
-        name: "Samuel Mensah",
-        role: "Grassroots Strategist",
-        photo:
-          "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop",
-      },
+      "Utilizing the instrumentality of training seminars, workshops and our counseling platforms, a special focus shall be deployed, continually seeking out for inspiration, the Naomis, the Ruths the Esthers and our modern day others like Tamar and Rahab — the mother of Boaz; for Ruth married Boaz to become the mother of Obed who became the father of Jesse, and Jesse became the father of King David. We must begin to render worthwhile regard to women of providence of our own time: outstandingly dignified women building bridges; could be your daughter or my granddaughter, as God's instrument created to wiring (connecting) boundaries, bringing down walls and barriers of division, and building bridges to achieving fullness of unity and life and making living more meaningful.",
+    location: "Nigeria",
+    startDate: new Date("2026-01-01"),
+    endDate: null,
+    impactStat: "Women of Providence",
+    heroImage: "/programme-women-development.jpg",
+    galleryImages: [],
+    objectives: [
+      "Recognizing and telling the stories of great bridge-building women",
+      "Training seminars and workshops",
+      "Counselling platforms",
     ],
-    organisers: ["LUCI Foundation", "Global Care Initiative"],
-    capacity: 200,
+    partners: [],
   },
   {
-    slug: "community-leadership-workshop-2026",
-    title: "Community Leadership Workshop 2026",
+    slug: "advocacy-making-unity-attractive",
+    category: "Advocacy",
+    status: "ACTIVE",
+    title: "Advocacy: Making Unity Attractive & Empowered",
     summary:
-      "Empowering local community leaders with sustainable development strategies across two intensive days.",
+      "By advocating and communicating unity, charity and justice innovatively.",
     description:
-      "A transformative two-day workshop designed to empower local community leaders with sustainable development strategies. This intensive programme bridges traditional values with modern organizational techniques.\n\nParticipants will engage in hands-on sessions focusing on conflict resolution, resource management, and grassroots mobilization.",
-    location: "Nairobi Community Center",
-    startDate: new Date("2026-11-12T09:00:00.000Z"),
-    endDate: new Date("2026-11-13T16:00:00.000Z"),
-    heroImage:
-      "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=1600&auto=format&fit=crop",
-    speakers: [
-      {
-        name: "Dr. Amina Okafor",
-        role: "Director of Community Development, LUCI",
-        photo:
-          "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=400&auto=format&fit=crop",
-      },
+      "Legislation by itself will never do away with all the fears, pride and selfishness which damage families and nations. To overcome such obstacles, we must rely on Human Solidarity and God's Love and begin to develop and/or advocate for support for quality human capital for quality leaders. LUCI is surely one way to that human solidarity and God's love, advocating for: Marriage, Family Life and manifold heritage; Sustainable National Unity Infrastructures; and the family as the unit of the nation in God's creation. Promoting love and denouncing hate in our nation: as families become the most readily vulnerable in any national conflagration, so we all must enthusiastically foster living relationship between the family and national unity.",
+    location: "Nigeria",
+    startDate: new Date("2026-01-01"),
+    endDate: null,
+    impactStat: "Promoting Love, Denouncing Hate",
+    heroImage: "/programme-advocacy.jpg",
+    galleryImages: [],
+    objectives: [
+      "Marriage, Family Life and manifold heritage",
+      "Sustainable National Unity Infrastructures",
+      "The family as the unit of the nation in God's creation",
     ],
-    organisers: ["LUCI Foundation"],
-    capacity: 80,
+    partners: [],
   },
 ];
 
-const RESOURCES = [
-  {
-    slug: "2024-state-of-community-resilience-report",
-    title: "The 2024 State of Community Resilience Report",
-    category: "RESEARCH",
-    summary:
-      "A comprehensive analysis of how local initiatives are driving sustainable change across 15 sub-Saharan nations, featuring case studies and actionable policy recommendations.",
-    fileUrl: "/media/luci-2024-resilience-report.pdf",
-    thumbnail:
-      "https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1200&auto=format&fit=crop",
-    downloads: 234,
-  },
-  {
-    slug: "2026-community-engagement-guide",
-    title: "2026 Community Engagement Guide",
-    category: "GUIDE",
-    summary:
-      "A practical toolkit for grassroots organizations looking to build sustainable, community-led initiatives with proven methodologies.",
-    fileUrl: "/media/luci-2026-engagement-guide.pdf",
-    thumbnail:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop",
-    downloads: 121,
-  },
-  {
-    slug: "webinar-maternal-health-strategies",
-    title: "Webinar: Maternal Health Strategies for Remote Areas",
-    category: "VIDEO",
-    summary:
-      "A recorded panel discussion featuring leading healthcare practitioners discussing innovative strategies for improving maternal care access.",
-    fileUrl: "https://youtube.com/watch?v=luci-maternal-health",
-    thumbnail:
-      "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=800&auto=format&fit=crop",
-    downloads: 89,
-  },
-];
+const EVENTS = [];
 
-const ARTICLES = [
-  {
-    slug: "bridging-the-gap-community-initiatives",
-    title: "Bridging the Gap: How Community Driven Initiatives Are Shaping Our Future",
-    category: "Community",
-    excerpt:
-      "Discover the stories of resilience and unity that are transforming lives across the continent, powered by the incredible dedication of our local partners.",
-    content:
-      "Across the continent, communities are quietly rewriting their own futures. From rural cooperatives to urban learning circles, neighbour-led efforts are proving that lasting change starts at the grassroots level.\n\nOur teams have spent the past year documenting these initiatives — speaking with volunteers, leaders, and the families they serve. The pattern is unmistakable: when communities own their solutions, results endure.\n\nWe believe that every investment in these networks multiplies. Partnerships with local leaders mean resources travel further, knowledge is shared faster, and trust becomes the foundation for everything that follows.",
-    coverImage:
-      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1600&auto=format&fit=crop",
-    status: "PUBLISHED",
-    publishedAt: new Date("2026-05-08"),
-  },
-  {
-    slug: "empowering-next-generation-literacy",
-    title: "Empowering the Next Generation Through Literacy",
-    category: "Education",
-    excerpt:
-      "Our new literacy program has reached over 5,000 children this year alone, providing essential resources and mentorship.",
-    content:
-      "This year we reached a milestone: more than five thousand children now have access to reading materials, structured literacy sessions, and mentorship through our network of trained facilitators.\n\nThe programme works hand-in-hand with local schools and libraries. Each child receives a level-appropriate reading kit and joins a small weekly reading circle led by community volunteers.\n\nEarly results show marked improvements in reading confidence and school attendance. We are now preparing to expand the programme to four additional districts.",
-    coverImage:
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200&auto=format&fit=crop",
-    status: "PUBLISHED",
-    publishedAt: new Date("2026-05-20"),
-  },
-  {
-    slug: "healthcare-initiative-rural-villages",
-    title: "New Healthcare Initiative Reaches Rural Villages",
-    category: "Community Impact",
-    excerpt:
-      "Mobile clinics have delivered essential care to over twenty remote communities in the past month.",
-    content:
-      "In a major leap forward for rural healthcare access, LUCI's latest initiative has successfully delivered mobile clinics to over twenty remote communities in the past month.\n\nThe project, funded by our generous donor network and executed in partnership with local health authorities, aims to bridge the gap in essential medical services. For many of these communities, reaching a hospital previously meant a day-long journey, often impossible during the rainy season.\n\nBy deploying retrofitted off-road vehicles equipped with modern diagnostic tools and basic pharmaceutical supplies, the initiative brings the clinic directly to the people.\n\nWe are not just delivering medicine; we are delivering hope. Early data indicates a significant rise in prenatal care consultations and childhood immunizations within the targeted areas.",
-    coverImage:
-      "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1600&auto=format&fit=crop",
-    status: "PUBLISHED",
-    publishedAt: new Date("2026-06-02"),
-  },
-  {
-    slug: "preserving-heritage-local-artisans",
-    title: "Preserving Heritage Through Local Artisans",
-    category: "Culture",
-    excerpt:
-      "A celebration of the craftspeople keeping cultural traditions alive across the continent.",
-    content:
-      "Every pattern, every stitch, and every carved symbol carries a story. This month we shine a spotlight on the artisans working to keep those stories alive.\n\nThrough exhibitions, fair-trade marketplaces, and skills exchange programmes, LUCI supports craftspeople in reaching wider audiences while preserving traditional techniques for the next generation.\n\nWe invite collectors, tourists, and fellow changemakers to join us in valuing these living traditions.",
-    coverImage:
-      "https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=800&auto=format&fit=crop",
-    status: "DRAFT",
-    publishedAt: null,
-  },
-];
+const RESOURCES = [];
+
+const ARTICLES = [];
 
 async function main() {
   const passwordHash = await bcrypt.hash("ChangeMe123!", 10);
@@ -285,6 +142,22 @@ async function main() {
     },
   });
   console.log("Seeded super admin: admin@luci.org / ChangeMe123! (change on first login)");
+
+  // The LUCI brochure contains no events, resources, or news articles —
+  // remove any previously seeded placeholder content so the live
+  // database matches this seed exactly.
+  await prisma.event.deleteMany({
+    where: { slug: { notIn: EVENTS.map((e) => e.slug) } },
+  });
+  await prisma.resource.deleteMany({
+    where: { slug: { notIn: RESOURCES.map((r) => r.slug) } },
+  });
+  await prisma.article.deleteMany({
+    where: { slug: { notIn: ARTICLES.map((a) => a.slug) } },
+  });
+  await prisma.programme.deleteMany({
+    where: { slug: { notIn: PROGRAMMES.map((p) => p.slug) } },
+  });
 
   for (const programme of PROGRAMMES) {
     await prisma.programme.upsert({
