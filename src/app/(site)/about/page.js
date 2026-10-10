@@ -9,7 +9,7 @@ import { fadeInUp, staggerContainer } from "@/lib/motion";
 import TeamMemberCard from "@/components/sections/TeamMemberCard";
 import CorporateCatalystsCarousel from "@/components/sections/CorporateCatalystsCarousel";
 
-const ABOUT_IMAGE = "/luci-logo.png";
+const ABOUT_IMAGE = "/luci-emblem.png";
 
 const STEPS = [
   { icon: <Users size={24} />, label: "Family", state: "active" },
@@ -63,16 +63,16 @@ export default function AboutPage() {
 
           <motion.div
             variants={fadeInUp}
-            className="relative h-[260px] sm:h-[360px] md:h-[420px] lg:h-[500px] w-full rounded-card overflow-hidden order-1 md:order-2"
+            className="relative h-[260px] sm:h-[360px] md:h-[420px] lg:h-[500px] w-full rounded-card overflow-hidden order-1 md:order-2 bg-white border border-border-light"
           >
             <Image
               src={ABOUT_IMAGE}
-              alt="LUCI community"
+              alt="LUCI — The Bridge Building Family Organization emblem"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
+              className="object-contain p-4 sm:p-6"
+              priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-maroon-deep/40 to-transparent" />
           </motion.div>
         </motion.div>
       </section>
