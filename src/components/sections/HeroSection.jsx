@@ -54,7 +54,7 @@ export default function HeroSection({
               width={400}
               height={250}
               priority
-              className="h-28 sm:h-36 lg:h-44 w-auto object-contain"
+              className="h-20 sm:h-24 lg:h-28 w-auto object-contain"
             />
           </motion.div>
         )}
