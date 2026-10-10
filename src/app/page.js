@@ -16,7 +16,7 @@ export default function HomePage() {
       <HeroSection
         image={HERO_IMAGE}
         title="Sound Families make Sound Society and Sound Nation."
-        subtitle="To promote and foster the well-being of the family and the growing of commitment to the building of relational bridges of humanity for a better society and nation."
+        subtitle="To promote and foster the well-being of the family and the growing of commitment to the building of relational bridges of humanity for better society and nation(s)."
         minHeight="min-h-[500px] sm:min-h-[560px] lg:min-h-[640px]"
         actions={
           <>
