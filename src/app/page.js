@@ -72,7 +72,7 @@ export default function HomePage() {
             <IconCard
               icon={<HeartHandshake className="text-maroon-deep" size={20} />}
               title="Our Mission"
-              description="Promoting and fostering beauty in diversity through family space to achieve better society and nation: A more perfect union."
+              description="Promoting and fostering beauty in diversity through family space to achieve better society and nation(s): A more perfect union."
               tint="gold"
             />
           </motion.div>
