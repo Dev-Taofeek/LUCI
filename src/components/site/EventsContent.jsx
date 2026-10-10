@@ -17,7 +17,7 @@ export default function EventsContent({ events }) {
       <PageHero
         eyebrow="Events & Gatherings"
         title="Come Together. Connect. Build."
-        subtitle="Join the Love, Unity, and Care Initiative at our upcoming gatherings. Whether it's a community workshop, a large-scale conference, or a volunteer day, your presence helps us build stronger foundations together."
+        subtitle="Join the Living Unity Core Initiative at our upcoming gatherings. Whether it's a community workshop, a large-scale conference, or a volunteer day, your presence helps us build stronger foundations together."
       />
 
       <section className="container-luci py-10 sm:py-12 md:py-16 flex flex-col items-center gap-10 sm:gap-12 md:gap-16">
