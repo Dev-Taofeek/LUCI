@@ -3,8 +3,8 @@ import Image from "next/image";
 export default function TeamMemberCard({ image, name, role, bio }) {
   return (
     <div className="bg-white border border-border-mid rounded-card overflow-hidden flex flex-col h-full">
-      <div className="relative h-48 sm:h-56 md:h-64 w-full bg-border-light">
-        {image && (
+      <div className="relative h-48 sm:h-56 md:h-64 w-full bg-border-light flex items-center justify-center">
+        {image ? (
           <Image
             src={image}
             alt={name}
@@ -12,6 +12,10 @@ export default function TeamMemberCard({ image, name, role, bio }) {
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover"
           />
+        ) : (
+          <span className="font-display text-5xl sm:text-6xl font-semibold text-maroon-deep/20 select-none">
+            {name.split(" ").map((n) => n[0]).join("")}
+          </span>
         )}
       </div>
 
