@@ -7,6 +7,7 @@ import { IconCard } from "@/components/ui/Card";
 import ProgressStep from "@/components/sections/ProgressStep";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import TeamMemberCard from "@/components/sections/TeamMemberCard";
+import CorporateCatalystsCarousel from "@/components/sections/CorporateCatalystsCarousel";
 
 const ABOUT_IMAGE = "/hero-about.jpg";
 
@@ -23,11 +24,8 @@ const TEAM = [
     name: "Felix O. Omusi",
     role: "General Co-ordinator",
     bio: "General Co-ordinator of LUCI — Living Unity Core Initiative, making \"Beauty in Diversity\" work. Compiler of the LUCI Reflection: \"Unity: The Good News.\"",
-    image: "/team-felix-omusi.jpg",
   },
 ];
-
-const PARTNERS = ["Lagos Business School", "Pan-Atlantic University", "University of Navarra", "The Lagoon School", "Whitesands School"];
 
 export default function AboutPage() {
   return (
@@ -162,16 +160,7 @@ export default function AboutPage() {
           <span className="text-xs sm:text-sm font-semibold text-muted btn-tracking uppercase text-center">
             Our Corporate Catalysts
           </span>
-          <div className="flex items-center justify-center gap-6 sm:gap-8 md:gap-12 opacity-60 flex-wrap">
-            {PARTNERS.map((name) => (
-              <span
-                key={name}
-                className="font-display font-bold text-lg sm:text-xl text-charcoal"
-              >
-                {name}
-              </span>
-            ))}
-          </div>
+          <CorporateCatalystsCarousel />
         </div>
       </section>
     </>
