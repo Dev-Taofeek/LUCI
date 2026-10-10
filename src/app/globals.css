@@ -106,7 +106,7 @@
   }
 }
 
-/* Corporate Catalysts auto-moving carousel */
+/* Corporate Catalysts auto-moving carousel (mobile-friendly) */
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -116,23 +116,8 @@
   }
 }
 
-.marquee-track {
-  animation: marquee 45s linear infinite;
-  will-change: transform;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
 .marquee-fade {
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 8%,
-    black 92%,
-    transparent
-  );
+  overflow: hidden;
   -webkit-mask-image: linear-gradient(
     to right,
     transparent,
@@ -140,4 +125,29 @@
     black 92%,
     transparent
   );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+  -webkit-animation: marquee 40s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+  -webkit-animation-play-state: paused;
+}
+
+/* Prevent horizontal page scroll from the wide marquee track */
+html,
+body {
+  overflow-x: hidden;
 }
