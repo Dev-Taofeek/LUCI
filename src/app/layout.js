@@ -20,13 +20,13 @@ const siteUrl = "https://luci-pi.vercel.app";
 const siteName = "LUCI — Living Unity Core Initiative";
 
 const siteDescription =
-  "Strengthening families, celebrating diversity, and building meaningful relationships for a more united society and nation.";
+  "Promoting and fostering beauty in diversity through family space to achieve better society and nation: A more perfect union.";
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
 
   title: {
-    default: "LUCI - Building Bridges, One Family at a Time",
+    default: "LUCI - Sound Families make Sound Society and Sound Nation",
     template: "%s | LUCI",
   },
 
@@ -36,9 +36,13 @@ export const metadata = {
   keywords: [
     "LUCI",
     "Living Unity Core Initiative",
+    "building bridges",
+    "family commitment",
     "family unity",
     "community building",
     "NGO",
+    "diversity",
+    "unity",
   ],
 
   icons: {
@@ -57,7 +61,7 @@ export const metadata = {
     type: "website",
     url: siteUrl,
     siteName,
-    title: "LUCI - Building Bridges, One Family at a Time",
+    title: "LUCI - Sound Families make Sound Society and Sound Nation",
     description: siteDescription,
     images: [
       {
@@ -71,7 +75,7 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "LUCI - Building Bridges, One Family at a Time",
+    title: "LUCI - Sound Families make Sound Society and Sound Nation",
     description: siteDescription,
     images: ["/h-hero.webp"],
   },
