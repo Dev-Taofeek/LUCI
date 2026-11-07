@@ -37,11 +37,13 @@ const NAV_ITEMS = [
   { href: "/admin/settings", label: "Settings", icon: Settings, roles: ["SUPER_ADMIN"] },
 ];
 
+const SIDEBAR_WIDTH = "w-56 lg:w-64 xl:w-72";
+
 export default function AdminSidebar({ role, userName }) {
   const pathname = usePathname();
 
   const navLinks = (
-    <nav className="flex-1 min-h-0 px-2 sm:px-3 py-4 sm:py-6 flex flex-col gap-1 overflow-y-auto">
+    <nav className="flex-1 min-h-0 px-2 sm:px-3 py-4 sm:py-6 flex flex-col gap-1 overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
       {NAV_ITEMS.filter((item) => !item.roles || item.roles.includes(role)).map((item) => {
         const active = item.exact ? pathname === item.href : pathname.startsWith(item.href);
         const Icon = item.icon;
@@ -82,7 +84,13 @@ export default function AdminSidebar({ role, userName }) {
     <>
       <MobileSidebar key={pathname} navLinks={navLinks} footer={footer} />
 
-      <aside className="hidden md:flex w-56 lg:w-64 xl:w-72 shrink-0 bg-maroon-deep h-screen flex-col sticky top-0 self-start overflow-hidden">
+      {/* Desktop sidebar: fills the viewport-height layout, never scrolls with the page */}
+      <aside
+        className={cn(
+          "hidden md:flex shrink-0 h-full flex-col bg-maroon-deep overflow-hidden",
+          SIDEBAR_WIDTH
+        )}
+      >
         <div className="shrink-0 px-5 lg:px-6 py-5 lg:py-6 border-b border-white/10">
           <span className="font-display text-xl lg:text-[22px] font-semibold text-white">
             LUCI
@@ -120,7 +128,7 @@ function MobileSidebar({ navLinks, footer }) {
   return (
     <>
       {/* Mobile/tablet top bar */}
-      <div className="md:hidden sticky top-0 z-40 bg-maroon-deep flex items-center justify-between px-3 sm:px-4 py-3 border-b border-white/10">
+      <div className="md:hidden shrink-0 z-40 bg-maroon-deep flex items-center justify-between px-3 sm:px-4 py-3 border-b border-white/10">
         <div>
           <span className="font-display text-base sm:text-lg font-semibold text-white">
             LUCI
