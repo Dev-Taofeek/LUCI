@@ -41,7 +41,7 @@ export default function AdminSidebar({ role, userName }) {
   const pathname = usePathname();
 
   const navLinks = (
-    <nav className="flex-1 px-2 sm:px-3 py-4 sm:py-6 flex flex-col gap-1 overflow-y-auto">
+    <nav className="flex-1 min-h-0 px-2 sm:px-3 py-4 sm:py-6 flex flex-col gap-1 overflow-y-auto">
       {NAV_ITEMS.filter((item) => !item.roles || item.roles.includes(role)).map((item) => {
         const active = item.exact ? pathname === item.href : pathname.startsWith(item.href);
         const Icon = item.icon;
@@ -65,7 +65,7 @@ export default function AdminSidebar({ role, userName }) {
   );
 
   const footer = (
-    <div className="px-4 sm:px-5 lg:px-6 py-4 border-t border-white/10 flex flex-col gap-3">
+    <div className="shrink-0 px-4 sm:px-5 lg:px-6 py-4 border-t border-white/10 flex flex-col gap-3">
       <div className="text-sm text-warm-white/70 truncate">
         Signed in as <span className="text-white font-semibold">{userName}</span>
       </div>
@@ -82,8 +82,8 @@ export default function AdminSidebar({ role, userName }) {
     <>
       <MobileSidebar key={pathname} navLinks={navLinks} footer={footer} />
 
-      <aside className="hidden md:flex w-56 lg:w-64 xl:w-72 shrink-0 bg-maroon-deep min-h-screen flex-col sticky top-0 self-start">
-        <div className="px-5 lg:px-6 py-5 lg:py-6 border-b border-white/10">
+      <aside className="hidden md:flex w-56 lg:w-64 xl:w-72 shrink-0 bg-maroon-deep h-screen flex-col sticky top-0 self-start overflow-hidden">
+        <div className="shrink-0 px-5 lg:px-6 py-5 lg:py-6 border-b border-white/10">
           <span className="font-display text-xl lg:text-[22px] font-semibold text-white">
             LUCI
           </span>
@@ -157,7 +157,7 @@ function MobileSidebar({ navLinks, footer }) {
           open ? "translate-x-0" : "-translate-x-full"
         )}
       >
-        <div className="px-4 sm:px-5 py-4 sm:py-5 border-b border-white/10 flex items-center justify-between">
+        <div className="shrink-0 px-4 sm:px-5 py-4 sm:py-5 border-b border-white/10 flex items-center justify-between">
           <div>
             <span className="font-display text-lg sm:text-xl font-semibold text-white">
               LUCI

@@ -4,12 +4,12 @@ export function StatTile({ label, value, icon: Icon }) {
   return (
     <div className="bg-white border border-border-light rounded-card p-4 sm:p-5 md:p-6 flex items-center gap-3 sm:gap-4">
       {Icon && (
-        <span className="bg-maroon-deep/10 rounded-full size-9 sm:size-10 md:size-11 flex items-center justify-center shrink-0">
+        <span className="bg-maroon-deep/10 rounded-full size-5 sm:size-6 md:size-8 flex items-center justify-center shrink-0">
           <Icon size={16} className="text-maroon-deep" />
         </span>
       )}
       <div className="min-w-0">
-        <span className="font-display font-semibold text-xl sm:text-2xl md:text-3xl text-maroon-deep block truncate">
+        <span className="font-display font-semibold text-xs sm:text-md md:text-lg text-maroon-deep block truncate">
           {value}
         </span>
         <span className="text-xs sm:text-sm text-muted truncate block">{label}</span>
