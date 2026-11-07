@@ -20,7 +20,7 @@ export default function FocusArea({
         }`}
       >
         <div className="flex-1 flex flex-col gap-3 sm:gap-4 w-full">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl leading-snug">{title}</h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl leading-snug mt-4 md:mt-6">{title}</h2>
           <p className="text-sm sm:text-base">{description}</p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-2">
