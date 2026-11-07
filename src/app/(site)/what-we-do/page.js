@@ -9,7 +9,7 @@ import { fadeInUp, staggerContainer } from "@/lib/motion";
 
 const FOCUS_AREAS = [
   {
-    title: "Family Life Support",
+    title: "Family Life",
     description:
       "Pre-Marriage, Married Life & Family Inspiring/Support Programmes; Seminars/Workshops and Counselling Services. It is an outright fallacy to fight against juvenile delinquency or against the prostitution of women while favouring the discrediting or deterioration of the institution of the family.",
     objectivesLabel: "Components",

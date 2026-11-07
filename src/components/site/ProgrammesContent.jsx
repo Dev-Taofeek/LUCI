@@ -43,7 +43,7 @@ export default function ProgrammesContent({ programmes }) {
           </motion.h1>
           <motion.p variants={fadeInUp} className="text-sm sm:text-base">
             Our inspired activities, thus programmes, are rather "cradle to grave" in nature:
-            our activities begin with the family (existing and potential), through to
+            our activities begin with the family (existing and potential), and going through the family (by family development & enrichment programmes), through to
             collaborative spirit for common good, and fruiting to stronger families,
             sound citizenry and deepening patriotic well-being.
           </motion.p>

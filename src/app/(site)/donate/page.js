@@ -12,8 +12,8 @@ export default function DonatePage() {
         tone="dark"
         eyebrow="Support LUCI"
         icon={<HeartHandshake size={16} />}
-        title="Your Gift Builds Bridges"
-        subtitle="Every donation directly funds our family life support, family enrichment, and advocacy programmes. Choose a one-time gift or become a monthly supporter of our mission."
+        title="Your Support Builds Bridges"
+        subtitle="Support which could be the offfer of your talents, your time and/or your treasures"
       />
 
       {/* Form + impact context */}

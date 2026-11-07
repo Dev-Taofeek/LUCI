@@ -90,68 +90,24 @@ export default function AboutPage() {
           <motion.div variants={fadeInUp}>
             <IconCard
               icon={<Eye className="text-maroon-deep" size={20} />}
-              title="Our Vision"
-              description="To become a world-inspiring beacon of unity: &quot;So that we might fulfill our duty as leaven...&quot;"
+              title="OUR VISION"
+             description={
+  <>
+    TO BECOME A WORLD-INSPIRING BEACON OF UNITY:
+    <br />
+    <strong>&quot;So that we might fulfill our duty as leaven...&quot;</strong>
+  </>
+}
             />
           </motion.div>
           <motion.div variants={fadeInUp}>
             <IconCard
               icon={<HeartHandshake className="text-maroon-deep" size={20} />}
-              title="Our Mission"
+              title="OUR MISSION"
               description="Promoting and fostering beauty in diversity through family space to achieve better society and nation(s): A more perfect union."
               tint="gold"
             />
           </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Why We Exist — progressive flow */}
-      <motion.section
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        className="section-padding"
-      >
-        <div className="container-luci flex flex-col items-center gap-6 sm:gap-8">
-          <motion.h2 variants={fadeInUp} className="text-center text-2xl sm:text-3xl lg:text-4xl">
-            The Ripple Effect of Care
-          </motion.h2>
-          <motion.p variants={fadeInUp} className="text-sm sm:text-base text-center max-w-2xl">
-            We believe that societal transformation begins at home. By
-            nurturing the smallest unit, we impact the whole.
-          </motion.p>
-
-          <motion.div
-            variants={fadeInUp}
-            className="flex items-start justify-center flex-wrap gap-y-6 pt-4 sm:pt-6 w-full overflow-x-auto"
-          >
-            {STEPS.map((step, i) => (
-              <ProgressStep key={step.label} {...step} isLast={i === STEPS.length - 1} />
-            ))}
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Leadership Team */}
-      <section className="bg-white section-padding">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container-luci flex flex-col gap-8 sm:gap-10 lg:gap-12"
-        >
-          <motion.h2 variants={fadeInUp} className="text-center text-2xl sm:text-3xl lg:text-4xl">
-            Our Leadership
-          </motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-2xl mx-auto sm:max-w-none">
-            {TEAM.map((member) => (
-              <motion.div key={member.name} variants={fadeInUp}>
-                <TeamMemberCard {...member} />
-              </motion.div>
-            ))}
-          </div>
         </motion.div>
       </section>
 
