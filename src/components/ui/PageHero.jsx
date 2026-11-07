@@ -33,7 +33,7 @@ export default function PageHero({
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
-        className="container-luci mx-auto flex w-full max-w-2xl flex-col items-center gap-4 py-12 text-center sm:max-w-3xl sm:gap-5 sm:py-16 md:py-20"
+        className="container-luci max-w-3xl flex flex-col items-center gap-4 py-12 text-center sm:gap-5 sm:py-16 md:py-20"
       >
         {eyebrow && (
           <motion.span variants={fadeInUp}>
@@ -53,7 +53,7 @@ export default function PageHero({
         {subtitle && (
           <motion.p
             variants={fadeInUp}
-            className={cn("max-w-xl text-sm sm:max-w-2xl sm:text-base", isDark && "text-white/90")}
+            className={cn("text-sm sm:text-base", isDark && "text-white/90")}
           >
             {subtitle}
           </motion.p>
