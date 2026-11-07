@@ -91,7 +91,7 @@ export default function AboutPage() {
             <IconCard
               icon={<Eye className="text-maroon-deep" size={20} />}
               title="Our Vision"
-              description="So that we might fulfill our duty as leaven — families with a transcendental perspective, seeing beyond the horizon and naturally committing to fostering unity and charity."
+              description="To become a world-inspiring beacon of unity: &quot;So that we might fulfill our duty as leaven...&quot;"
             />
           </motion.div>
           <motion.div variants={fadeInUp}>
