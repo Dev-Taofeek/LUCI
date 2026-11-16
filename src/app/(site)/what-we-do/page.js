@@ -31,16 +31,7 @@ const FOCUS_AREAS = [
     image: "/hero-wwd-enrichment.jpg",
     reverse: true,
   },
-];
-
-const STRATEGY_STEPS = [
-  { icon: <Ear size={20} />, title: "Listen", description: "Gathering insights directly from the ground." },
-  { icon: <Lightbulb size={20} />, title: "Understand", description: "Analyzing needs and systemic challenges." },
-  { icon: <Link2 size={20} />, title: "Connect", description: "Building relational bridges across groups." },
-  { icon: <Users2 size={20} />, title: "Collaborate", description: "Partnering for sustainable solutions." },
-  { icon: <Rocket size={20} />, title: "Act", description: "Implementing targeted, impactful programs." },
-  { icon: <BarChart3 size={20} />, title: "Measure", description: "Evaluating outcomes to refine our impact." },
-];
+]
 
 export default function WhatWeDoPage() {
   return (
@@ -65,26 +56,6 @@ export default function WhatWeDoPage() {
           </motion.div>
         ))}
       </div>
-
-      {/* Our Strategic Approach */}
-      <section className="bg-white section-padding">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="container-luci flex flex-col gap-8 sm:gap-10 lg:gap-12"
-        >
-          <motion.h2 variants={fadeInUp} className="text-center text-2xl sm:text-3xl lg:text-4xl">
-            Our Strategic Approach
-          </motion.h2>
-          <motion.div variants={fadeInUp} className="flex flex-wrap gap-x-6 gap-y-8 sm:gap-x-8 justify-center">
-            {STRATEGY_STEPS.map((step) => (
-              <StrategyStep key={step.title} {...step} />
-            ))}
-          </motion.div>
-        </motion.div>
-      </section>
     </>
   );
 }

@@ -13,11 +13,35 @@ const NAV_LINKS = [
   { label: "Resources", href: "/resources" },
 ];
 
+const SHOW_AFTER_PX = 10;
+
 export default function TopNavBar() {
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+
+  // Only the home page hides the navbar at the top; every other page always shows it
+  const isHome = pathname === "/";
+  const visible = !isHome || scrolled;
+
+  // On the home page: slide in once the user scrolls past 10px
+  useEffect(() => {
+    if (!isHome) return;
+    const onScroll = () => setScrolled(window.scrollY > SHOW_AFTER_PX);
+    onScroll(); // handles reloads / navigation that start mid-page
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isHome]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+    <header
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-[0_1px_2px_rgba(0,0,0,0.05)]",
+        "transition-[transform,opacity,visibility] duration-300 ease-out",
+        visible
+          ? "translate-y-0 opacity-100 visible"
+          : "-translate-y-full opacity-0 invisible pointer-events-none"
+      )}
+    >
       <div className="container-luci h-16 lg:h-20 flex items-center justify-between">
         <Link
           href="/"

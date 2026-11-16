@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import { ShareWidget, RelatedArticlesWidget } from "@/components/sections/ArticleSidebar";
 import { getArticleBySlug, listRelatedArticles } from "@/lib/queries";
+import CommentSection from "@/components/community/CommentSection"; // 👈 CHANGE 1
 
 export const dynamic = "force-dynamic";
 
@@ -94,6 +95,8 @@ export default async function ArticleDetailPage({ params }) {
                 </p>
               ))
             : a.content && <p className="text-sm sm:text-base text-charcoal">{a.content}</p>}
+
+          <CommentSection slug={a.slug} /> {/* 👈 CHANGE 2 */}
         </article>
 
         {/* Sidebar */}

@@ -2,7 +2,6 @@ import Link from "next/link";
 
 const BOTTOM_ROW_LINKS = [
   { label: "What we do", href: "/what-we-do" },
-  { label: "Events", href: "/events" },
   { label: "News", href: "/news" },
 ];
 

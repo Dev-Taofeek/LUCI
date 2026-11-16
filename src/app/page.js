@@ -1,28 +1,24 @@
 "use client";
 
-import { motion } from "framer-motion";
-import HeroSection from "@/components/sections/HeroSection";
-import CTASection from "@/components/sections/CTASection";
-import { IconCard } from "@/components/ui/Card";
+import HeroCarousel from "@/components/sections/HeroCarousel";
 import Button from "@/components/ui/Button";
-import { fadeInUp, staggerContainer } from "@/lib/motion";
-import { Eye, HeartHandshake } from "lucide-react";
 
-const HERO_IMAGE = "/luci-logo.png";
+// /luci-logo1.png ... /luci-logo9.png (files live in /public)
+const HERO_IMAGES = Array.from({ length: 9 }, (_, i) => `/luci-logo${i + 1}.png`);
 
 export default function HomePage() {
   return (
     <>
-      <HeroSection
-        image={HERO_IMAGE}
+      <HeroCarousel
+        images={HERO_IMAGES}
         title="Sound Families make Sound Society and Sound Nation."
-subtitle={
-  <>
-    To promote and foster the well-being of <strong>THE FAMILY</strong> and the growing of
-    commitment to the building of relational bridges of humanity <strong>FOR A BETTER SOCIETY</strong> and nation.
-  </>
-}
-        minHeight="min-h-[500px] sm:min-h-[560px] lg:min-h-[640px]"
+        subtitle={
+          <>
+            To promote and foster the well-being of <strong>THE FAMILY</strong> and the
+            growing of commitment to the building of relational bridges of humanity{" "}
+            <strong>FOR A BETTER SOCIETY</strong> and nation.
+          </>
+        }
         actions={
           <>
             <Button variant="primary" href="/programmes" className="w-full sm:w-auto">

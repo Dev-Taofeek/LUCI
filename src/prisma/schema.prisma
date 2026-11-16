@@ -306,3 +306,18 @@ model AuditLog {
 
   user User @relation(fields: [userId], references: [id])
 }
+
+model Comment {
+  id          String    @id @default(cuid())
+  articleSlug String
+  parentId    String?
+  parent      Comment?  @relation("Replies", fields: [parentId], references: [id], onDelete: Cascade)
+  replies     Comment[] @relation("Replies")
+  name        String
+  body        String
+  stance      String?
+  status      String    @default("approved")
+  createdAt   DateTime  @default(now())
+
+  @@index([articleSlug, createdAt])
+}
