@@ -21,7 +21,13 @@ export async function addComment(_prev, formData) {
   if (body.length < 3) return { ok: false, error: "Your comment is too short." };
   if (body.length > 1500) return { ok: false, error: "Keep it under 1,500 characters." };
 
-  await createComment({ articleSlug: slug, parentId, name, body, stance });
+  try {
+    await createComment({ articleSlug: slug, parentId, name, body, stance });
+  } catch (err) {
+    console.error("addComment failed:", err);
+    return { ok: false, error: "Couldn't post your comment. Please try again." };
+  }
+
   revalidatePath(`/news/${slug}`);
   return { ok: true };
 }
