@@ -1,15 +1,20 @@
-import { prisma } from "@/lib/prisma"; // adjust to your client
+import { prisma } from "@/lib/prisma"; // keep whatever import you already have
 
 export async function listComments(slug) {
-  const all = await prisma.comment.findMany({
-    where: { articleSlug: slug, status: "approved" },
-    orderBy: { createdAt: "asc" },
-  });
-  const top = all.filter((c) => !c.parentId).reverse(); // newest first
-  return top.map((c) => ({
-    ...c,
-    replies: all.filter((r) => r.parentId === c.id), // oldest first
-  }));
+  try {
+    const all = await prisma.comment.findMany({
+      where: { articleSlug: slug, status: "approved" },
+      orderBy: { createdAt: "asc" },
+    });
+    const top = all.filter((c) => !c.parentId).reverse();
+    return top.map((c) => ({
+      ...c,
+      replies: all.filter((r) => r.parentId === c.id),
+    }));
+  } catch (err) {
+    console.error("listComments failed:", err);
+    return [];
+  }
 }
 
 export async function createComment(data) {

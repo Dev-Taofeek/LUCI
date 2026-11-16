@@ -118,6 +118,7 @@ model Event {
   startDate   DateTime
   endDate     DateTime?
   heroImage   String?
+  featured    Boolean   @default(false)
   speakers    Json? // [{ name, role, photo }]
   organisers  Json?
   capacity    Int?
@@ -128,13 +129,14 @@ model Event {
 }
 
 model EventRegistration {
-  id        String   @id @default(cuid())
-  eventId   String
-  fullName  String
-  email     String
-  phone     String?
-  notes     String?
-  createdAt DateTime @default(now())
+  id         String   @id @default(cuid())
+  eventId    String
+  fullName   String
+  email      String
+  phone      String?
+  attendance String? // "In-Person" | "Virtual"
+  notes      String?
+  createdAt  DateTime @default(now())
 
   event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
 }
@@ -204,6 +206,9 @@ model MembershipApplication {
   email     String
   phone     String
   reason    String   @db.Text
+  state     String?
+  lga       String?
+  address   String?
   status    String   @default("NEW")
   createdAt DateTime @default(now())
 }
@@ -300,4 +305,19 @@ model AuditLog {
   createdAt DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id])
+}
+
+model Comment {
+  id          String    @id @default(cuid())
+  articleSlug String
+  parentId    String?
+  parent      Comment?  @relation("Replies", fields: [parentId], references: [id], onDelete: Cascade)
+  replies     Comment[] @relation("Replies")
+  name        String
+  body        String
+  stance      String?
+  status      String    @default("approved")
+  createdAt   DateTime  @default(now())
+
+  @@index([articleSlug, createdAt])
 }

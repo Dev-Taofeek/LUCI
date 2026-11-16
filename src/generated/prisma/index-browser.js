@@ -186,6 +186,7 @@ exports.Prisma.EventScalarFieldEnum = {
   startDate: 'startDate',
   endDate: 'endDate',
   heroImage: 'heroImage',
+  featured: 'featured',
   speakers: 'speakers',
   organisers: 'organisers',
   capacity: 'capacity',
@@ -199,6 +200,7 @@ exports.Prisma.EventRegistrationScalarFieldEnum = {
   fullName: 'fullName',
   email: 'email',
   phone: 'phone',
+  attendance: 'attendance',
   notes: 'notes',
   createdAt: 'createdAt'
 };
@@ -249,6 +251,9 @@ exports.Prisma.MembershipApplicationScalarFieldEnum = {
   email: 'email',
   phone: 'phone',
   reason: 'reason',
+  state: 'state',
+  lga: 'lga',
+  address: 'address',
   status: 'status',
   createdAt: 'createdAt'
 };
@@ -315,6 +320,17 @@ exports.Prisma.AuditLogScalarFieldEnum = {
   entity: 'entity',
   entityId: 'entityId',
   metadata: 'metadata',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.CommentScalarFieldEnum = {
+  id: 'id',
+  articleSlug: 'articleSlug',
+  parentId: 'parentId',
+  name: 'name',
+  body: 'body',
+  stance: 'stance',
+  status: 'status',
   createdAt: 'createdAt'
 };
 
@@ -388,7 +404,8 @@ exports.Prisma.ModelName = {
   ContactSubmission: 'ContactSubmission',
   NewsletterSubscriber: 'NewsletterSubscriber',
   SafeguardingReport: 'SafeguardingReport',
-  AuditLog: 'AuditLog'
+  AuditLog: 'AuditLog',
+  Comment: 'Comment'
 };
 
 /**
