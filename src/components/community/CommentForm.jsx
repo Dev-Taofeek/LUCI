@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useRef } from "react";
-import { addComment } from "@/app/news/[slug]/actions";
+import { addComment } from "./actions";
 
 const STANCES = [
   { value: "agree", label: "👍 Agree" },
