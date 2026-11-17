@@ -2,123 +2,85 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Users, Link2, Building2, Globe2, Flag, Eye, HeartHandshake } from "lucide-react";
-import { IconCard } from "@/components/ui/Card";
-import ProgressStep from "@/components/sections/ProgressStep";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
-import TeamMemberCard from "@/components/sections/TeamMemberCard";
-import CorporateCatalystsCarousel from "@/components/sections/CorporateCatalystsCarousel";
-
-const ABOUT_IMAGE = "/luci-emblem.png";
-
-const STEPS = [
-  { icon: <Users size={24} />, label: "Family", state: "active" },
-  { icon: <Link2 size={22} />, label: "Relationships", state: "inactive" },
-  { icon: <Building2 size={22} />, label: "Community", state: "active" },
-  { icon: <Globe2 size={22} />, label: "Society", state: "inactive" },
-  { icon: <Flag size={22} />, label: "Nation", state: "highlight" },
-];
-
-const TEAM = [
-  {
-    name: "Felix O. Omusi",
-    role: "General Co-ordinator",
-    bio: "General Co-ordinator of LUCI — Living Unity Core Initiative, making \"Beauty in Diversity\" work. Compiler of the LUCI Reflection: \"Unity: The Good News.\"",
-  },
-];
 
 export default function AboutPage() {
   return (
     <>
-      {/* 1. Who We Are — split hero (text left, image right) */}
-      <section className="container-luci py-10 sm:py-14 lg:py-16">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center"
-        >
-          <motion.div variants={fadeInUp} className="flex flex-col gap-4 sm:gap-6 order-2 md:order-1">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl leading-tight">
-              Building Bridges,
-              <br className="hidden sm:block" />
-              {" "}Building Communities.
-            </h1>
-            <p className="text-sm sm:text-base">
-              The Living Unity Core Initiative (LUCI) is a non-political,
-              non-governmental organization dedicated to promoting and
-              fostering beauty in diversity through family space. We believe
-              that sound families make a sound society, and sound families
-              make a sound nation.
-            </p>
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
-              <span className="bg-gold-light text-maroon-deep text-xs font-semibold btn-tracking rounded-control px-3 py-1.5">
-                Non-Political
-              </span>
-              <span className="bg-maroon-deep text-white text-xs font-semibold btn-tracking rounded-control px-3 py-1.5">
-                Non-Governmental Organization
-              </span>
-            </div>
-          </motion.div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="relative h-[260px] sm:h-[360px] md:h-[420px] lg:h-[500px] w-full order-1 md:order-2"
-          >
-            <Image
-              src={ABOUT_IMAGE}
-              alt="LUCI — The Bridge Building Family Organization emblem"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-contain"
-              priority
-            />
-          </motion.div>
-        </motion.div>
-      </section>
-
-
-      {/* Vision & Mission */}
+      {/* Mission & Vision */}
       <section className="bg-white section-padding">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          className="container-luci grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
+          viewport={{ once: true, amount: 0.2 }}
+          className="container-luci flex flex-col gap-12 md:gap-16"
         >
-          <motion.div variants={fadeInUp}>
-            <IconCard
-              icon={<Eye className="text-maroon-deep" size={20} />}
-              title="OUR VISION"
-             description={
-  <>
-    TO BECOME A WORLD-INSPIRING BEACON OF UNITY:
-    <br />
-    <strong>&quot;So that we might fulfill our duty as leaven...&quot;</strong>
-  </>
-}
-            />
-          </motion.div>
-          <motion.div variants={fadeInUp}>
-            <IconCard
-              icon={<HeartHandshake className="text-maroon-deep" size={20} />}
-              title="OUR MISSION"
-              description="Promoting and fostering beauty in diversity through family space to achieve better society and nation(s): A more perfect union."
-              tint="gold"
-            />
-          </motion.div>
-        </motion.div>
-      </section>
+          {/* MISSION: circle image left, text right */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <motion.div
+              variants={fadeInUp}
+              className="relative mx-auto w-full max-w-[420px] aspect-square rounded-full overflow-hidden border-4 border-maroon-deep"
+            >
+              <Image
+                src="/luci-logo1.png"
+                alt="Families of diverse Nigerian cultures seated together"
+                fill
+                sizes="(min-width: 768px) 420px, 90vw"
+                className="object-cover"
+              />
+            </motion.div>
 
-      {/* Partners Marquee */}
-      <section className="bg-white border-t border-border-light py-10 sm:py-12">
-        <div className="container-luci flex flex-col gap-6 sm:gap-8 items-center">
-          <span className="text-xs sm:text-sm font-semibold text-muted btn-tracking uppercase text-center">
-            Our Corporate Catalysts
-          </span>
-          <CorporateCatalystsCarousel />
-        </div>
+            <motion.div variants={fadeInUp} className="md:text-right">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-maroon-deep uppercase tracking-wide">
+                Mission
+              </h2>
+              <p className="mt-3 text-sm sm:text-base font-bold uppercase tracking-[0.18em] text-maroon-deep leading-relaxed">
+                Promoting and fostering beauty in diversity through family space
+                to achieve better society and nation: a more perfect union.
+              </p>
+              <p className="mt-6 text-sm sm:text-base text-gray-800 leading-8 text-justify">
+                As families lending conscious commitment and co-operation to
+                building and supporting relational bridges of humanity as:
+                &ldquo;fullness of our creation&rdquo; and giving depth and
+                meaning to living; using the instrumentality of strengthened
+                human, physical and material structures as tools to achieving a
+                better society and nation.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* VISION: text left, photo right */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <motion.div
+              variants={fadeInUp}
+              className="order-2 md:order-1 md:self-center"
+            >
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-maroon-deep uppercase tracking-wide">
+                Vision
+              </h2>
+              <p className="mt-3 text-xs sm:text-sm uppercase tracking-[0.18em] text-gray-500">
+                To become a world-inspiring beacon of unity:
+              </p>
+              <p className="mt-2 text-base sm:text-lg italic font-semibold text-gray-600">
+                &ldquo;So that we might fulfill our duty as leaven...&rdquo;
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="order-1 md:order-2 relative w-full aspect-[4/3] overflow-hidden"
+            >
+              <Image
+                src="/luci-logo3.png"
+                alt="A person seated on a mountain peak above the clouds"
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </motion.div>
+          </div>
+        </motion.div>
       </section>
     </>
   );

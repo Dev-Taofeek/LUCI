@@ -32,7 +32,6 @@ export default function HeroCarousel({
   );
 
   // Auto-play: moves on `interval` ms after the current image appeared.
-  // Never paused by hover/focus. A manual change restarts the countdown.
   useEffect(() => {
     if (total < 2) return;
     const id = setTimeout(() => paginate(1), interval);
@@ -44,8 +43,7 @@ export default function HeroCarousel({
     if (e.key === "ArrowLeft") paginate(-1);
   };
 
-  // Text rises from the bottom, one element after another, but only AFTER
-  // the new image has finished sliding in and covered the previous slide.
+  // Text rises only AFTER the new image has finished sliding in.
   const textDelay = isFirst ? 0.25 : SLIDE_DURATION + 0.1;
 
   const textContainer = {
@@ -68,63 +66,45 @@ export default function HeroCarousel({
 
   return (
     <section
-      // Fills the entire screen. The negative top margin cancels the space the layout
-      // reserves for the navbar (pt-16 / lg:pt-20), so no white strip shows above the image.
-      className="-mt-16 lg:-mt-20 flex h-svh min-h-[480px] w-full flex-col"
+      // Negative top margin cancels the navbar padding from the layout, so the hero
+      // starts at the very top of the screen.
+      // Height: 75% of the screen on mobile & tablet, 100% on desktop (lg+). Always full width.
+      className="-mt-16 lg:-mt-20 block w-full overflow-hidden bg-black h-[75svh] lg:h-svh"
       onKeyDown={onKeyDown}
       aria-roledescription="carousel"
       aria-label="LUCI highlights"
     >
       <motion.div
-        className="relative flex min-h-0 flex-1 touch-pan-y items-center overflow-hidden bg-black"
+        className="relative h-full w-full touch-pan-y overflow-hidden bg-black"
         onPanEnd={(_, info) => {
-          // swipe / drag to navigate
           if (info.offset.x > 80) paginate(-1);
           else if (info.offset.x < -80) paginate(1);
         }}
       >
-        {/*
-          Each slide = image + overlay + its own text.
-          The old slide stays completely still (text included) until the new
-          slide has slid in from the right and covered it. Then the new
-          slide's text rises in.
-        */}
         <AnimatePresence>
           <motion.div
             key={index}
             initial={isFirst ? false : reduceMotion ? { opacity: 0 } : { x: "100%" }}
             animate={reduceMotion ? { opacity: 1 } : { x: 0 }}
-            // Near-invisible change that keeps the old slide mounted while the new one covers it
             exit={{ opacity: 0.99, transition: { duration: SLIDE_DURATION } }}
             transition={{ duration: SLIDE_DURATION, ease: [0.65, 0, 0.35, 1] }}
             className="absolute inset-0 flex items-center"
           >
-            {/* Background image: slow, constant zoom-out that runs the whole time an
-                image is on screen (linear, so it never visibly slows or stops) */}
-            <motion.div
-              className="absolute inset-0"
-              initial={{ scale: reduceMotion ? 1 : 1.12 }}
-              animate={{ scale: 1 }}
-              transition={{
-                duration: interval / 1000 + SLIDE_DURATION + 1,
-                ease: "linear",
-              }}
-            >
-              <Image
-                src={images[index]}
-                alt=""
-                fill
-                priority={index === 0}
-                sizes="100vw"
-                className="object-cover"
-              />
-            </motion.div>
+            {/* Image fills 100% width and 100% height of the hero */}
+            <Image
+              src={images[index]}
+              alt=""
+              fill
+              priority={index === 0}
+              sizes="100vw"
+              className="object-cover object-center"
+            />
 
             {/* Overlay for text legibility */}
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/20" />
 
-            {/* Text */}
-            <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+            {/* Text (pb keeps it clear of the dots at the bottom) */}
+            <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-8 sm:px-6 sm:pb-0 lg:px-8">
               <motion.div
                 variants={textContainer}
                 initial="hidden"
@@ -133,7 +113,7 @@ export default function HeroCarousel({
               >
                 <motion.h1
                   variants={textItem}
-                  className="text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl"
+                  className="max-sm:mt-6 text-3xl font-bold leading-tight text-white sm:text-3xl lg:text-5xl"
                   style={{ color: "#fff" }}
                 >
                   {title}
@@ -141,7 +121,7 @@ export default function HeroCarousel({
                 {subtitle && (
                   <motion.p
                     variants={textItem}
-                    className="mt-5 text-base font-bold leading-relaxed text-white sm:text-lg"
+                    className="mt-6 text-sm font-bold leading-relaxed text-white sm:mt-5 sm:text-base lg:text-lg"
                     style={{ color: "#fff" }}
                   >
                     {subtitle}
@@ -150,7 +130,7 @@ export default function HeroCarousel({
                 {actions && (
                   <motion.div
                     variants={textItem}
-                    className="mt-8 flex flex-col gap-3 sm:flex-row"
+                    className="mt-14 flex flex-col gap-2 sm:mt-8 sm:flex-row sm:gap-3"
                   >
                     {actions}
                   </motion.div>
@@ -160,7 +140,7 @@ export default function HeroCarousel({
           </motion.div>
         </AnimatePresence>
 
-        {/* Navigation — on the image */}
+        {/* Navigation */}
         <button
           type="button"
           onClick={() => paginate(-1)}
@@ -178,7 +158,7 @@ export default function HeroCarousel({
           <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
         </button>
 
-        <div className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 gap-2">
+        <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-2 sm:bottom-5">
           {images.map((_, i) => (
             <button
               key={i}
